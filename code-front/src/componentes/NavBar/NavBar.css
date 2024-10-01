@@ -1,0 +1,35 @@
+.nav-bar{
+    display: flex;
+    justify-content: space-between;
+    background: #1B1B1B; 
+    align-items: center;
+    height: 130px;
+}
+
+.nav-bar img{
+    margin-left: 10px;
+}
+
+.nav-bar ul{
+    list-style-type: none;
+    display: flex;
+    width: 50%;
+    justify-content: space-evenly;
+}
+
+.nav-bar ul li{
+    color: white;
+    cursor: pointer;
+}
+
+ul li:hover {
+    color: #DF0050;
+}
+
+
+
+.linha{
+    height: 3px;
+    background-color: #DF0050;
+}
+
