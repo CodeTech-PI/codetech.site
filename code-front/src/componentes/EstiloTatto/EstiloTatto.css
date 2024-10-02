@@ -13,5 +13,10 @@
 @media screen and (max-width: 1020px){
     .estilo-tatto div{
         flex-direction: column;
+        align-items: center;
+    }
+
+    .estilo-tatto h2{
+        font-size: 20px;
     }
 }
