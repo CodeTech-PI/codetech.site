@@ -8,7 +8,7 @@ const NavBar = () => {
 
             <nav className='nav-bar'>
 
-                <img src="/imagens/logo.png"
+                <img className='img-logo' src="/imagens/logo.png"
                     alt="Logo do estudico com com duas imagens de dois cup cake e um máquina de tatuagem no meio"></img>
                 <ul className='teste'>
                     <li >Guerreiras</li>

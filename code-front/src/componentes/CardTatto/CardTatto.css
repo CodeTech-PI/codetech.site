@@ -1,0 +1,28 @@
+
+
+.card-tatto {
+    position: relative;
+    width: 300px; 
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.card-tatto img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.card-tatto p {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #45050C; 
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 16px;
+    border-radius: 0 0 5px 5px;
+}
+
+@media screen and (max-width: 1020px){}
