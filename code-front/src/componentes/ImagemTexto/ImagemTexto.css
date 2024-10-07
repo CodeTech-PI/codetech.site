@@ -1,6 +1,5 @@
 .imagem-texto{
     width: 100%;
-    padding: 15px;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -43,6 +42,10 @@
 }
 
 @media screen and (max-width: 1020px){
+   .imagem-texto{
+    padding: 0;
+   }
+   
     .container-conteudo {
         display: flex;
         align-items: center;
@@ -61,5 +64,6 @@
     .imagem-texto div h2{
         font-size: 16px;
         padding-bottom: 40px;
+
     }
 }

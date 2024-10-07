@@ -20,8 +20,12 @@
     color: white;
     text-align: center;
     padding: 10px 0;
-    font-size: 16px;
+    font-size: 19px;
     border-radius: 0 0 5px 5px;
 }
 
-@media screen and (max-width: 1020px){}
+@media screen and (max-width: 1020px){
+    .card-tatto p, .card-tatto img{
+        margin-bottom: 10px;
+    }
+}

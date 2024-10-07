@@ -1,8 +1,11 @@
 
 import './App.css';
+import Botao from './componentes/Botao/Botao';
 import EstiloTatto from './componentes/EstiloTatto/EstiloTatto';
 import ImagemTexto from './componentes/ImagemTexto/ImagemTexto';
 import NavBar from './componentes/NavBar/NavBar';
+import AnyReactComponent from './componentes/AnyReactComponent/AnyReactComponent'
+
 
 function App() {
   return (
@@ -21,6 +24,11 @@ function App() {
   Além de tatuadora, sou professora de artes para crianças do ensino fundamental, algo que me permite compartilhar minha paixão pela arte e inspirar as novas gerações."
       />
       <EstiloTatto/>
+      <h2 className='titulo-orcamento'>Tem uma idéia? Vamos trazê-la à vida. Faça seu orçamento!</h2>
+      <Botao 
+      botao="Orçamento"/>
+      <h2 className='endereco'>Onde nos encontrar:</h2>
+      <AnyReactComponent></AnyReactComponent>
     </div>
   );
 }
