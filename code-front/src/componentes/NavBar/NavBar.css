@@ -33,3 +33,12 @@ ul li:hover {
     background-color: #DF0050;
 }
 
+@media screen and (max-width: 1020px){
+    .img-logo{
+        display: none;
+    }
+    .nav-bar ul{
+        width: 100%;
+    }
+}
+
