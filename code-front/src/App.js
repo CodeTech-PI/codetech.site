@@ -1,10 +1,10 @@
 
 import './App.css';
-import Botao from './componentes/Botao/Botao';
-import EstiloTatto from './componentes/EstiloTatto/EstiloTatto';
-import ImagemTexto from './componentes/ImagemTexto/ImagemTexto';
-import NavBar from './componentes/NavBar/NavBar';
-import AnyReactComponent from './componentes/AnyReactComponent/AnyReactComponent'
+import Botao from './components/Botao/Botao';
+import EstiloTatto from './components/EstiloTatto/EstiloTatto';
+import ImagemTexto from './components/ImagemTexto/ImagemTexto';
+import NavBar from './components/NavBar/NavBar';
+import AnyReactComponent from './components/AnyReactComponent/AnyReactComponent'
 
 
 function App() {
