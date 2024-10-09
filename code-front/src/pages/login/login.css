@@ -2,19 +2,21 @@
 
 .login-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Tela cheia */
-    background-color: #f2f2f2; /* Cor de fundo clara */
+    height: 80vh;
+    background-color: #f2f2f2;
   }
   
   .login-container form {
-    background-color: #fff; /* Cor de fundo branca para o formulário */
+    background-color: #0000000c; /* Cor de fundo branca para o formulário */
     padding: 2rem; /* Espaçamento interno */
     border-radius: 10px; /* Bordas arredondadas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para o formulário */
-    max-width: 400px; /* Largura máxima */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.418); /* Sombra para o formulário */
+    max-width: 30%; /* Largura máxima */
     width: 100%; /* Largura total */
+    height: 24.25rem;
   }
   
   .login-container h1 {
@@ -41,18 +43,25 @@
   }
   
   .login-container button[type="submit"] {
-    width: 100%; /* Largura total do botão */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* max-width: 40%; */
+    width: 40%; /* Largura total do botão */
     padding: 0.75rem; /* Espaçamento interno */
-    background-color: #4caf50; /* Cor de fundo do botão */
+    background-color: #DF0050; /* Cor de fundo do botão */
     border: none; /* Sem borda */
     border-radius: 5px; /* Bordas arredondadas */
     color: #fff; /* Cor do texto do botão */
     font-size: 1rem; /* Tamanho da fonte do botão */
     cursor: pointer; /* Cursor de ponteiro */
+    margin-top: 20%;
+    margin-left: 30%;
   }
   
   .login-container button[type="submit"]:hover {
-    background-color: #45a049; /* Cor de fundo ao passar o mouse */
+    background-color: #ff005d;
+    /* height: 100vh; */
   }
   
   .error {

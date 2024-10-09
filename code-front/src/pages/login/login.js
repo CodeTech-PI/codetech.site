@@ -12,15 +12,11 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await loginService.login(email, password); // Chama o serviço de login
+      const response = await loginService.login(email, password);
 
-      // Verifique se a resposta contém o token
       if (response.token) {
         sessionStorage.setItem('token', response.token.tokenJWT);
         sessionStorage.setItem('email', response.token.email);
-        sessionStorage.setItem('isDiretor', response.token.isDiretor);
-        sessionStorage.setItem('idUser', response.token.idUser);
-        // Redirecione ou faça outras ações conforme necessário
         // window.location.href = '/home';
       } else {
         setError('Token não encontrado na resposta');
@@ -54,7 +50,7 @@ const Login = () => {
           />
         </label>
         {error && <p className="error">{error}</p>}
-        <button type="submit">Login</button>
+        <button type="submit">Entrar</button>
       </form>
     </div>
   );
