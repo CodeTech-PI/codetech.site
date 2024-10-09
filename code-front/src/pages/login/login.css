@@ -10,13 +10,14 @@
   }
   
   .login-container form {
-    background-color: #0000000c; /* Cor de fundo branca para o formulário */
+    /* background-color: #0000000c; Cor de fundo branca para o formulário */
     padding: 2rem; /* Espaçamento interno */
     border-radius: 10px; /* Bordas arredondadas */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.418); /* Sombra para o formulário */
     max-width: 30%; /* Largura máxima */
     width: 100%; /* Largura total */
     height: 24.25rem;
+    /* background: rgba(0, 0, 0, 0.6); */
   }
   
   .login-container h1 {
