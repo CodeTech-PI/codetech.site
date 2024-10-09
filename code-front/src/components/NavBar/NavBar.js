@@ -9,6 +9,7 @@ const NavBar = () => {
     navigate('/login');
   };
 
+
   return (
     <section>
       <nav className='nav-bar'>
@@ -20,7 +21,6 @@ const NavBar = () => {
         <ul className='teste'>
           <li>Guerreiras</li>
           <li>Cuidados</li>
-          <li>Serviços</li>
           <li>Anaminse</li>
           <li onClick={handleLoginClick}>Login</li>
         </ul>
@@ -28,6 +28,10 @@ const NavBar = () => {
       <div className='linha'></div>
     </section>
   );
+
+      
+
+     
 }
 
 export default NavBar;

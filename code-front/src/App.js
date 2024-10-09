@@ -5,12 +5,15 @@ import EstiloTatto from './components/EstiloTatto/EstiloTatto';
 import ImagemTexto from './components/ImagemTexto/ImagemTexto';
 import NavBar from './components/NavBar/NavBar';
 import AnyReactComponent from './components/AnyReactComponent/AnyReactComponent'
+import EnderecoContato from './components/EnderecoContato/EnderecoContato';
+import Footer from './components/Footer/Footer';
 
 
 
 
 function App() {
   return (
+<<<<<<< HEAD
     <Router>
       <div className="App">
         <NavBar />
@@ -33,6 +36,8 @@ function App() {
               <Botao botao="Orçamento" />
               <h2 className='endereco'>Onde nos encontrar:</h2>
               <AnyReactComponent />
+              <EnderecoContato/>
+              <Footer/>
             </>
           } />
           <Route path="/login" element={<Login />} /> {/* Definir a rota de login */}
