@@ -24,6 +24,7 @@ const EstiloTatto = () => {
                 nome='Minimalista'
             />
             </div>
+            
 
         </section>
     )

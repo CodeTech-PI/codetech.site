@@ -5,16 +5,21 @@ import EstiloTatto from './components/EstiloTatto/EstiloTatto';
 import ImagemTexto from './components/ImagemTexto/ImagemTexto';
 import NavBar from './components/NavBar/NavBar';
 import AnyReactComponent from './components/AnyReactComponent/AnyReactComponent'
+import EnderecoContato from './components/EnderecoContato/EnderecoContato';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
   return (
     <div className="App">
+      
       <NavBar />
+
       <section className="img-home">
         <p>Arte que dura
           para sempre.</p>
       </section>
+      
       <ImagemTexto
         title="Quem é Leticia Lombardi ?"
         image="./imagens/img-leticia.jpeg"
@@ -29,6 +34,9 @@ function App() {
       botao="Orçamento"/>
       <h2 className='endereco'>Onde nos encontrar:</h2>
       <AnyReactComponent></AnyReactComponent>
+      <EnderecoContato/>
+      <Footer/>
+
     </div>
   );
 }

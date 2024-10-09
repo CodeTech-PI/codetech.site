@@ -1,0 +1,15 @@
+.icone-local{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.icone-local img{
+    width: 40px;
+    margin-right: 10px;
+}
+
+.icone-local p{
+    color: white;
+    font-size: 15px;
+}

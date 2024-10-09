@@ -13,8 +13,7 @@ const NavBar = () => {
                 <ul className='teste'>
                     <li >Guerreiras</li>
                     <li>Cuidados</li>
-                    <li>Serviços</li>
-                    <li>Anaminse</li>
+                    <li>Anamnese</li>
                     <li>Login</li>
                 </ul>
 
