@@ -1,4 +1,4 @@
-/* Login.css */
+/* login.css */
 
 .login-container {
     display: flex;
@@ -30,7 +30,7 @@
     color: #666; /* Cor do texto do rótulo */
   }
   
-  .login-container input[type="text"],
+  .login-container input[type="email"],
   .login-container input[type="password"] {
     width: calc(100% - 2rem); /* Largura do campo de entrada */
     padding: 0.5rem; /* Espaçamento interno */
@@ -53,5 +53,11 @@
   
   .login-container button[type="submit"]:hover {
     background-color: #45a049; /* Cor de fundo ao passar o mouse */
+  }
+  
+  .error {
+    color: red; /* Cor do texto de erro */
+    margin-bottom: 1rem; /* Espaçamento abaixo do erro */
+    text-align: center; /* Centralizar o texto de erro */
   }
   
