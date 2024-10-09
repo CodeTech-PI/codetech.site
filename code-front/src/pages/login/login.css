@@ -1,0 +1,57 @@
+/* Login.css */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Tela cheia */
+    background-color: #f2f2f2; /* Cor de fundo clara */
+  }
+  
+  .login-container form {
+    background-color: #fff; /* Cor de fundo branca para o formulário */
+    padding: 2rem; /* Espaçamento interno */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para o formulário */
+    max-width: 400px; /* Largura máxima */
+    width: 100%; /* Largura total */
+  }
+  
+  .login-container h1 {
+    margin-bottom: 1rem; /* Espaçamento abaixo do título */
+    font-size: 2rem; /* Tamanho da fonte do título */
+    text-align: center; /* Centralizar o título */
+    color: #333; /* Cor do texto */
+  }
+  
+  .login-container label {
+    display: block; /* Exibir como bloco */
+    margin-bottom: 0.5rem; /* Espaçamento abaixo do rótulo */
+    color: #666; /* Cor do texto do rótulo */
+  }
+  
+  .login-container input[type="text"],
+  .login-container input[type="password"] {
+    width: calc(100% - 2rem); /* Largura do campo de entrada */
+    padding: 0.5rem; /* Espaçamento interno */
+    margin-bottom: 1rem; /* Espaçamento abaixo do campo de entrada */
+    border: 1px solid #ccc; /* Bordas dos campos de entrada */
+    border-radius: 5px; /* Bordas arredondadas */
+    box-sizing: border-box; /* Incluir bordas e padding no tamanho total */
+  }
+  
+  .login-container button[type="submit"] {
+    width: 100%; /* Largura total do botão */
+    padding: 0.75rem; /* Espaçamento interno */
+    background-color: #4caf50; /* Cor de fundo do botão */
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    color: #fff; /* Cor do texto do botão */
+    font-size: 1rem; /* Tamanho da fonte do botão */
+    cursor: pointer; /* Cursor de ponteiro */
+  }
+  
+  .login-container button[type="submit"]:hover {
+    background-color: #45a049; /* Cor de fundo ao passar o mouse */
+  }
+  
