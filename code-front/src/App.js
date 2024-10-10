@@ -12,6 +12,7 @@ import Login from './pages/login/login'
 
 
 
+
 function App() {
   return (
 
@@ -42,7 +43,7 @@ function App() {
             </>
           } />
           <Route path="/login" element={<Login />} /> {/* Definir a rota de login */}
-          
+
         </Routes>
       </div>
     </Router>
