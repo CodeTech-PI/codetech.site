@@ -9,6 +9,15 @@ const NavBar = () => {
     navigate('/login');
   };
 
+  const download = () => {
+    const link = document.createElement('a');
+    link.href = '/anamnese/anamnese.pdf'; 
+    link.download = 'anamnese.pdf'; 
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
 
   return (
     <section>
@@ -21,7 +30,7 @@ const NavBar = () => {
         <ul className='teste'>
           <li>Guerreiras</li>
           <li>Cuidados</li>
-          <li>Anaminse</li>
+          <li onClick={download}>Anamnese</li>
           <li onClick={handleLoginClick}>Login</li>
         </ul>
       </nav>

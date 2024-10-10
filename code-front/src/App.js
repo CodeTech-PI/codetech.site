@@ -7,13 +7,14 @@ import NavBar from './components/NavBar/NavBar';
 import AnyReactComponent from './components/AnyReactComponent/AnyReactComponent'
 import EnderecoContato from './components/EnderecoContato/EnderecoContato';
 import Footer from './components/Footer/Footer';
+import Login from './pages/login/login'
 
 
 
 
 function App() {
   return (
-<<<<<<< HEAD
+
     <Router>
       <div className="App">
         <NavBar />
@@ -41,6 +42,7 @@ function App() {
             </>
           } />
           <Route path="/login" element={<Login />} /> {/* Definir a rota de login */}
+          
         </Routes>
       </div>
     </Router>
