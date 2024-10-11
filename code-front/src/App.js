@@ -4,7 +4,9 @@ import Botao from './components/Botao/Botao';
 import EstiloTatto from './components/EstiloTatto/EstiloTatto';
 import ImagemTexto from './components/ImagemTexto/ImagemTexto';
 import NavBar from './components/NavBar/NavBar';
-import AnyReactComponent from './components/AnyReactComponent/AnyReactComponent'
+import AnyReactComponent from './components/AnyReactComponent/AnyReactComponent';
+import Login from './pages/login/login';
+import Guerreiras from './pages/guerreiras/guerreiras';
 
 
 
@@ -36,6 +38,7 @@ function App() {
             </>
           } />
           <Route path="/login" element={<Login />} /> {/* Definir a rota de login */}
+          <Route path="/guerreiras" element={<Guerreiras />} /> {/* Definir a rota de login */}
         </Routes>
       </div>
     </Router>
