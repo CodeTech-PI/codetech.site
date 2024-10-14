@@ -1,0 +1,30 @@
+/* styles.css */
+
+/* Estilos para o botão de abrir o formulário */
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Estilos para os campos do formulário */
+  form label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  /* Estilos para os botões dentro do modal */
+  form button {
+    margin-right: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
