@@ -8,6 +8,10 @@ const NavBar = () => {
   const handleLoginClick = () => {
     navigate('/login');
   };
+  
+  const handleGuerreirasClick = () => {
+    navigate('/guerreiras');
+  };
 
   const download = () => {
     const link = document.createElement('a');
@@ -19,6 +23,7 @@ const NavBar = () => {
   };
 
 
+
   return (
     <section>
       <nav className='nav-bar'>
@@ -28,7 +33,7 @@ const NavBar = () => {
           alt="Logo do estúdio com duas imagens de dois cupcakes e uma máquina de tatuagem no meio"
         />
         <ul className='teste'>
-          <li>Guerreiras</li>
+          <li  onClick={handleGuerreirasClick}>Guerreiras</li>
           <li>Cuidados</li>
           <li onClick={download}>Anamnese</li>
           <li onClick={handleLoginClick}>Login</li>
