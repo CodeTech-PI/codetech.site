@@ -3,9 +3,10 @@ import axios from 'axios';
 const url = process.env.REACT_APP_API_URL;
 
 const loginService = {
-  login: async (email, password) => {
+  login: async (email, senha) => {
+    debugger
     try {
-      const response = await axios.post(`${url}/User/login`, { email, password });
+      const response = await axios.post(`${url}/lombardi/login`, { email, senha });
       return response.data;
     } catch (error) {
       throw error;
