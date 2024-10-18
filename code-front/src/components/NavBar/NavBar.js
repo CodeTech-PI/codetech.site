@@ -9,6 +9,10 @@ const NavBar = () => {
     navigate('/login');
   };
 
+  const handleGuerreirasClick = () => {
+    navigate('/guerreiras');
+  };
+
   return (
     <section>
       <nav className='nav-bar'>
@@ -18,7 +22,7 @@ const NavBar = () => {
           alt="Logo do estúdio com duas imagens de dois cupcakes e uma máquina de tatuagem no meio"
         />
         <ul className='teste'>
-          <li>Guerreiras</li>
+          <li  onClick={handleGuerreirasClick}>Guerreiras</li>
           <li>Cuidados</li>
           <li>Serviços</li>
           <li>Anaminse</li>
