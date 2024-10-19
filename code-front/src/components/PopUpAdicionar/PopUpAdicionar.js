@@ -8,7 +8,7 @@ import './PopUpAdicionar.css';
 // Configurar o elemento raiz para o modal
 Modal.setAppElement('#root');
 
-const PopUpAdicionar = ({ isOpen, onRequestClose }) => {
+const PopUpAdicionar = ({ isOpen, onRequestClose, onCreate }) => {
   const [formData, setFormData] = useState({
     nome: '',
     cpf: '',
@@ -29,7 +29,8 @@ const PopUpAdicionar = ({ isOpen, onRequestClose }) => {
     e.preventDefault();
     try {
       await clienteService.createUser(formData);
-      onRequestClose();
+      onCreate(); // Chama a função onCreate após a criação bem-sucedida do usuário
+      onRequestClose(); // Fecha o modal
       // Adicione qualquer outra lógica após a criação do usuário, como atualizar a lista de usuários
     } catch (error) {
       console.error('Erro ao criar usuário:', error);

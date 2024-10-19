@@ -1,6 +1,5 @@
-// src/components/Login.js
-
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import loginService from '../../services/authentication/loginService';
 import './login.css';
 
@@ -8,6 +7,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -15,9 +15,9 @@ const Login = () => {
       const response = await loginService.login(email, senha);
 
       if (response.token) {
-        sessionStorage.setItem('token', response.token.tokenJWT);
-        sessionStorage.setItem('email', response.token.email);
-        // window.location.href = '/home';
+        sessionStorage.setItem('token', response.token);
+        sessionStorage.setItem('email', response.email);
+        navigate('/clientes'); // Use navigate instead of useHistory
       } else {
         setError('Token não encontrado na resposta');
       }

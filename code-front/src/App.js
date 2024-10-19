@@ -1,3 +1,5 @@
+// src/App.js
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Botao from './components/Botao/Botao';
@@ -7,7 +9,7 @@ import NavBar from './components/NavBar/NavBar';
 import AnyReactComponent from './components/AnyReactComponent/AnyReactComponent';
 import EnderecoContato from './components/EnderecoContato/EnderecoContato';
 import Footer from './components/Footer/Footer';
-import Login from './pages/login/login'
+import Login from './pages/login/login';
 import Guerreiras from './pages/guerreiras/guerreiras';
 import Cliente from './pages/cliente/cliente';
 
@@ -40,7 +42,7 @@ function App() {
             </>
           } />
           <Route path="/login" element={<Login />} /> {/* Definir a rota de login */}
-          <Route path="/guerreiras" element={<Guerreiras />} /> {/* Definir a rota de login */}
+          <Route path="/guerreiras" element={<Guerreiras />} /> {/* Definir a rota de guerreiras */}
           <Route path="/clientes" element={<Cliente />} /> {/* Definir a rota para o componente Cliente */}
         </Routes>
       </div>
