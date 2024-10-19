@@ -1,0 +1,68 @@
+/* src/components/Sidebar/SideBar.css */
+
+.sidebar {
+    position: fixed; /* Fixa a sidebar */
+    top: 0; /* Alinha ao topo da tela */
+    left: 0; /* Alinha à esquerda da tela */
+    width: 200px; /* Defina a largura desejada */
+    height: 100vh; /* Ocupa a altura total da tela */
+    background-color: #333; /* Cor de fundo da sidebar */
+    color: white; /* Cor do texto */
+    padding: 20px; /* Espaçamento interno */
+    box-sizing: border-box; /* Inclui padding e border no tamanho total */
+    display: flex; /* Ativa o Flexbox */
+    flex-direction: column; /* Organiza os itens em uma coluna */
+    justify-content: space-between; /* Espaça os itens da sidebar */
+    align-items: center; /* Centraliza os itens horizontalmente */
+    text-align: center;
+  }
+  
+  .sidebar img.img-logo {
+    display: block;
+    margin: 0 auto 20px; /* Centraliza a imagem e adiciona espaçamento abaixo */
+    width: 80%; /* Ajuste o tamanho da imagem conforme necessário */
+  }
+  
+  .sidebar h2 {
+    margin-bottom: 30px; /* Espaçamento abaixo do título */
+  }
+  
+  .sidebar ul {
+    list-style: none; /* Remove marcadores de lista */
+    padding: 0; /* Remove padding padrão */
+    flex: 1; /* Permite que a lista ocupe o espaço disponível */
+    display: flex; /* Ativa o Flexbox para a lista */
+    flex-direction: column; /* Organiza os itens em uma coluna */
+    justify-content: center; /* Centraliza os itens verticalmente */
+  }
+  
+  .sidebar li {
+    margin: 10px 0; /* Espaçamento entre os itens da lista */
+  }
+  
+  .sidebar li a {
+    color: white; /* Cor dos links */
+    text-decoration: none; /* Remove sublinhado dos links */
+    display: block; /* Faz com que os links ocupem toda a área dos itens da lista */
+    padding: 10px; /* Adiciona espaçamento interno aos links */
+    transition: background-color 0.3s; /* Transição suave para a mudança de cor de fundo */
+  }
+  
+  .sidebar li:hover {
+    background-color: #444; /* Cor de fundo ao passar o mouse */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+  }
+  
+  .sidebar li.logout {
+    margin-top: 60px; /* Ajuste este valor conforme necessário */
+  }
+  
+  .linhaVertical{
+    width: 3px; /* Define a largura da linha vertical */
+    height: 100%; /* Faz a linha ocupar toda a altura da sidebar */
+    background-color: #DF0050; /* Cor da linha */
+    position: absolute; /* Posiciona a linha de forma absoluta */
+    top: 0; /* Alinha ao topo da sidebar */
+    right: 0; /* Alinha à direita da sidebar */
+  }
+  
