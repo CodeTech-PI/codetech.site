@@ -12,6 +12,7 @@ import Footer from './components/Footer/Footer';
 import Login from './pages/login/login';
 import Guerreiras from './pages/guerreiras/guerreiras';
 import Cliente from './pages/cliente/cliente';
+import Estoque from './pages/estoque/estoque';
 
 function App() {
   return (
@@ -44,6 +45,8 @@ function App() {
           <Route path="/login" element={<Login />} /> {/* Definir a rota de login */}
           <Route path="/guerreiras" element={<Guerreiras />} /> {/* Definir a rota de guerreiras */}
           <Route path="/clientes" element={<Cliente />} /> {/* Definir a rota para o componente Cliente */}
+          <Route path="/estoque" element={<Estoque />} /> {/* Definir a rota para o componente Cliente */}
+
         </Routes>
       </div>
     </Router>
