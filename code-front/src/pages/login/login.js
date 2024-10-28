@@ -6,13 +6,13 @@ import './login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [senha, setSenha] = useState('');
   const [error, setError] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await loginService.login(email, password);
+      const response = await loginService.login(email, senha);
 
       if (response.token) {
         sessionStorage.setItem('token', response.token.tokenJWT);
@@ -44,8 +44,8 @@ const Login = () => {
           Password:
           <input
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
             required
           />
         </label>
