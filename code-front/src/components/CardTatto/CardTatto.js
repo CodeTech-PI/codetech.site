@@ -1,13 +1,16 @@
+
 import './CardTatto.css'
 
 const CardTatto = (props) => {
+    
+  
+
     return (
 
-        <div className='card-tatto'>
+        <div  className='card-tatto'>
 
-            <img src={props.image} alt={props.descricao}></img>
-            <p>{props.nome}</p>
-
+            <img className='imgTipoTatto' src={props.image} alt={props.descricao}></img>
+            <p className='nomeTipoTatto' onClick={props.onClick}>{props.nome}</p>
         </div>
 
     )
