@@ -8,8 +8,12 @@ import AnyReactComponent from './components/AnyReactComponent/AnyReactComponent'
 import EnderecoContato from './components/EnderecoContato/EnderecoContato';
 import Footer from './components/Footer/Footer';
 import Login from './pages/login/login'
+import Aquarela from './pages/Aquarela/Aquarela';
+import Minimalista from './pages/Minimalista/Minimalista';
+import Realista from './pages/Realista/Realista';
 import Guerreiras from './pages/guerreiras/guerreiras';
 import Cliente from './pages/cliente/cliente';
+
 
 function App() {
   return (
@@ -40,8 +44,12 @@ function App() {
             </>
           } />
           <Route path="/login" element={<Login />} /> {/* Definir a rota de login */}
-          <Route path="/guerreiras" element={<Guerreiras />} /> {/* Definir a rota de login */}
+          <Route path='/aquarela' element={<Aquarela />} />
+          <Route path='/minimalista' element={<Minimalista/>} />
+          <Route path='/realista' element={<Realista/>} />
+              <Route path="/guerreiras" element={<Guerreiras />} /> {/* Definir a rota de login */}
           <Route path="/clientes" element={<Cliente />} /> {/* Definir a rota para o componente Cliente */}
+       
         </Routes>
       </div>
     </Router>

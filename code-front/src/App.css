@@ -2,6 +2,10 @@ body{
   font-family: "Readex Pro", sans-serif;
 }
 
+p{
+  margin-bottom: 0 !important;
+}
+
 .img-home {
   color: white;
   background-image: url('../public/imagens/img-home.png');

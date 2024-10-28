@@ -6,26 +6,29 @@
     border-radius: 5px;
 }
 
-.card-tatto img {
+.imgTipoTatto{
     width: 100%;
     height: auto;
     border-radius: 5px;
 }
 
-.card-tatto p {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #45050C; 
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 19px;
-    border-radius: 0 0 5px 5px;
+.nomeTipoTatto{
+    position: absolute !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    background-color: #45050C !important; 
+    color: white !important;
+    text-align: center !important;
+    padding: 10px 0 !important;
+    font-size: 19px !important;
+    border-radius: 0 0 5px 5px !important;
+    cursor: pointer !important;
 }
 
+
+
 @media screen and (max-width: 1020px){
-    .card-tatto p, .card-tatto img{
+    .nomeTipoTatto, .imgTipoTatto{
         margin-bottom: 10px;
     }
 }
