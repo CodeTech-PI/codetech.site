@@ -8,6 +8,7 @@
 
 .nav-bar img{
     margin-left: 10px;
+    cursor: pointer;
 }
 
 .nav-bar ul{
