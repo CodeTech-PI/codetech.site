@@ -1,0 +1,36 @@
+.titulo-carrossel {
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.container-carrosel-test {
+  margin: 32px 0px;
+}
+
+.row-carossel-test {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.img-test {
+  width: 300px;
+  height: 300px;
+}
+
+@media screen and (max-width: 1020px){
+  .row-carossel-test {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .img-test {
+    width: 200px;
+    height: 200px;
+  }
+}

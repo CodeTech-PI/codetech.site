@@ -9,8 +9,9 @@
     padding: 30px 0;
 }
 
-h2{
+.titulo-footer{
     color: white;
+    font-size: 14px;
 }
 
 p{
@@ -23,12 +24,19 @@ p{
     align-items: center;
 }
 
-.footer div p{
-    font-size: 16px !important;
+.p-copyright{
+    font-size: 12px !important;
+    margin: 0;
+
 }
 
-.footer p{
+.p-texto{
     font-size: 10px;
+    margin: 0;
+}
+
+.img-insta {
+    width: 25px;
 }
 
 @media screen and (max-width: 1020px){
@@ -36,17 +44,6 @@ p{
         font-size: 10px;
     }
 
-    .img-insta {
-        width: 25px;
-    }
-
-    h2{
-        font-size: 14px;
-    }
-
-    .footer div p {
-        font-size: 12px !important;
-    }
 
     .footer p {
         font-size: 8px;

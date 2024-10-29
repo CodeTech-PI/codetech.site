@@ -8,6 +8,7 @@
 
 .nav-bar img{
     margin-left: 10px;
+    cursor: pointer;
 }
 
 .nav-bar ul{
@@ -39,6 +40,7 @@ ul li:hover {
     }
     .nav-bar ul{
         width: 100%;
+        padding-left: 0;
     }
 }
 

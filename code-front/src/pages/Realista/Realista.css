@@ -1,0 +1,13 @@
+body{
+    background-color: black;
+}
+
+.container-icones-contato {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}

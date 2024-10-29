@@ -8,10 +8,17 @@
     background-color: black;
     border: solid 1px #DF0050;
     width: 130px;
-    height: 30px;
+    height: 45px;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.linkBotao{
+    text-decoration: none;
 }
 
 .botao button:hover {

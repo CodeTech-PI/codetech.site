@@ -5,6 +5,10 @@ import './NavBar.css';
 const NavBar = () => {
   const navigate = useNavigate();
 
+  const handleLogoClick = () => {
+    navigate('/');
+  }
+
   const handleLoginClick = () => {
     navigate('/login');
   };
@@ -31,8 +35,9 @@ const NavBar = () => {
           className='img-logo'
           src="/imagens/logo.png"
           alt="Logo do estúdio com duas imagens de dois cupcakes e uma máquina de tatuagem no meio"
+          onClick={handleLogoClick}
         />
-        <ul className='teste'>
+        <ul>
           <li  onClick={handleGuerreirasClick}>Guerreiras</li>
           <li>Cuidados</li>
           <li onClick={download}>Anamnese</li>
