@@ -3,6 +3,8 @@ import './guerreiras.css';
 import NavBar from '../../components/NavBar/NavBar';
 import ImagemTexto from '../../components/ImagemTexto/ImagemTexto';
 import Botao from '../../components/Botao/Botao';
+import IconesContato from '../../components/IconesContato/IconesContato';
+import Footer from '../../components/Footer/Footer';
 
 const Guerreiras = () => {
     
@@ -35,6 +37,16 @@ const Guerreiras = () => {
                 </ul>
                 <Botao botao = "Agendar " />
             </section>
+            <div className='container-icones-contato'>
+                <IconesContato
+                img="./imagens/whats-app.png" desc="Icone com a imagem do WhatsApp, um telefone"
+                link="https://wa.me/5511941834736"
+                />
+                <IconesContato
+                img="./imagens/chat-bot.png" desc="Icone com a imagem de um robozinho"
+                />
+            </div>
+            <Footer/>
         </>
     );
 }
