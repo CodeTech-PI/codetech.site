@@ -29,9 +29,9 @@ const Login = () => {
   };
 
   return (
-    <section>
+    <section id='section-login'>
       <NavBar/>
-    <div className="container">
+    <div className="container-login">
       <form onSubmit={handleLogin}>
         <h1>Login</h1>
         <label>
