@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import loginService from '../../services/authentication/loginService';
-import './login.css';
+import './loginGabs.css';
 import NavBar from '../../components/NavBar/NavBar';
 
 const Login = () => {
@@ -31,12 +31,12 @@ const Login = () => {
   return (
     <section>
       <NavBar/>
-    <div className="login-container">
+    <div className="container">
       <form onSubmit={handleLogin}>
         <h1>Login</h1>
         <label>
           Email:
-          <input
+          <input 
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -45,7 +45,7 @@ const Login = () => {
         </label>
         <label>
           Password:
-          <input
+          <input className= 'input'
             type="password"
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
