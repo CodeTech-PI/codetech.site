@@ -6,11 +6,11 @@ const ImagemTexto = (props) => {
 
         <section className='imagem-texto'>
             
-            <div className='container'>
-            <h2>{props.title}</h2>
+            <div className='container-sobre'>
+            <h2 className='titulo-sobre'>{props.title}</h2>
             <div className='container-conteudo'>
-            <img src={props.image} alt={props.descricao}></img>
-            <p>{props.texto}</p>
+            <img className='img-leticia' src={props.image} alt={props.descricao}></img>
+            <p className='texto-sobre'>{props.texto}</p>
             </div>
             </div>
 

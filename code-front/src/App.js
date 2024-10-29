@@ -26,6 +26,8 @@ function App() {
               <section className="img-home">
                 <p>Arte que dura para sempre.</p>
               </section>
+              
+              
               <ImagemTexto
                 title="Quem é Leticia Lombardi?"
                 image="./imagens/img-leticia.jpeg"
@@ -34,6 +36,8 @@ function App() {
                 No meu estúdio de tatuagem, cada detalhe foi pensado e decorado por mim para criar um ambiente que reflete a essência do meu trabalho e da minha personalidade. Meu objetivo é oferecer uma experiência única a cada cliente, criando tatuagens exclusivas e personalizadas, inspiradas nas histórias e nos significados que cada pessoa deseja carregar consigo.
                 Além de tatuadora, sou professora de artes para crianças do ensino fundamental, algo que me permite compartilhar minha paixão pela arte e inspirar as novas gerações."
               />
+            
+              
               <EstiloTatto />
               <h2 className='titulo-orcamento'>Tem uma idéia? Vamos trazê-la à vida. Faça seu orçamento!</h2>
               <Botao botao="Orçamento" />
@@ -45,11 +49,11 @@ function App() {
           } />
           <Route path="/login" element={<Login />} /> {/* Definir a rota de login */}
           <Route path='/aquarela' element={<Aquarela />} />
-          <Route path='/minimalista' element={<Minimalista/>} />
-          <Route path='/realista' element={<Realista/>} />
-              <Route path="/guerreiras" element={<Guerreiras />} /> {/* Definir a rota de login */}
+          <Route path='/minimalista' element={<Minimalista />} />
+          <Route path='/realista' element={<Realista />} />
+          <Route path="/guerreiras" element={<Guerreiras />} /> {/* Definir a rota de login */}
           <Route path="/clientes" element={<Cliente />} /> {/* Definir a rota para o componente Cliente */}
-       
+
         </Routes>
       </div>
     </Router>
