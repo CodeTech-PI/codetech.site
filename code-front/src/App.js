@@ -19,6 +19,7 @@ import Guerreiras from './pages/guerreiras/guerreiras';
 import Cliente from './pages/cliente/cliente';
 import Home from './pages/Home/Home';
 
+import Estoque from './pages/estoque/estoque';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/clientes" element={<Cliente />} />
       </Routes>
 
+    
     </Router>
   );
 }

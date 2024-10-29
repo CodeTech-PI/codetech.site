@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import clienteService from '../../services/clienteService'; // Certifique-se de que o caminho está correto
 import PopUpAdicionar from '../../components/PopUpAdicionar/PopUpAdicionar';
+import Sidebar from '../../components/SideBar/SideBar';
 import './cliente.css'; // Ou qualquer outro arquivo de estilo que você esteja usando
 
 const Cliente = () => {
@@ -95,43 +96,46 @@ const Cliente = () => {
   };
 
   return (
-    <div>
-      <h1>Clientes</h1>
-      <input
-        type="text"
-        placeholder="Filtrar por nome, CPF ou e-mail"
-        value={filter}
-        onChange={handleFilterChange}
-        className="filter-input"
-      />
+    <div className="container">
+      <Sidebar />
+      <div className="content">
+        <h1>Clientes</h1>
+        <input
+          type="text"
+          placeholder="Filtrar por nome, CPF ou e-mail"
+          value={filter}
+          onChange={handleFilterChange}
+          className="filter-input"
+        />
 
-      <button onClick={openModal}>Adicionar Usuário</button>
-      <PopUpAdicionar isOpen={modalIsOpen} onRequestClose={closeModal} onCreate={handleCreate} />
-      {editModalIsOpen && (
-        <PopUpAdicionar isOpen={editModalIsOpen} onRequestClose={closeEditModal} onCreate={handleCreate} cliente={currentCliente} />
-      )}
+        <button onClick={openModal}>Adicionar Usuário</button>
+        <PopUpAdicionar isOpen={modalIsOpen} onRequestClose={closeModal} onCreate={handleCreate} />
+        {editModalIsOpen && (
+          <PopUpAdicionar isOpen={editModalIsOpen} onRequestClose={closeEditModal} onCreate={handleCreate} cliente={currentCliente} />
+        )}
 
-      <div className="clientes-list">
-        {filteredClientes.map((cliente) => (
-          <div key={cliente.id} className="cliente-item">
-            <div className="cliente-info">
-              <p><strong>Nome:</strong> {cliente.nome}</p>
-              <p><strong>CPF:</strong> {cliente.cpf}</p>
-              <p><strong>E-mail:</strong> {cliente.email}</p>
-              <p><strong>Telefone:</strong> {cliente.telefone}</p>
-              <p><strong>Data de Nascimento.:</strong> {cliente.dataNascimento}</p>
+        <div className="clientes-list">
+          {filteredClientes.map((cliente) => (
+            <div key={cliente.id} className="cliente-item">
+              <div className="cliente-info">
+                <p><strong>Nome:</strong> {cliente.nome}</p>
+                <p><strong>CPF:</strong> {cliente.cpf}</p>
+                <p><strong>E-mail:</strong> {cliente.email}</p>
+                <p><strong>Telefone:</strong> {cliente.telefone}</p>
+                <p><strong>Data de Nascimento.:</strong> {cliente.dataNascimento}</p>
+              </div>
+              <div className="cliente-actions">
+                <button onClick={() => handleEdit(cliente)}>Alterar</button>
+                <button onClick={() => handleDelete(cliente.id)}>Excluir</button>
+              </div>
             </div>
-            <div className="cliente-actions">
-              <button onClick={() => handleEdit(cliente)}>Alterar</button>
-              <button onClick={() => handleDelete(cliente.id)}>Excluir</button>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
+
+        {editModalIsOpen && currentCliente && (
+          <PopUpAdicionar isOpen={editModalIsOpen} onRequestClose={closeEditModal} onCreate={handleCreate} cliente={currentCliente} />
+        )}
       </div>
-
-      {editModalIsOpen && currentCliente && (
-        <PopUpAdicionar isOpen={editModalIsOpen} onRequestClose={closeEditModal} onCreate={handleCreate} cliente={currentCliente} />
-      )}
     </div>
   );
 };

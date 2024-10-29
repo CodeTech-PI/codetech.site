@@ -29,6 +29,8 @@ button {
   }
   /* Estilos para o campo de filtro */
 .filter-input {
+  background-color: #333;
+  
   width: 100%; /* O campo ocupa toda a largura disponível */
   max-width: 500px; /* Largura máxima para o campo */
   padding: 12px; /* Aumentar o espaçamento interno */
@@ -116,5 +118,24 @@ button {
 
 .cliente-actions button {
   margin-left: 10px; /* Espaçamento entre os botões */
+}
+/* src/containers/Cliente/cliente.css */
+.container {
+  width: 90%;
+    height: 100vh; /* Ocupa 100% da altura da viewport */
+    margin-left: 100px; /* Se você tiver uma sidebar fixa, ajuste a margem esquerda */
+    padding: 20px; /* Adicione algum preenchimento, se necessário */
+    box-sizing: border-box; /* Inclui o padding na altura total */
+}
+
+
+.sidebar {
+  flex: 0 0 250px; /* Fix the width of the sidebar */
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  width: 80%;
 }
 
