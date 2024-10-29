@@ -2,12 +2,14 @@ import Botao from '../../components/Botao/Botao'
 import Carrossel from '../../components/Carrossel/Carrossel'
 import Footer from '../../components/Footer/Footer'
 import IconesContato from '../../components/IconesContato/IconesContato'
+import NavBar from '../../components/NavBar/NavBar'
 import './Realista.css'
 
 const Realista =() =>{
     
     return(
    <div>
+    <NavBar/>
        <Carrossel
        tituloCarrosel="Realista"
        image1="imagens/realista.png"  descricao1="Foto de tatuagem 1"

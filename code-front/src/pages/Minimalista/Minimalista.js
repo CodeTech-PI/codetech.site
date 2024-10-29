@@ -2,12 +2,14 @@ import Botao from '../../components/Botao/Botao'
 import Carrossel from '../../components/Carrossel/Carrossel'
 import Footer from '../../components/Footer/Footer'
 import IconesContato from '../../components/IconesContato/IconesContato'
+import NavBar from '../../components/NavBar/NavBar'
 import './Minimalista.css'
 
 const Minimalista =() =>{
     
     return(
    <div>
+    <NavBar/>
        <Carrossel
        tituloCarrosel="Minimalista"
        image1="imagens/minimalista.png"  descricao1="Foto de tatuagem 1"
