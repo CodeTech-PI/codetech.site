@@ -1,28 +1,47 @@
-// src/pages/cliente/cliente.js
-
-import React, { useState, useEffect } from 'react';
+// src/containers/Cliente/Cliente.js
+import React, { useEffect, useState } from 'react';
+import clienteService from '../../services/clienteService'; // Certifique-se de que o caminho está correto
 import PopUpAdicionar from '../../components/PopUpAdicionar/PopUpAdicionar';
-// import { getClientes } from '../../services/clienteService';
-import clienteService from '../../services/clienteService';
+import Sidebar from '../../components/SideBar/SideBar';
+import './cliente.css'; // Ou qualquer outro arquivo de estilo que você esteja usando
 
 const Cliente = () => {
   const [clientes, setClientes] = useState([]);
+  const [filteredClientes, setFilteredClientes] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [editModalIsOpen, setEditModalIsOpen] = useState(false);
   const [currentCliente, setCurrentCliente] = useState(null);
+  const [filter, setFilter] = useState('');
+
+  const fetchClientes = async () => {
+    try {
+      const clientesData = await clienteService.getClientes();
+      setClientes(clientesData);
+      setFilteredClientes(clientesData);
+    } catch (error) {
+      console.error('Erro ao buscar clientes:', error);
+    }
+  };
 
   useEffect(() => {
-    const fetchClientes = async () => {
-      try {
-        const clientesData = await clienteService.getClientes();
-        setClientes(clientesData);
-      } catch (error) {
-        console.error('Erro ao buscar clientes:', error);
-      }
-    };
-
     fetchClientes();
   }, []);
+
+  const handleFilterChange = (e) => {
+    const value = e.target.value;
+    setFilter(value);
+
+    if (value) {
+      const filtered = clientes.filter(cliente =>
+        cliente.nome.toLowerCase().includes(value.toLowerCase()) ||
+        cliente.cpf.includes(value) ||
+        cliente.email.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilteredClientes(filtered);
+    } else {
+      setFilteredClientes(clientes);
+    }
+  };
 
   const handleEdit = (cliente) => {
     setCurrentCliente(cliente);
@@ -42,23 +61,25 @@ const Cliente = () => {
     try {
       const updatedData = await clienteService.updateCliente(currentCliente.id, updatedCliente);
       setClientes(clientes.map(cliente => (cliente.id === currentCliente.id ? updatedData : cliente)));
+      setFilteredClientes(filteredClientes.map(cliente => (cliente.id === currentCliente.id ? updatedData : cliente)));
       setEditModalIsOpen(false);
     } catch (error) {
       console.error('Erro ao atualizar cliente:', error);
     }
   };
 
-
   const handleDelete = async (id) => {
     try {
-      const deleteCliete = await clienteService.deleteCliente(id);
+      await clienteService.deleteCliente(id);
       setClientes(clientes.filter(cliente => cliente.id !== id));
+      setFilteredClientes(filteredClientes.filter(cliente => cliente.id !== id));
     } catch (error) {
       console.error('Erro ao deletar cliente:', error);
     }
   };
 
   const openModal = () => {
+    setCurrentCliente(null); // Limpa a informação do cliente atual ao abrir o modal
     setModalIsOpen(true);
   };
 
@@ -70,54 +91,52 @@ const Cliente = () => {
     setEditModalIsOpen(false);
   };
 
+  const handleCreate = async () => {
+    await fetchClientes();
+  };
+
   return (
-    <div>
-    <h1>Clientes</h1>
-    <button onClick={openModal}>Adicionar Usuário</button>
-    <PopUpAdicionar isOpen={modalIsOpen} onRequestClose={closeModal} />
-    <div>
-      {clientes.map((cliente) => (
-        <div key={cliente.id} style={{ border: '1px solid #ccc', margin: '10px 0', padding: '10px', backgroundColor: '#333', color: '#fff' }}>
-          <p><strong>Nome:</strong> {cliente.nome}</p>
-          <p><strong>CPF:</strong> {cliente.cpf}</p>
-          <p><strong>E-mail:</strong> {cliente.email}</p>
-          <p><strong>Telefone:</strong> {cliente.telefone}</p>
-          <p><strong>Dt. Nasc.:</strong> {cliente.dataNascimento}</p>
-          <button onClick={() => handleEdit(cliente)}>Alterar</button>
-          <button onClick={() => handleDelete(cliente.id)}>Excluir</button>
+    <div className="container">
+      <Sidebar />
+      <div className="content">
+        <h1>Clientes</h1>
+        <input
+          type="text"
+          placeholder="Filtrar por nome, CPF ou e-mail"
+          value={filter}
+          onChange={handleFilterChange}
+          className="filter-input"
+        />
+
+        <button onClick={openModal}>Adicionar Usuário</button>
+        <PopUpAdicionar isOpen={modalIsOpen} onRequestClose={closeModal} onCreate={handleCreate} />
+        {editModalIsOpen && (
+          <PopUpAdicionar isOpen={editModalIsOpen} onRequestClose={closeEditModal} onCreate={handleCreate} cliente={currentCliente} />
+        )}
+
+        <div className="clientes-list">
+          {filteredClientes.map((cliente) => (
+            <div key={cliente.id} className="cliente-item">
+              <div className="cliente-info">
+                <p><strong>Nome:</strong> {cliente.nome}</p>
+                <p><strong>CPF:</strong> {cliente.cpf}</p>
+                <p><strong>E-mail:</strong> {cliente.email}</p>
+                <p><strong>Telefone:</strong> {cliente.telefone}</p>
+                <p><strong>Data de Nascimento.:</strong> {cliente.dataNascimento}</p>
+              </div>
+              <div className="cliente-actions">
+                <button onClick={() => handleEdit(cliente)}>Alterar</button>
+                <button onClick={() => handleDelete(cliente.id)}>Excluir</button>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-    {editModalIsOpen && currentCliente && (
-      <div className="edit-modal">
-        <h2>Editar Cliente</h2>
-        <form onSubmit={handleEditSubmit}>
-          <label>
-            Nome:
-            <input type="text" name="nome" defaultValue={currentCliente.nome} />
-          </label>
-          <label>
-            CPF:
-            <input type="text" name="cpf" defaultValue={currentCliente.cpf} />
-          </label>
-          <label>
-            E-mail:
-            <input type="email" name="email" defaultValue={currentCliente.email} />
-          </label>
-          <label>
-            Telefone:
-            <input type="text" name="telefone" defaultValue={currentCliente.telefone} />
-          </label>
-          <label>
-            Dt. Nasc.:
-            <input type="date" name="dataNascimento" defaultValue={currentCliente.dataNascimento} />
-          </label>
-          <button type="submit">Salvar</button>
-          <button type="button" onClick={closeEditModal}>Cancelar</button>
-        </form>
+
+        {editModalIsOpen && currentCliente && (
+          <PopUpAdicionar isOpen={editModalIsOpen} onRequestClose={closeEditModal} onCreate={handleCreate} cliente={currentCliente} />
+        )}
       </div>
-    )}
-  </div>
+    </div>
   );
 };
 
