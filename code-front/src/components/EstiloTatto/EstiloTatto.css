@@ -14,6 +14,7 @@
     .estilo-tatto div{
         flex-direction: column;
         align-items: center;
+        gap: 10px;
     }
 
     .estilo-tatto h2{

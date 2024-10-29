@@ -32,7 +32,7 @@ const NavBar = () => {
           src="/imagens/logo.png"
           alt="Logo do estúdio com duas imagens de dois cupcakes e uma máquina de tatuagem no meio"
         />
-        <ul className='teste'>
+        <ul>
           <li  onClick={handleGuerreirasClick}>Guerreiras</li>
           <li>Cuidados</li>
           <li onClick={download}>Anamnese</li>

@@ -57,6 +57,12 @@
 
     .img-leticia{
         height: 179px !important;
+        margin-right: 0;
+
+    }
+
+    .container-sobre{
+        width: 65%;
     }
 
     .texto-sobre{

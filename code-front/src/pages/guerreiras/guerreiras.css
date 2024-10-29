@@ -25,6 +25,7 @@
     font-size: 18px; 
     line-height: 1.6;
     text-align: justify;
+    font-weight: 300;
 }
 
 .projeto-funcionamento ul li:hover {
@@ -35,15 +36,12 @@
     color: #DF0050; 
 }
 
-.botao button {
-    margin-top: 50px;
-    color: white;
-    background-color: black;
-    border: solid 1px #DF0050;
-    width: 130px;
-    height: 30px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
+
+
+@media screen and (max-width: 1020px){
+    .projeto-funcionamento ul {
+        padding-left: 15px; 
+    }
 }
+
 
