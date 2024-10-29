@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import loginService from '../../services/authentication/loginService';
 import './login.css';
+import NavBar from '../../components/NavBar/NavBar';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -28,6 +29,8 @@ const Login = () => {
   };
 
   return (
+    <section>
+      <NavBar/>
     <div className="login-container">
       <form onSubmit={handleLogin}>
         <h1>Login</h1>
@@ -53,6 +56,7 @@ const Login = () => {
         <button type="submit">Entrar</button>
       </form>
     </div>
+    </section>
   );
 };
 

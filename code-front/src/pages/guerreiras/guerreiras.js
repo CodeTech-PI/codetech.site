@@ -5,9 +5,10 @@ import ImagemTexto from '../../components/ImagemTexto/ImagemTexto';
 import Botao from '../../components/Botao/Botao';
 
 const Guerreiras = () => {
-    <NavBar />
+    
     return (
         <>
+        <NavBar />
             <ImagemTexto 
                 title="Projeto de Tatuagem Reconstrutiva para Mulheres que passaram pela Mastectomia"
                 image="/imagens/imagem8projetoSocial.jpg"
