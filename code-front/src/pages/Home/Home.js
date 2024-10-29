@@ -28,7 +28,7 @@ const Home = () => {
 
                 <EstiloTatto />
                 <h2 className='titulo-orcamento'>Tem uma ideia? Vamos trazê-la à vida. Faça seu orçamento!</h2>
-                <Botao botao="Orçamento" />
+                <Botao botao="Orçamento" link="https://wa.me/5511941834736" />
                 <h2 className='endereco'>Onde nos encontrar:</h2>
                 <AnyReactComponent />
                 <EnderecoContato />

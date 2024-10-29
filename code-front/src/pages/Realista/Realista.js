@@ -30,6 +30,7 @@ const Realista =() =>{
            </div>
            <Botao
             botao="Agendar"
+            link="https://wa.me/5511941834736"
             />
        <Footer/>
        </div>

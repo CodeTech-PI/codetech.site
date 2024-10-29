@@ -29,6 +29,7 @@ const Minimalista =() =>{
                />
            </div>
            <Botao
+           link="https://wa.me/5511941834736"
             botao="Agendar"
             />
        <Footer/>

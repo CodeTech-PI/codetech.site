@@ -35,7 +35,7 @@ const Guerreiras = () => {
                         <strong>Tudo sem custo:</strong> A tatuagem é feita completamente de graça, como uma forma de apoio e carinho para ajudar nessa fase tão importante da sua vida.
                     </li>
                 </ul>
-                <Botao botao = "Agendar " />
+                <Botao botao = "Agendar " link="https://wa.me/5511941834736" />
             </section>
             <div className='container-icones-contato'>
                 <IconesContato

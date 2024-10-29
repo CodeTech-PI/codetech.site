@@ -17,6 +17,10 @@
     justify-content: center;
 }
 
+.linkBotao{
+    text-decoration: none;
+}
+
 .botao button:hover {
     background-color: #45050C;
 }
