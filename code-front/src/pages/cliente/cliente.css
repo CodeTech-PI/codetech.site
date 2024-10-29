@@ -121,9 +121,10 @@ button {
 }
 /* src/containers/Cliente/cliente.css */
 .container {
+  /* background-color: red; */
   width: 90%;
     height: 100vh; /* Ocupa 100% da altura da viewport */
-    margin-left: 100px; /* Se você tiver uma sidebar fixa, ajuste a margem esquerda */
+    margin-left: 15%; /* Se você tiver uma sidebar fixa, ajuste a margem esquerda */
     padding: 20px; /* Adicione algum preenchimento, se necessário */
     box-sizing: border-box; /* Inclui o padding na altura total */
 }
