@@ -3,10 +3,10 @@
   
 
   /* Estilos para os campos do formulário */
-  form label {
+  /* form label {
     display: block;
     margin: 10px 0 5px;
-  }
+  } */
   
   form input {
     width: 100%;
@@ -118,9 +118,9 @@
   margin-left: 10px; /* Espaçamento entre os botões */
 /* }  */
 /* src/containers/Cliente/cliente.css */
-.container {
+.container-total {
   /* background-color: red; */
-  width: 90%;
+  width: 80%;
     height: 100vh; /* Ocupa 100% da altura da viewport */
     margin-left: 15%; /* Se você tiver uma sidebar fixa, ajuste a margem esquerda */
     padding: 20px; /* Adicione algum preenchimento, se necessário */

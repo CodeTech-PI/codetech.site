@@ -3,7 +3,7 @@
 
 
   
-  .custom-modal {
+  /* .custom-modal {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -15,7 +15,21 @@
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+  } */
+
+  .custom-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  padding: 20px;
+  background-color: #1b1b1b;
+  border-radius: 8px;
+  box-shadow: 0 0 3px rgba(223, 0, 80, 0.5);
+}
   
   .custom-overlay {
     position: fixed;
@@ -51,6 +65,7 @@
   color: #D9D9D9;
   margin-bottom: 15px;
   font-weight: lighter;
+  font-size: 24px;
 }
 
 label {
@@ -83,7 +98,7 @@ button-container {
 
 
 
-.custom-modal {
+/* .custom-modal {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -95,7 +110,7 @@ button-container {
   background-color: #1b1b1b;
   border-radius: 8px;
   box-shadow: 0 0 3px rgba(223, 0, 80, 0.5);
-}
+} */
 
 .form-container {
   gap: 2px;

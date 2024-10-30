@@ -99,7 +99,7 @@ const Cliente = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-total">
       <Sidebar />
       <div className="content">
         <h1>Clientes</h1>
