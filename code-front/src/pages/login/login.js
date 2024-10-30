@@ -55,7 +55,7 @@ const Login = () => {
           />
         </label>
         {error && <p className="error">{error}</p>}
-        <button type="submit">Entrar</button>
+        <button type="submit" className='botao-entrar'>Entrar</button>
       </form>
     </div>
     <div className='container-icones-contato'>
