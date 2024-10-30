@@ -137,6 +137,7 @@ const Cliente = () => {
               </div>
               <div className="cliente-actions">
                 <BotaoAlterar
+                nomeBotao='Alterar'
                 onClick={() => handleEdit(cliente)}
                 />
                 {/* <button onClick={() => handleEdit(cliente)}>Alterar</button> */}

@@ -1,9 +1,9 @@
 
 import './BotaoExcluir.css'
 
-const BotaoExcluir = () => {
+const BotaoExcluir = ({onClick}) => {
     return(
-        <button className='botao-excluir'>Excluir</button>
+        <button className='botao-excluir' onClick={onClick}>Excluir</button>
     )
 }
 

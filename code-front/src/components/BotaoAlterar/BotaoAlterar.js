@@ -1,8 +1,10 @@
 import './BotaoAlterar.css'
 
-const BotaoAlterar = () => {
+const BotaoAlterar = (props) => {
+    const { onClick, nomeBotao } = props;
+
     return(
-         <button className='botao-alterar' >Alterar</button>
+         <button className='botao-alterar' onClick={onClick} >{nomeBotao}</button>
     )
 }
 
