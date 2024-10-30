@@ -1,5 +1,51 @@
 /* src/components/PopUpAdicionar.css */
 
+
+
+  
+  .custom-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .custom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+
+  
+
 .title-popup {
   text-align: center;
   color: #D9D9D9;
@@ -24,13 +70,7 @@ form label {
   white-space: nowrap;
 }
 
-/* button {
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-}
+
 
 button-container {
   display: flex;
@@ -41,11 +81,7 @@ button-container {
   margin: 0 10px;
 }
 
-form button {
-  margin-right: 10px;
-  padding: 10px 15px;
-  cursor: pointer;
-} */
+
 
 .custom-modal {
   position: absolute;
@@ -95,3 +131,4 @@ form input {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
+

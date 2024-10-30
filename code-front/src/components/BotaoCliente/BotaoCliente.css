@@ -1,0 +1,11 @@
+.botao-cliente{
+    cursor: pointer;
+    align-items: center;
+    color: white;
+    background-color: #2E8B57;
+    height: 30px;
+    font-size: 14px;
+    width: 135px;
+    border: none;
+    border-radius: 5px;
+}

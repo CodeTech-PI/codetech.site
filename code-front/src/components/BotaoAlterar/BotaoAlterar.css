@@ -1,0 +1,11 @@
+.botao-alterar{
+    cursor: pointer;
+    align-items: center;
+    color: white;
+    background-color: #4169E1;
+    height: 30px;
+    font-size: 14px;
+    width: 70px;
+    border: none;
+    border-radius: 5px;
+}
