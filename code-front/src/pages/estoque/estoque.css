@@ -1,57 +1,85 @@
 .estoque-container {
-    margin-left: 15%;
-    padding: 20px; /* Espaçamento interno */
-    background-color: #000; /* Fundo preto */
-    color: #fff; /* Cor do texto */
-  }
-  
-  h1 {
-    color: #fff; /* Cor do título */
-    margin-bottom: 20px; /* Margem inferior */
-  }
-  
-  .incluir-btn {
-    margin-bottom: 20px; /* Margem inferior para o botão */
-    background-color: #4caf50; /* Verde para o botão incluir */
-    color: #fff; /* Cor do texto do botão */
-  }
-  
-  .estoque-table {
-    width: 100%; /* Para garantir que a tabela ocupe toda a largura disponível */
-    border-collapse: collapse; /* Colapsa bordas */
-    background-color: #808080; /* Cor da tabela cinza */
-  }
-  
-  .estoque-table th,
-  .estoque-table td {
-    padding: 10px; /* Espaçamento interno das células */
-    text-align: left; /* Alinhamento do texto */
-  }
-  
-  .estoque-table th {
-    background-color: #696969; /* Cor de fundo para o cabeçalho */
-    color: #fff; /* Cor do texto do cabeçalho */
-    font-weight: bold; /* Negrito para o texto do cabeçalho */
-  }
-  
-  .estoque-table tr:nth-child(even) {
-    background-color: #a9a9a9; /* Cor cinza claro para linhas pares */
-  }
-  
-  .estoque-table tr:hover {
-    background-color: #c0c0c0; /* Cor ao passar o mouse sobre a linha */
-  }
-  
-  .estoque-table .action-buttons {
-    display: flex; /* Usar flexbox para os botões */
-    gap: 10px; /* Espaçamento entre os botões */
-  }
-  
-  .dialog-title {
-    color: #fff; /* Cor do título do diálogo */
-  }
-  
-  .dialog-content {
-    margin-top: 20px; /* Margem superior para o conteúdo do diálogo */
-  }
-  
+  margin-left: 15%;
+  padding: 20px;
+  /* Espaçamento interno */
+  background-color: #000;
+  /* Fundo preto */
+  color: #fff;
+  /* Cor do texto */
+}
+
+h1 {
+  color: #fff;
+  /* Cor do título */
+  margin-bottom: 20px;
+  /* Margem inferior */
+}
+
+.botoes-incluir {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.estoque-table {
+  width: 100%;
+  /* Para garantir que a tabela ocupe toda a largura disponível */
+  /* border-collapse: collapse; */
+  /* Colapsa bordas */
+  /* background-color: #808080; */
+  /* Cor da tabela cinza */
+}
+
+.estoque-table th,
+.estoque-table td {
+  padding: 10px;
+  /* Espaçamento interno das células */
+  text-align: left;
+  border: none;
+  /* Alinhamento do texto */
+}
+
+.estoque-table th {
+  background-color: #1B1B1B;
+  /* Cor de fundo para o cabeçalho */
+  color: #fff;
+  /* Cor do texto do cabeçalho */
+  font-weight: bold;
+  /* Negrito para o texto do cabeçalho */
+}
+
+.estoque-table tr:nth-child(even) {
+  background-color: #363434;
+
+  /* Cor cinza claro para linhas pares */
+}
+
+.estoque-table tr:nth-child(odd) td {
+  color: #fff; /* Define a cor do texto das linhas ímpares para branco */
+}
+
+.estoque-table tr:nth-child(even) td{
+  color: #fff;
+}
+
+/* .estoque-table tr:hover { */
+  /* background-color: #c0c0c0; */
+  /* Cor ao passar o mouse sobre a linha */
+/* } */
+
+.estoque-table .action-buttons {
+  display: flex;
+  /* Usar flexbox para os botões */
+  gap: 10px;
+  /* Espaçamento entre os botões */
+}
+
+.dialog-title {
+  color: red;
+  /* Cor do título do diálogo */
+}
+
+.dialog-content {
+  margin-top: 20px;
+  /* Margem superior para o conteúdo do diálogo */
+}

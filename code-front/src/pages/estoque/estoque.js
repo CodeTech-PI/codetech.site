@@ -3,6 +3,9 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Butto
 import Sidebar from '../../components/SideBar/SideBar';
 import estoqueService from '../../services/estoqueService';
 import './estoque.css';
+import BotaoCliente from '../../components/BotaoCliente/BotaoCliente';
+import BotaoAlterar from '../../components/BotaoAlterar/BotaoAlterar';
+import BotaoExcluir from '../../components/BotaoExcluir/BotaoExcluir';
 
 const Estoque = () => {
   const [rows, setRows] = useState([]);
@@ -149,8 +152,19 @@ const Estoque = () => {
     <div className="estoque-container">
       <Sidebar />
       <h1>Estoque</h1>
-      <Button variant="contained" color="success" className="incluir-btn" onClick={handleOpen}>Incluir Produto</Button>
-      <Button variant="contained" color="primary" className="incluir-categoria-btn" onClick={handleOpenCategoria}>Incluir Categoria</Button>
+      <div className='botoes-incluir'>
+      <BotaoCliente
+        onClick={handleOpen}
+        nomeBotao='Incluir Produto'
+      />
+
+      <BotaoCliente
+        onClick={handleOpenCategoria}
+        nomeBotao='Incluir Categoria'
+      />
+      </div>
+      {/* <Button variant="contained" color="success" className="incluir-btn" onClick={handleOpen}>Incluir Produto</Button> */}
+      {/* <Button variant="contained" color="primary" className="incluir-categoria-btn" onClick={handleOpenCategoria}>Incluir Categoria</Button> */}
       <TableContainer>
         <Table className="estoque-table">
           <TableHead>
@@ -172,8 +186,15 @@ const Estoque = () => {
                   <TableCell>{row.categoria ? row.categoria.nome : 'Sem Categoria'}</TableCell>
                   <TableCell>
                     <div className="action-buttons">
-                      <Button variant="outlined" color="primary" onClick={() => handleEdit(row)}>Editar</Button>
-                      <Button variant="outlined" color="secondary" onClick={() => handleDelete(row.id)}>Excluir</Button>
+                      <BotaoAlterar
+                      nomeBotao='Editar'
+                      onClick={() => handleEdit(row)}
+                      />
+                      <BotaoExcluir
+                      onClick={() => handleDelete(row.id)}
+                      />
+                      {/* <Button variant="outlined" color="primary" onClick={() => handleEdit(row)}>Editar</Button> */}
+                      {/* <Button variant="outlined" color="secondary" onClick={() => handleDelete(row.id)}>Excluir</Button> */}
                     </div>
                   </TableCell>
                 </TableRow>
