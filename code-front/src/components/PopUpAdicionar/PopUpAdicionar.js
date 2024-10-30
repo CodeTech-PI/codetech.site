@@ -6,7 +6,6 @@ import clienteService from "../../services/clienteService";
 import "./PopUpAdicionar.css";
 import BotaoFechar from "../BotaoFechar/BotaoFechar";
 import BotaoCliente from "../BotaoCliente/BotaoCliente";
-import BotaoAlterar from "../BotaoAlterar/BotaoAlterar";
 
 Modal.setAppElement("#root");
 
@@ -122,15 +121,11 @@ const PopUpAdicionar = ({ isOpen, onRequestClose, onCreate, cliente }) => {
         </div>
 
         <div className="button-container">
-          <BotaoAlterar
-          type="submit"
-          nomeBotao='Alterar'
+          <BotaoCliente
+            type="submit"
+            nomeBotao={cliente ? 'Alterar' : 'Adicionar'}
           />
-          {/* <button type="submit">Enviar</button> */}
-          {/* <button type="button" onClick={onRequestClose}>
-            Fechar
-          </button> */}
-          <BotaoFechar type="button" onClick={onRequestClose}/>
+          <BotaoFechar type="button" onClick={onRequestClose} />
         </div>
       </form>
     </Modal>

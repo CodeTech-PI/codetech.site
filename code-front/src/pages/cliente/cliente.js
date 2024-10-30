@@ -1,4 +1,3 @@
-// src/containers/Cliente/Cliente.js
 import React, { useEffect, useState } from 'react';
 import clienteService from '../../services/clienteService'; // Certifique-se de que o caminho está correto
 import PopUpAdicionar from '../../components/PopUpAdicionar/PopUpAdicionar';
@@ -115,9 +114,20 @@ const Cliente = () => {
           onClick={openModal}
           nomeBotao='Adicionar Usuário'
         />
-        <PopUpAdicionar isOpen={modalIsOpen} onRequestClose={closeModal} onCreate={handleCreate} />
+        <PopUpAdicionar
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          onCreate={handleCreate}
+          isEditing={false}
+        />
         {editModalIsOpen && (
-          <PopUpAdicionar isOpen={editModalIsOpen} onRequestClose={closeEditModal} onCreate={handleCreate} cliente={currentCliente} />
+          <PopUpAdicionar
+            isOpen={editModalIsOpen}
+            onRequestClose={closeEditModal}
+            onCreate={handleCreate}
+            cliente={currentCliente}
+            isEditing={true}
+          />
         )}
 
         <div className="clientes-list">
@@ -152,7 +162,7 @@ const Cliente = () => {
         </div>
 
         {editModalIsOpen && currentCliente && (
-          <PopUpAdicionar isOpen={editModalIsOpen} onRequestClose={closeEditModal} onCreate={handleCreate} cliente={currentCliente} />
+          <PopUpAdicionar isOpen={editModalIsOpen} onRequestClose={closeEditModal} onCreate={handleCreate} cliente={currentCliente} isEditing={true} />
         )}
       </div>
     </div>

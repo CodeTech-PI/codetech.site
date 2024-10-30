@@ -26,6 +26,7 @@ import Sidebar from "../../components/SideBar/SideBar";
 
 const Estoque = () => {
   const [rows, setRows] = useState([]);
+  const [filteredRows, setFilteredRows] = useState([]);
   const [open, setOpen] = useState(false);
   const [openCategoria, setOpenCategoria] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
@@ -45,11 +46,14 @@ const Estoque = () => {
   const [newCategoria, setNewCategoria] = useState({ nome: "" });
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [produtoFiltro, setProdutoFiltro] = useState(""); // Estado para filtro de produto
+  const [categoriaFiltro, setCategoriaFiltro] = useState(""); // Estado para filtro de categoria
 
   const fetchProdutos = async () => {
     try {
       const produtosData = await estoqueService.getProdutos();
       setRows(produtosData);
+      setFilteredRows(produtosData); // Inicializa o estado de produtos filtrados
     } catch (error) {
       console.error("Erro ao buscar produtos:", error);
     }
@@ -68,6 +72,19 @@ const Estoque = () => {
     fetchProdutos();
     fetchCategorias();
   }, []);
+
+  const handleFilterChange = () => {
+    const filtered = rows.filter((row) => {
+      const matchesProduto = row.nome.toLowerCase().includes(produtoFiltro.toLowerCase());
+      const matchesCategoria = categoriaFiltro === "" || (row.categoria && row.categoria.nome === categoriaFiltro);
+      return matchesProduto && matchesCategoria;
+    });
+    setFilteredRows(filtered);
+  };
+
+  useEffect(() => {
+    handleFilterChange();
+  }, [produtoFiltro, categoriaFiltro, rows]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -197,6 +214,35 @@ const Estoque = () => {
           nomeBotao='Incluir Categoria'
         />
       </div>
+
+      {/* Filtros de produto e categoria */}
+      <div className="filtros">
+  <TextField
+    label="Filtrar Produto"
+    variant="outlined"
+    value={produtoFiltro}
+    onChange={(e) => setProdutoFiltro(e.target.value)}
+    className="textField" // Aplica a classe CSS
+  />
+  <FormControl variant="outlined" style={{ minWidth: 120 }}>
+    <Select
+      value={categoriaFiltro}
+      onChange={(e) => setCategoriaFiltro(e.target.value)}
+      displayEmpty
+      inputProps={{ "aria-label": "Categoria" }}
+    >
+      <MenuItem value="">
+        Todas as Categorias
+      </MenuItem>
+      {categorias.map((categoria) => (
+        <MenuItem key={categoria.id} value={categoria.nome}>
+          {categoria.nome}
+        </MenuItem>
+      ))}
+    </Select>
+  </FormControl>
+</div>
+
       <TableContainer>
         <Table className="estoque-table">
           <TableHead>
@@ -209,8 +255,8 @@ const Estoque = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.length > 0 ? (
-              rows.map((row) => (
+            {filteredRows.length > 0 ? (
+              filteredRows.map((row) => (
                 <TableRow key={row.id}>
                   <TableCell>{row.nome}</TableCell>
                   <TableCell>{row.quantidade}</TableCell>
@@ -225,6 +271,7 @@ const Estoque = () => {
                         onClick={() => handleEdit(row)}
                       />
                       <BotaoExcluir
+                        nomeBotao='Excluir'
                         onClick={() => handleDelete(row.id)}
                       />
                     </div>
@@ -233,178 +280,83 @@ const Estoque = () => {
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={5} style={{ textAlign: "center" }}>
-                  Nenhum item encontrado
-                </TableCell>
+                <TableCell colSpan={5}>Nenhum produto encontrado</TableCell>
               </TableRow>
             )}
           </TableBody>
         </Table>
       </TableContainer>
 
-      {/* Popup para incluir ou editar produto */}
+      {/* Snackbar para mensagens de sucesso */}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={() => setSnackbarOpen(false)}
+      >
+        <Alert onClose={() => setSnackbarOpen(false)} severity="success">
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
+
+      {/* Dialog para adicionar/editar produto */}
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle className="css-rvoa5x-MuiTypography-root-MuiDialogTitle-root">
-          {isEdit ? "Editar Produto" : "Incluir Novo Produto"}
-        </DialogTitle>
-        <DialogContent className="css-dialog-content">
+        <DialogTitle>{isEdit ? "Editar Produto" : "Adicionar Produto"}</DialogTitle>
+        <DialogContent>
           <TextField
             autoFocus
             margin="dense"
             name="nome"
-            className="css-text-field"
+            label="Nome"
+            type="text"
+            fullWidth
             value={newItem.nome}
             onChange={handleInputChange}
-            variant="outlined"
-            placeholder="Digite o nome do produto"
-            InputLabelProps={{
-              shrink: false,
-            }}
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  border: "none",
-                },
-                "&:hover fieldset": {
-                  border: "none",
-                },
-                "&.Mui-focused fieldset": {
-                  border: "none",
-                },
-              },
-            }}
-          />
-          <TextField
-            margin="dense"
-            name="quantidade"
-            className="css-text-field"
-            type="number"
-            value={newItem.quantidade}
-            onChange={handleInputChange}
-            variant="outlined"
-            placeholder="Digite a quantidade"
-            InputLabelProps={{
-              shrink: false,
-            }}
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  border: "none",
-                },
-                "&:hover fieldset": {
-                  border: "none",
-                },
-                "&.Mui-focused fieldset": {
-                  border: "none",
-                },
-              },
-            }}
           />
           <TextField
             margin="dense"
             name="descricao"
-            className="css-text-field"
+            label="Descrição"
+            type="text"
+            fullWidth
             value={newItem.descricao}
             onChange={handleInputChange}
-            variant="outlined"
-            placeholder="Digite a descrição"
-            InputLabelProps={{
-              shrink: false,
-            }}
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  border: "none",
-                },
-                "&:hover fieldset": {
-                  border: "none",
-                },
-                "&.Mui-focused fieldset": {
-                  border: "none",
-                },
-              },
-            }}
           />
           <TextField
             margin="dense"
             name="unidadeMedida"
-            className="css-text-field"
+            label="Unidade de Medida"
+            type="text"
+            fullWidth
             value={newItem.unidadeMedida}
             onChange={handleInputChange}
-            variant="outlined"
-            placeholder="Digite a unidade de medida"
-            InputLabelProps={{
-              shrink: false,
-            }}
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  border: "none",
-                },
-                "&:hover fieldset": {
-                  border: "none",
-                },
-                "&.Mui-focused fieldset": {
-                  border: "none",
-                },
-              },
-            }}
+          />
+          <TextField
+            margin="dense"
+            name="quantidade"
+            label="Quantidade"
+            type="number"
+            fullWidth
+            value={newItem.quantidade}
+            onChange={handleInputChange}
           />
           <TextField
             margin="dense"
             name="preco"
-            className="css-text-field"
+            label="Preço"
             type="number"
+            fullWidth
             value={newItem.preco}
             onChange={handleInputChange}
-            variant="outlined"
-            placeholder="Digite o preço"
-            InputLabelProps={{
-              shrink: false,
-            }}
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  border: "none",
-                },
-                "&:hover fieldset": {
-                  border: "none",
-                },
-                "&.Mui-focused fieldset": {
-                  border: "none",
-                },
-              },
-            }}
           />
-          <FormControl
-            variant="outlined"
-            margin="dense"
-            className="css-text-field"
-            fullWidth
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  border: "none",
-                },
-                "&:hover fieldset": {
-                  border: "none",
-                },
-                "&.Mui-focused fieldset": {
-                  border: "none",
-                },
-              },
-            }}
-          >
+          <FormControl fullWidth margin="dense">
             <Select
               name="categoriaId"
-              value={newItem.categoria.id}
+              value={newItem.categoria.id || ""}
               onChange={handleInputChange}
               displayEmpty
-              inputProps={{ "aria-label": "Categoria" }}
-              className="css-select-field"
             >
-              <MenuItem value={0} disabled>
-                Selecione uma categoria
+              <MenuItem value="">
+                <em>Selecione uma Categoria</em>
               </MenuItem>
               {categorias.map((categoria) => (
                 <MenuItem key={categoria.id} value={categoria.id}>
@@ -415,65 +367,31 @@ const Estoque = () => {
           </FormControl>
         </DialogContent>
         <DialogActions>
-          <BotaoCliente
-            onClick={handleAddItem}
-            nomeBotao={isEdit ? "Atualizar" : "Adicionar"}
-          />
-          <BotaoCliente onClick={handleClose} nomeBotao="Cancelar" />
+          <button onClick={handleClose} className="botao-cancelar">Cancelar</button>
+          <button onClick={handleAddItem}>Salvar</button>
         </DialogActions>
       </Dialog>
 
-      {/* Popup para incluir categoria */}
+      {/* Dialog para adicionar categoria */}
       <Dialog open={openCategoria} onClose={handleCloseCategoria}>
-        <DialogTitle className="css-rvoa5x-MuiTypography-root-MuiDialogTitle-root">
-          Incluir Nova Categoria
-        </DialogTitle>
-        <DialogContent className="css-dialog-content">
+        <DialogTitle>Adicionar Categoria</DialogTitle>
+        <DialogContent>
           <TextField
             autoFocus
             margin="dense"
             name="nome"
-            className="css-text-field"
+            label="Nome da Categoria"
+            type="text"
+            fullWidth
             value={newCategoria.nome}
             onChange={handleCategoriaInputChange}
-            variant="outlined"
-            placeholder="Digite o nome da categoria"
-            InputLabelProps={{
-              shrink: false,
-            }}
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  border: "none",
-                },
-                "&:hover fieldset": {
-                  border: "none",
-                },
-                "&.Mui-focused fieldset": {
-                  border: "none",
-                },
-              },
-            }}
           />
         </DialogContent>
         <DialogActions>
-          <BotaoCliente
-            onClick={handleAddCategoria}
-            nomeBotao="Adicionar"
-          />
-          <BotaoCliente onClick={handleCloseCategoria} nomeBotao="Cancelar" />
+          <button onClick={handleCloseCategoria} className="botao-cancelar">Cancelar</button>
+          <button onClick={handleAddCategoria}>Salvar</button>
         </DialogActions>
       </Dialog>
-
-      <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={3000} // Duração de 3 segundos
-        onClose={() => setSnackbarOpen(false)}
-      >
-        <Alert onClose={() => setSnackbarOpen(false)} severity="success">
-          {snackbarMessage}
-        </Alert>
-      </Snackbar>
     </div>
   );
 };

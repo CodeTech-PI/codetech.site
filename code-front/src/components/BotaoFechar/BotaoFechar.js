@@ -1,10 +1,17 @@
-import './BotaoFechar.css'; 
+// src/components/BotaoFechar/BotaoFechar.js
 
-const BotaoFechar = () => {
+import React from "react";
+import "./BotaoFechar.css";
 
-    return (
-        <button className='botao-fechar'>Fechar</button>
-    )
-}
+const BotaoFechar = ({ onClick }) => {
+  return (
+    <button className="botao-fechar" onClick={() => {
+      console.log("Fechar botão clicado");
+      onClick();
+    }}>
+      Fechar
+    </button>
+  );
+};
 
-export default BotaoFechar
+export default BotaoFechar;

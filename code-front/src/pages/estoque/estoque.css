@@ -117,3 +117,75 @@ h1 {
   margin-top: 20px;
   /* Margem superior para o conteúdo do diálogo */
 }
+.filtros {
+  display: flex;
+  justify-content: space-between; /* Espaçamento igual entre os filtros */
+  align-items: center; /* Alinha os itens verticalmente */
+  margin: 20px 0; /* Margem acima e abaixo dos filtros */
+}
+
+.filtros .MuiTextField-root {
+  flex: 1; /* Faz com que o campo de texto ocupe o espaço disponível */
+  margin-right: 16px; /* Espaçamento à direita do campo de texto */
+}
+
+.filtros .MuiSelect-root {
+  flex: 1; /* Faz com que o select ocupe o espaço disponível */
+}
+
+/* Estilização do Select */
+.MuiSelect-root {
+  background-color: #f9f9f9; /* Cor de fundo */
+  border-radius: 4px; /* Bordas arredondadas */
+  padding: 10px; /* Espaçamento interno */
+  border: 1px solid #ccc; /* Borda */
+}
+
+.MuiSelect-root:hover {
+  border-color: #007bff; /* Cor da borda ao passar o mouse */
+}
+
+.MuiSelect-root:focus {
+  border-color: #007bff; /* Cor da borda ao focar */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra ao focar */
+}
+
+/* Estilização do campo de texto */
+.MuiTextField-root {
+  /* background-color: #df0050; */
+  border-radius: 4px; /* Bordas arredondadas */
+  border: 1px solid #ccc; /* Borda */
+}
+
+.MuiTextField-root:hover {
+  border-color: #007bff; /* Cor da borda ao passar o mouse */
+}
+
+.MuiTextField-root:focus-within {
+  border-color: #000000; /* Cor da borda ao focar */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra ao focar */
+}
+/* styles.css */
+.textField {
+  background-color: #f0f0f0; /* Cor cinza claro */
+  margin-right: 16px; /* Margem à direita */
+}
+
+
+/* Estilização do container de filtros */
+.filtros {
+  background-color: #575050; /* Cor de fundo do container */
+  padding: 16px; /* Espaçamento interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra do container */
+}
+.botao-cancelar {
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+}
+/* 
+.botao-cancelar:hover {
+  background-color: red;
+} */
+
