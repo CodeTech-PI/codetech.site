@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import {
   Table,
@@ -7,7 +6,6 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Button,
   Dialog,
   DialogActions,
   DialogContent,
@@ -16,24 +14,23 @@ import {
   MenuItem,
   Select,
   FormControl,
-  InputLabel,
+  Snackbar,
+  Alert
 } from "@mui/material";
-import Sidebar from "../../components/SideBar/SideBar";
 import estoqueService from "../../services/estoqueService";
 import "./estoque.css";
-import BotaoFechar from "../../components/BotaoFechar/BotaoFechar";
 import BotaoCliente from "../../components/BotaoCliente/BotaoCliente";
 import BotaoAlterar from '../../components/BotaoAlterar/BotaoAlterar';
 import BotaoExcluir from '../../components/BotaoExcluir/BotaoExcluir';
-
+import Sidebar from "../../components/SideBar/SideBar";
 
 const Estoque = () => {
   const [rows, setRows] = useState([]);
-  const [open, setOpen] = useState(false); // Controle do popup para produtos
-  const [openCategoria, setOpenCategoria] = useState(false); // Controle do popup para categorias
-  const [isEdit, setIsEdit] = useState(false); // Indica se é edição
-  const [currentId, setCurrentId] = useState(null); // ID do item sendo editado
-  const [categorias, setCategorias] = useState([]); // Adiciona estado para categorias
+  const [open, setOpen] = useState(false);
+  const [openCategoria, setOpenCategoria] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
+  const [currentId, setCurrentId] = useState(null);
+  const [categorias, setCategorias] = useState([]);
   const [newItem, setNewItem] = useState({
     quantidade: 0,
     nome: "",
@@ -46,6 +43,8 @@ const Estoque = () => {
     },
   });
   const [newCategoria, setNewCategoria] = useState({ nome: "" });
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   const fetchProdutos = async () => {
     try {
@@ -123,17 +122,19 @@ const Estoque = () => {
   const handleAddItem = async () => {
     try {
       if (isEdit) {
-        // Chama a função de update
         const updatedData = await estoqueService.updateProduto(
           currentId,
           newItem
         );
         setRows(rows.map((row) => (row.id === currentId ? updatedData : row)));
+        setSnackbarMessage("Produto atualizado com sucesso!");
       } else {
-        // Chama a função de criação
         const produtoData = await estoqueService.postProduto(newItem);
         setRows([...rows, produtoData]);
+        setSnackbarMessage("Produto adicionado com sucesso!");
       }
+      setSnackbarOpen(true);
+      setTimeout(() => setSnackbarOpen(false), 3000); // Mantém a mensagem por 3 segundos
       handleClose();
     } catch (error) {
       console.error("Erro ao salvar produto:", error);
@@ -144,6 +145,9 @@ const Estoque = () => {
     try {
       const categoriaData = await estoqueService.postCategoria(newCategoria);
       setCategorias([...categorias, categoriaData]);
+      setSnackbarMessage("Categoria adicionada com sucesso!");
+      setSnackbarOpen(true);
+      setTimeout(() => setSnackbarOpen(false), 3000); // Mantém a mensagem por 3 segundos
       handleCloseCategoria();
     } catch (error) {
       console.error("Erro ao adicionar categoria:", error);
@@ -171,6 +175,9 @@ const Estoque = () => {
     try {
       await estoqueService.deleteProduto(id);
       setRows(rows.filter((row) => row.id !== id));
+      setSnackbarMessage("Produto deletado com sucesso!");
+      setSnackbarOpen(true);
+      setTimeout(() => setSnackbarOpen(false), 3000); // Mantém a mensagem por 3 segundos
     } catch (error) {
       console.error("Erro ao deletar produto:", error);
     }
@@ -180,21 +187,16 @@ const Estoque = () => {
     <div className="estoque-container">
       <Sidebar />
       <h1>Estoque</h1>
-    
       <div className='botoes-incluir'>
-      <BotaoCliente
-        onClick={handleOpen}
-        nomeBotao='Incluir Produto'
-      />
-
-      <BotaoCliente
-        onClick={handleOpenCategoria}
-        nomeBotao='Incluir Categoria'
-      />
+        <BotaoCliente
+          onClick={handleOpen}
+          nomeBotao='Incluir Produto'
+        />
+        <BotaoCliente
+          onClick={handleOpenCategoria}
+          nomeBotao='Incluir Categoria'
+        />
       </div>
-      {/* <Button variant="contained" color="success" className="incluir-btn" onClick={handleOpen}>Incluir Produto</Button> */}
-      {/* <Button variant="contained" color="primary" className="incluir-categoria-btn" onClick={handleOpenCategoria}>Incluir Categoria</Button> */}
-
       <TableContainer>
         <Table className="estoque-table">
           <TableHead>
@@ -218,17 +220,13 @@ const Estoque = () => {
                   </TableCell>
                   <TableCell>
                     <div className="action-buttons">
-
                       <BotaoAlterar
-                      nomeBotao='Editar'
-                      onClick={() => handleEdit(row)}
+                        nomeBotao='Editar'
+                        onClick={() => handleEdit(row)}
                       />
                       <BotaoExcluir
-                      onClick={() => handleDelete(row.id)}
+                        onClick={() => handleDelete(row.id)}
                       />
-                      {/* <Button variant="outlined" color="primary" onClick={() => handleEdit(row)}>Editar</Button> */}
-                      {/* <Button variant="outlined" color="secondary" onClick={() => handleDelete(row.id)}>Excluir</Button> */}
-
                     </div>
                   </TableCell>
                 </TableRow>
@@ -378,85 +376,68 @@ const Estoque = () => {
               },
             }}
           />
-          <FormControl fullWidth margin="dense">
+          <FormControl
+            variant="outlined"
+            margin="dense"
+            className="css-text-field"
+            fullWidth
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  border: "none",
+                },
+                "&:hover fieldset": {
+                  border: "none",
+                },
+                "&.Mui-focused fieldset": {
+                  border: "none",
+                },
+              },
+            }}
+          >
             <Select
-              labelId="categoria-label"
               name="categoriaId"
-              value={newItem.categoria.id || ""}
+              value={newItem.categoria.id}
               onChange={handleInputChange}
-              variant="outlined"
               displayEmpty
-              sx={{
-                "& .MuiOutlinedInput-notchedOutline": {
-                  border: "none",
-                },
-                "&:hover .MuiOutlinedInput-notchedOutline": {
-                  border: "none",
-                },
-                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                  border: "none",
-                },
-                "& .MuiSelect-select": {
-                  padding: "10px 14px",
-                  display: "flex",
-                  alignItems: "center",
-                  backgroundColor: "#d9d9d9",
-                  textAlign: "center", // Centraliza o texto selecionado
-                },
-                "& .MuiInputBase-input": {
-                  padding: "10px 14px",
-                  backgroundColor: "#d9d9d9",
-                  textAlign: "left", // Alinha o texto à esquerda
-                },
-                width: "100%", // Use 100% para melhor centralização
-              }}
+              inputProps={{ "aria-label": "Categoria" }}
+              className="css-select-field"
             >
-              <MenuItem value="" disabled>
-                Categoria
+              <MenuItem value={0} disabled>
+                Selecione uma categoria
               </MenuItem>
-              {categorias.length > 0 ? (
-                categorias.map((categoria) => (
-                  <MenuItem key={categoria.id} value={categoria.id}>
-                    {categoria.nome}
-                  </MenuItem>
-                ))
-              ) : (
-                <MenuItem value="" disabled>
-                  Nenhuma categoria disponível
+              {categorias.map((categoria) => (
+                <MenuItem key={categoria.id} value={categoria.id}>
+                  {categoria.nome}
                 </MenuItem>
-              )}
+              ))}
             </Select>
           </FormControl>
         </DialogContent>
-        <DialogActions
-          sx={{ display: "flex", justifyContent: "center", gap: 2 }}
-        >
-          {/* <Button onClick={handleClose}>Cancelar</Button> */}
-          <BotaoCliente nomeBotao="Adicionar" onClick={handleAddItem} />
-
-          <BotaoAlterar nomeBotao="Cancelar" onClick={handleClose} />
-{/* 
-          <Button onClick={handleAddItem}>
-            {isEdit ? "Salvar" : "Adicionar"}
-          </Button> */}
+        <DialogActions>
+          <BotaoCliente
+            onClick={handleAddItem}
+            nomeBotao={isEdit ? "Atualizar" : "Adicionar"}
+          />
+          <BotaoCliente onClick={handleClose} nomeBotao="Cancelar" />
         </DialogActions>
       </Dialog>
 
       {/* Popup para incluir categoria */}
       <Dialog open={openCategoria} onClose={handleCloseCategoria}>
         <DialogTitle className="css-rvoa5x-MuiTypography-root-MuiDialogTitle-root">
-          Nova Categoria
+          Incluir Nova Categoria
         </DialogTitle>
         <DialogContent className="css-dialog-content">
           <TextField
             autoFocus
             margin="dense"
             name="nome"
-            className="css-text-field" // Use a classe CSS para aplicar estilos
+            className="css-text-field"
             value={newCategoria.nome}
             onChange={handleCategoriaInputChange}
             variant="outlined"
-            placeholder="Nome da categoria"
+            placeholder="Digite o nome da categoria"
             InputLabelProps={{
               shrink: false,
             }}
@@ -475,19 +456,24 @@ const Estoque = () => {
             }}
           />
         </DialogContent>
-        <DialogActions
-          sx={{ display: "flex", justifyContent: "center", gap: 2 }}
-        >
+        <DialogActions>
           <BotaoCliente
-            nomeBotao="Adicionar categoria"
             onClick={handleAddCategoria}
+            nomeBotao="Adicionar"
           />
-
-          {/* <Button onClick={handleCloseCategoria}>Cancelar</Button> */}
-          <BotaoAlterar nomeBotao="Cancelar" onClick={handleCloseCategoria} />
-          {/* <Button onClick={handleAddCategoria}>Adicionar</Button> */}
+          <BotaoCliente onClick={handleCloseCategoria} nomeBotao="Cancelar" />
         </DialogActions>
       </Dialog>
+
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={3000} // Duração de 3 segundos
+        onClose={() => setSnackbarOpen(false)}
+      >
+        <Alert onClose={() => setSnackbarOpen(false)} severity="success">
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
