@@ -1,8 +1,8 @@
 import './BotaoAlterar.css'
 
-const BotaoAlterar = () => {
+const BotaoAlterar = ({onClick}) => {
     return(
-         <button className='botao-alterar' >Alterar</button>
+         <button className='botao-alterar' onClick={onClick} >Alterar</button>
     )
 }
 
