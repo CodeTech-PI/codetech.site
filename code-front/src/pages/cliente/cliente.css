@@ -1,13 +1,7 @@
 /* styles.css */
 
 /* Estilos para o botão de abrir o formulário */
-button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
+
   /* Estilos para os campos do formulário */
   form label {
     display: block;
@@ -22,11 +16,11 @@ button {
   }
   
   /* Estilos para os botões dentro do modal */
-  form button {
+  /* form button {
     margin-right: 10px;
     padding: 10px 15px;
     cursor: pointer;
-  }
+  } */
   /* Estilos para o campo de filtro */
 .filter-input {
   background-color: #333;
