@@ -216,32 +216,56 @@ const Estoque = () => {
       </div>
 
       {/* Filtros de produto e categoria */}
-      <div className="filtros">
-  <TextField
-    label="Filtrar Produto"
-    variant="outlined"
-    value={produtoFiltro}
-    onChange={(e) => setProdutoFiltro(e.target.value)}
-    className="textField" // Aplica a classe CSS
-  />
-  <FormControl variant="outlined" style={{ minWidth: 120 }}>
-    <Select
-      value={categoriaFiltro}
-      onChange={(e) => setCategoriaFiltro(e.target.value)}
-      displayEmpty
-      inputProps={{ "aria-label": "Categoria" }}
-    >
-      <MenuItem value="">
-        Todas as Categorias
-      </MenuItem>
-      {categorias.map((categoria) => (
-        <MenuItem key={categoria.id} value={categoria.nome}>
-          {categoria.nome}
-        </MenuItem>
-      ))}
-    </Select>
-  </FormControl>
-</div>
+      {/* <div className="filtros">
+        <TextField
+         label="Filtrar Produto"
+         variant="standard" // Minimiza bordas
+         value = {produtoFiltro}
+         onChange={(e) => setProdutoFiltro(e.target.value)}
+         placeholder="Digite o nome do produto"
+         InputLabelProps={{
+           shrink: true, // Mantém o rótulo visível sempre
+         }}
+         sx={{
+           "& .MuiInputBase-root": {
+             backgroundColor: "white", // Fundo branco para o campo de entrada
+             color: "white", // Texto em branco
+             borderBottom: "1px solid white", // Apenas a linha inferior em branco
+             "&:hover:not(.Mui-disabled):before": {
+               borderBottom: "1px solid white", // Linha branca ao passar o mouse
+             },
+             "&:after": {
+               borderBottom: "1px solid white", // Linha branca ao focar
+             },
+           },
+           "& .MuiInputLabel-root": {
+             color: "white", // Rótulo em branco
+           },
+           "& .MuiInputLabel-root.Mui-focused": {
+             color: "white", // Rótulo em branco ao focar
+           },
+         }}
+        />
+        <FormControl variant="outlined" style={{ minWidth: 120 }}>
+          <Select
+            value={categoriaFiltro}
+            onChange={(e) => setCategoriaFiltro(e.target.value)}
+            displayEmpty
+            inputProps={{ "aria-label": "Categoria" }}
+            
+          >
+            <MenuItem value="" disabled>
+                Categoria
+              </MenuItem>
+            {categorias.map((categoria) => (
+             <MenuItem key={categoria.id} value={categoria.id}>
+             {categoria.nome}
+           </MenuItem>
+           
+            ))}
+          </Select>
+        </FormControl>
+      </div> */}
 
       <TableContainer>
         <Table className="estoque-table">
@@ -315,38 +339,109 @@ const Estoque = () => {
           <TextField
             margin="dense"
             name="descricao"
-            label="Descrição"
+           
             type="text"
             fullWidth
             value={newItem.descricao}
             onChange={handleInputChange}
+            variant="outlined"
+            placeholder="Digite a descrição"
+            InputLabelProps={{
+              shrink: false,
+            }}
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  border: "none",
+                },
+                "&:hover fieldset": {
+                  border: "none",
+                },
+                "&.Mui-focused fieldset": {
+                  border: "none",
+                },
+              },
+            }}
           />
           <TextField
             margin="dense"
             name="unidadeMedida"
-            label="Unidade de Medida"
+            
             type="text"
             fullWidth
             value={newItem.unidadeMedida}
             onChange={handleInputChange}
+            variant="outlined"
+            placeholder="Digite a unidade de medida"
+            InputLabelProps={{
+              shrink: false,
+            }}
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  border: "none",
+                },
+                "&:hover fieldset": {
+                  border: "none",
+                },
+                "&.Mui-focused fieldset": {
+                  border: "none",
+                },
+              },
+            }}
           />
           <TextField
             margin="dense"
             name="quantidade"
-            label="Quantidade"
             type="number"
             fullWidth
             value={newItem.quantidade}
             onChange={handleInputChange}
+            variant="outlined"
+            placeholder="Digite a quantidade"
+            InputLabelProps={{
+              shrink: false,
+            }}
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  border: "none",
+                },
+                "&:hover fieldset": {
+                  border: "none",
+                },
+                "&.Mui-focused fieldset": {
+                  border: "none",
+                },
+              },
+            }}
           />
           <TextField
             margin="dense"
             name="preco"
-            label="Preço"
+           
             type="number"
             fullWidth
             value={newItem.preco}
             onChange={handleInputChange}
+            variant="outlined"
+            placeholder="Digite o preço"
+            InputLabelProps={{
+              shrink: false,
+            }}
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  border: "none",
+                },
+                "&:hover fieldset": {
+                  border: "none",
+                },
+                "&.Mui-focused fieldset": {
+                  border: "none",
+                },
+              },
+            }}
           />
           <FormControl fullWidth margin="dense">
             <Select
@@ -354,6 +449,32 @@ const Estoque = () => {
               value={newItem.categoria.id || ""}
               onChange={handleInputChange}
               displayEmpty
+              variant="outlined"
+              displayEmpty
+              sx={{
+                "& .MuiOutlinedInput-notchedOutline": {
+                  border: "none",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  border: "none",
+                },
+                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  border: "none",
+                },
+                "& .MuiSelect-select": {
+                  padding: "10px 14px",
+                  display: "flex",
+                  alignItems: "center",
+                  backgroundColor: "#d9d9d9",
+                  textAlign: "center", // Centraliza o texto selecionado
+                },
+                "& .MuiInputBase-input": {
+                  padding: "10px 14px",
+                  backgroundColor: "#d9d9d9",
+                  textAlign: "left", // Alinha o texto à esquerda
+                },
+                width: "100%", // Use 100% para melhor centralização
+              }}
             >
               <MenuItem value="">
                 <em>Selecione uma Categoria</em>
@@ -367,8 +488,9 @@ const Estoque = () => {
           </FormControl>
         </DialogContent>
         <DialogActions>
+          <button onClick={handleAddItem} className="botao-salvar">Salvar</button>
           <button onClick={handleClose} className="botao-cancelar">Cancelar</button>
-          <button onClick={handleAddItem}>Salvar</button>
+
         </DialogActions>
       </Dialog>
 
@@ -388,8 +510,9 @@ const Estoque = () => {
           />
         </DialogContent>
         <DialogActions>
+          <button onClick={handleAddCategoria} className="botao-salvar">Salvar</button>
           <button onClick={handleCloseCategoria} className="botao-cancelar">Cancelar</button>
-          <button onClick={handleAddCategoria}>Salvar</button>
+
         </DialogActions>
       </Dialog>
     </div>
