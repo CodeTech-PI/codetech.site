@@ -1,11 +1,11 @@
 /* src/components/PopUpAdicionar.css */
 
-button {
+/* button {
     margin: 10px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-  }
+  } */
   
   .custom-modal {
     position: absolute;
@@ -47,9 +47,9 @@ button {
     margin-bottom: 10px;
   }
   
-  form button {
+  /* form button {
     margin-right: 10px;
     padding: 10px 15px;
     cursor: pointer;
-  }
+  } */
   
