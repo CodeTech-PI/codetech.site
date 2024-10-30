@@ -4,6 +4,9 @@ import clienteService from '../../services/clienteService'; // Certifique-se de 
 import PopUpAdicionar from '../../components/PopUpAdicionar/PopUpAdicionar';
 import Sidebar from '../../components/SideBar/SideBar';
 import './cliente.css'; // Ou qualquer outro arquivo de estilo que você esteja usando
+import BotaoAlterar from '../../components/BotaoAlterar/BotaoAlterar';
+import BotaoExcluir from '../../components/BotaoExcluir/BotaoExcluir';
+import BotaoCliente from '../../components/BotaoCliente/BotaoCliente';
 
 const Cliente = () => {
   const [clientes, setClientes] = useState([]);
@@ -108,25 +111,39 @@ const Cliente = () => {
           className="filter-input"
         />
 
-        <button onClick={openModal}>Adicionar Usuário</button>
+        {/* <button onClick={openModal}>Adicionar Usuário</button> */}
+        <BotaoCliente
+        onClick={openModal}
+        nomeBotao='Adicionar Usuário'
+        />
         <PopUpAdicionar isOpen={modalIsOpen} onRequestClose={closeModal} onCreate={handleCreate} />
         {editModalIsOpen && (
           <PopUpAdicionar isOpen={editModalIsOpen} onRequestClose={closeEditModal} onCreate={handleCreate} cliente={currentCliente} />
         )}
 
         <div className="clientes-list">
-          {filteredClientes.map((cliente) => (
+        {Array.isArray(filteredClientes) && filteredClientes.map((cliente) => (
             <div key={cliente.id} className="cliente-item">
-              <div className="cliente-info">
+              <div className="container-cliente-info">
+                <div className='cliente-info1'>
                 <p><strong>Nome:</strong> {cliente.nome}</p>
                 <p><strong>CPF:</strong> {cliente.cpf}</p>
                 <p><strong>E-mail:</strong> {cliente.email}</p>
+                </div>
+                <div className='cliente-info2'>
                 <p><strong>Telefone:</strong> {cliente.telefone}</p>
                 <p><strong>Data de Nascimento.:</strong> {cliente.dataNascimento}</p>
+                </div>
               </div>
               <div className="cliente-actions">
-                <button onClick={() => handleEdit(cliente)}>Alterar</button>
-                <button onClick={() => handleDelete(cliente.id)}>Excluir</button>
+                <BotaoAlterar
+                onClick={() => handleEdit(cliente)}
+                />
+                {/* <button onClick={() => handleEdit(cliente)}>Alterar</button> */}
+                {/* <button onClick={() => handleDelete(cliente.id)}>Excluir</button> */}
+                <BotaoExcluir
+                onClick={() => handleDelete(cliente.id)}
+                />
               </div>
             </div>
           ))}
