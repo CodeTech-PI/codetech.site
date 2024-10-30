@@ -1,73 +1,65 @@
-/* login.css */
+#section-login {
+    overflow: hidden;
+}
 
-.login-container {
+.container-login {
+    height: 85vh;
+    width: 100vw;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../../../public/imagens/img-login-opaca.png);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.container-login form {
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 0px 10px 1px black;
+    border-radius: 15px;
+    height: 60vh;
+    width: 25vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    height: 80vh;
-    background-color: #f2f2f2;
-  }
-  
-  .login-container form {
-    /* background-color: #0000000c; Cor de fundo branca para o formulário */
-    padding: 2rem; /* Espaçamento interno */
-    border-radius: 10px; /* Bordas arredondadas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.418); /* Sombra para o formulário */
-    max-width: 30%; /* Largura máxima */
-    width: 100%; /* Largura total */
-    height: 24.25rem;
-    /* background: rgba(0, 0, 0, 0.6); */
-  }
-  
-  .login-container h1 {
-    margin-bottom: 1rem; /* Espaçamento abaixo do título */
-    font-size: 2rem; /* Tamanho da fonte do título */
-    text-align: center; /* Centralizar o título */
-    color: #333; /* Cor do texto */
-  }
-  
-  .login-container label {
-    display: block; /* Exibir como bloco */
-    margin-bottom: 0.5rem; /* Espaçamento abaixo do rótulo */
-    color: #666; /* Cor do texto do rótulo */
-  }
-  
-  .login-container input[type="email"],
-  .login-container input[type="password"] {
-    width: calc(100% - 2rem); /* Largura do campo de entrada */
-    padding: 0.5rem; /* Espaçamento interno */
-    margin-bottom: 1rem; /* Espaçamento abaixo do campo de entrada */
-    border: 1px solid #ccc; /* Bordas dos campos de entrada */
-    border-radius: 5px; /* Bordas arredondadas */
-    box-sizing: border-box; /* Incluir bordas e padding no tamanho total */
-  }
-  
-  .login-container button[type="submit"] {
+}
+
+.container-login input {
+    border-radius: 5px;
+    width: 20vw;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-login button {
+    background-color: #DF0050;
+    color: white;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    width: 8vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* max-width: 40%; */
-    width: 40%; /* Largura total do botão */
-    padding: 0.75rem; /* Espaçamento interno */
-    background-color: #DF0050; /* Cor de fundo do botão */
-    border: none; /* Sem borda */
-    border-radius: 5px; /* Bordas arredondadas */
-    color: #fff; /* Cor do texto do botão */
-    font-size: 1rem; /* Tamanho da fonte do botão */
-    cursor: pointer; /* Cursor de ponteiro */
-    margin-top: 20%;
-    margin-left: 30%;
-  }
+    margin-top: 10px;
+    padding: 8px;
+}
   
-  .login-container button[type="submit"]:hover {
-    background-color: #ff005d;
-    /* height: 100vh; */
-  }
+.container-login button:hover {
+    background-color: #ff2374;
+    box-shadow: 0px 0px 8px 1px #ff2374;
+}
   
-  .error {
-    color: red; /* Cor do texto de erro */
-    margin-bottom: 1rem; /* Espaçamento abaixo do erro */
-    text-align: center; /* Centralizar o texto de erro */
-  }
-  
+.container-login h1 {
+    margin-bottom: 10px;
+}
+
+.error {
+    color: rgb(255, 4, 4);
+    text-decoration: underline;
+    text-align: center;
+}

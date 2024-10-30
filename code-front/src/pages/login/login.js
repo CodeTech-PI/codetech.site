@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import loginService from '../../services/authentication/loginService';
-import './loginGabs.css';
+import IconesContato from '../../components/IconesContato/IconesContato';
+import Footer from '../../components/Footer/Footer';
+import './login.css';
 import NavBar from '../../components/NavBar/NavBar';
 
 const Login = () => {
@@ -56,7 +58,17 @@ const Login = () => {
         <button type="submit">Entrar</button>
       </form>
     </div>
-    </section>
+    <div className='container-icones-contato'>
+                <IconesContato
+                img="./imagens/whats-app.png" desc="Icone com a imagem do WhatsApp, um telefone"
+                link="https://wa.me/5511941834736"
+                />
+                <IconesContato
+                img="./imagens/chat-bot.png" desc="Icone com a imagem de um robozinho"
+                />
+    </div>
+  <Footer/>
+  </section>
   );
 };
 
