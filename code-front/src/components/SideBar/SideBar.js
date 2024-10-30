@@ -3,6 +3,12 @@ import React from 'react';
 import './SideBar.css'; // Estilo para a Sidebar
 
 const Sidebar = () => {
+  const handleLogout = (event) => {
+    event.preventDefault();
+    sessionStorage.clear();
+    window.location.href = '/';
+  };
+
   return (
     <div className="sidebar">
       <img
@@ -15,7 +21,7 @@ const Sidebar = () => {
         <li><a href="/clientes">Área do Cliente</a></li>
         <li><a href="/dashboard">Dashboard</a></li>
         <li><a href="/filiais">Filiais</a></li>
-        <li className="logout"><a href="/logout">Sair</a></li>
+        <li className="logout"><a href="/" onClick={handleLogout}>Sair</a></li>
       </ul>
       <div className="linhaVertical"></div>
     </div>

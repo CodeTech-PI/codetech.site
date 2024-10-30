@@ -12,14 +12,17 @@ const Estoque = () => {
   const [currentId, setCurrentId] = useState(null); // ID do item sendo editado
   const [categorias, setCategorias] = useState([]); // Adiciona estado para categorias
   const [newItem, setNewItem] = useState({
-    quantidade: '',
+    quantidade: 0,
     nome: '',
     descricao: '',
     unidadeMedida: '',
-    preco: '',
-    categoriaId: '' // Adiciona categoriaId ao estado do novo item
+    preco: 0,
+    categoria: {
+      id: 0,
+      nome: ''
+    }
   });
-  const [newCategoria, setNewCategoria] = useState({ nome: '' }); // Estado para nova categoria
+  const [newCategoria, setNewCategoria] = useState({ nome: '' });
 
   const fetchProdutos = async () => {
     try {
@@ -51,12 +54,15 @@ const Estoque = () => {
   const handleClose = () => {
     setOpen(false);
     setNewItem({
-      quantidade: '',
+      quantidade: 0,
       nome: '',
       descricao: '',
       unidadeMedida: '',
-      preco: '',
-      categoriaId: ''
+      preco: 0,
+      categoria: {
+        id: 0,
+        nome: ''
+      }
     });
     setIsEdit(false);
     setCurrentId(null);
@@ -73,7 +79,12 @@ const Estoque = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setNewItem({ ...newItem, [name]: value });
+    if (name === 'categoriaId') {
+      const selectedCategoria = categorias.find(categoria => categoria.id === parseInt(value));
+      setNewItem({ ...newItem, categoria: { id: selectedCategoria.id, nome: selectedCategoria.nome } });
+    } else {
+      setNewItem({ ...newItem, [name]: value });
+    }
   };
 
   const handleCategoriaInputChange = (e) => {
@@ -115,7 +126,10 @@ const Estoque = () => {
       descricao: item.descricao,
       unidadeMedida: item.unidadeMedida,
       preco: item.preco,
-      categoriaId: item.categoria.id
+      categoria: {
+        id: item.categoria.id,
+        nome: item.categoria.nome
+      }
     });
     setCurrentId(item.id);
     setIsEdit(true);
@@ -193,6 +207,7 @@ const Estoque = () => {
             label="Quantidade"
             name="quantidade"
             fullWidth
+            type="number"
             value={newItem.quantidade}
             onChange={handleInputChange}
           />
@@ -217,6 +232,7 @@ const Estoque = () => {
             label="Preço"
             name="preco"
             fullWidth
+            type="number"
             value={newItem.preco}
             onChange={handleInputChange}
           />
@@ -225,7 +241,7 @@ const Estoque = () => {
             <Select
               labelId="categoria-label"
               name="categoriaId"
-              value={newItem.categoriaId}
+              value={newItem.categoria.id}
               onChange={handleInputChange}
             >
               {categorias.length > 0 ? (
@@ -244,7 +260,7 @@ const Estoque = () => {
         </DialogActions>
       </Dialog>
 
-      {/* Popup para incluir nova categoria */}
+      {/* Popup para incluir categoria */}
       <Dialog open={openCategoria} onClose={handleCloseCategoria}>
         <DialogTitle>Incluir Nova Categoria</DialogTitle>
         <DialogContent>
