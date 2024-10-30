@@ -22,7 +22,6 @@ import Sidebar from "../../components/SideBar/SideBar";
 import estoqueService from "../../services/estoqueService";
 import "./estoque.css";
 import BotaoFechar from "../../components/BotaoFechar/BotaoFechar";
-import BotaoAlterar from "../../components/BotaoAlterar/BotaoAlterar";
 import BotaoCliente from "../../components/BotaoCliente/BotaoCliente";
 import BotaoAlterar from '../../components/BotaoAlterar/BotaoAlterar';
 import BotaoExcluir from '../../components/BotaoExcluir/BotaoExcluir';
