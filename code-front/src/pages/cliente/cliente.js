@@ -111,10 +111,9 @@ const Cliente = () => {
           className="filter-input"
         />
 
-        {/* <button onClick={openModal}>Adicionar Usuário</button> */}
         <BotaoCliente
-        onClick={openModal}
-        nomeBotao='Adicionar Usuário'
+          onClick={openModal}
+          nomeBotao='Adicionar Usuário'
         />
         <PopUpAdicionar isOpen={modalIsOpen} onRequestClose={closeModal} onCreate={handleCreate} />
         {editModalIsOpen && (
@@ -122,32 +121,34 @@ const Cliente = () => {
         )}
 
         <div className="clientes-list">
-        {Array.isArray(filteredClientes) && filteredClientes.map((cliente) => (
-            <div key={cliente.id} className="cliente-item">
-              <div className="container-cliente-info">
-                <div className='cliente-info1'>
-                <p><strong>Nome:</strong> {cliente.nome}</p>
-                <p><strong>CPF:</strong> {cliente.cpf}</p>
-                <p><strong>E-mail:</strong> {cliente.email}</p>
+          {Array.isArray(filteredClientes) && filteredClientes.length > 0 ? (
+            filteredClientes.map((cliente) => (
+              <div key={cliente.id} className="cliente-item">
+                <div className="container-cliente-info">
+                  <div className='cliente-info1'>
+                    <p><strong>Nome:</strong> {cliente.nome}</p>
+                    <p><strong>CPF:</strong> {cliente.cpf}</p>
+                    <p><strong>E-mail:</strong> {cliente.email}</p>
+                  </div>
+                  <div className='cliente-info2'>
+                    <p><strong>Telefone:</strong> {cliente.telefone}</p>
+                    <p><strong>Data de Nascimento.:</strong> {cliente.dataNascimento}</p>
+                  </div>
                 </div>
-                <div className='cliente-info2'>
-                <p><strong>Telefone:</strong> {cliente.telefone}</p>
-                <p><strong>Data de Nascimento.:</strong> {cliente.dataNascimento}</p>
+                <div className="cliente-actions">
+                  <BotaoAlterar
+                    nomeBotao='Alterar'
+                    onClick={() => handleEdit(cliente)}
+                  />
+                  <BotaoExcluir
+                    onClick={() => handleDelete(cliente.id)}
+                  />
                 </div>
               </div>
-              <div className="cliente-actions">
-                <BotaoAlterar
-                nomeBotao='Alterar'
-                onClick={() => handleEdit(cliente)}
-                />
-                {/* <button onClick={() => handleEdit(cliente)}>Alterar</button> */}
-                {/* <button onClick={() => handleDelete(cliente.id)}>Excluir</button> */}
-                <BotaoExcluir
-                onClick={() => handleDelete(cliente.id)}
-                />
-              </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p>Nenhum cliente encontrado.</p>
+          )}
         </div>
 
         {editModalIsOpen && currentCliente && (

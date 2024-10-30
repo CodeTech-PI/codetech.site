@@ -52,7 +52,26 @@ const estoqueService = {
       console.error('Erro ao atualizar produto:', error);
       throw error;
     }
-  }
+  },
+  postCategoria: async function(userData) {
+    this.setCredentials();
+    try {
+      const response = await axios.post(`${url}/categorias`, userData, { headers: this.headers });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  getCategorias: async function() {
+    this.setCredentials();
+    try {
+      const response = await axios.get(`${url}/categorias`, { headers: this.headers });
+      return response.data;
+    } catch (error) {
+      console.error('Erro ao buscar categorias:', error);
+      throw error;
+    }
+  },
 };
 
 export default estoqueService;
