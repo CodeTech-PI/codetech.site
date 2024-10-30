@@ -1,19 +1,20 @@
 // src/components/PopUpAdicionar/PopUpAdicionar.js
 
-import React, { useState, useEffect } from 'react';
-import Modal from 'react-modal';
-import clienteService from '../../services/clienteService';
-import './PopUpAdicionar.css';
+import React, { useState, useEffect } from "react";
+import Modal from "react-modal";
+import clienteService from "../../services/clienteService";
+import "./PopUpAdicionar.css";
+import BotaoFechar from "../BotaoFechar/BotaoFechar";
 
-Modal.setAppElement('#root');
+Modal.setAppElement("#root");
 
 const PopUpAdicionar = ({ isOpen, onRequestClose, onCreate, cliente }) => {
   const [formData, setFormData] = useState({
-    nome: '',
-    cpf: '',
-    dataNascimento: '',
-    email: '',
-    telefone: ''
+    nome: "",
+    cpf: "",
+    dataNascimento: "",
+    email: "",
+    telefone: "",
   });
 
   useEffect(() => {
@@ -21,11 +22,11 @@ const PopUpAdicionar = ({ isOpen, onRequestClose, onCreate, cliente }) => {
       setFormData(cliente); // Preencher os campos com os dados do cliente se estiver editando
     } else {
       setFormData({
-        nome: '',
-        cpf: '',
-        dataNascimento: '',
-        email: '',
-        telefone: ''
+        nome: "",
+        cpf: "",
+        dataNascimento: "",
+        email: "",
+        telefone: "",
       });
     }
   }, [cliente, isOpen]); // Atualiza os dados quando o cliente muda ou o modal abre
@@ -34,7 +35,7 @@ const PopUpAdicionar = ({ isOpen, onRequestClose, onCreate, cliente }) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -51,7 +52,7 @@ const PopUpAdicionar = ({ isOpen, onRequestClose, onCreate, cliente }) => {
       onCreate(); // Chama a função onCreate após a criação ou atualização
       onRequestClose(); // Fecha o modal
     } catch (error) {
-      console.error('Erro ao salvar usuário:', error);
+      console.error("Erro ao salvar usuário:", error);
     }
   };
 
@@ -63,30 +64,68 @@ const PopUpAdicionar = ({ isOpen, onRequestClose, onCreate, cliente }) => {
       className="custom-modal"
       overlayClassName="custom-overlay"
     >
-      <h2>{cliente ? 'Editar Usuário' : 'Criar Usuário'}</h2>
-      <form onSubmit={handleSubmit}>
+      <h2 className="title-popup">
+        {cliente ? "Editar Usuário" : "Criar Usuário"}
+      </h2>
+      <form onSubmit={handleSubmit} className="form-container">
         <div className="form-group">
-          <label>Nome:</label>
-          <input type="text" name="nome" value={formData.nome} onChange={handleChange} required />
+          <label className="labels">Nome</label>
+          <input
+            type="text"
+            name="nome"
+            value={formData.nome}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="form-group">
-          <label>CPF:</label>
-          <input type="text" name="cpf" value={formData.cpf} onChange={handleChange} required />
+          <label className="labels">CPF</label>
+          <input
+            type="text"
+            name="cpf"
+            value={formData.cpf}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="form-group">
-          <label>Data de Nascimento:</label>
-          <input type="date" name="dataNascimento" value={formData.dataNascimento} onChange={handleChange} required />
+          <label className="labels">Data de Nasc</label>
+          <input
+            type="date"
+            name="dataNascimento"
+            value={formData.dataNascimento}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="form-group">
-          <label>Email:</label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+          <label className="labels">Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="form-group">
-          <label>Telefone:</label>
-          <input type="tel" name="telefone" value={formData.telefone} onChange={handleChange} required />
+          <label className="labels">Telefone</label>
+          <input
+            type="tel"
+            name="telefone"
+            value={formData.telefone}
+            onChange={handleChange}
+            required
+          />
         </div>
-        <button type="submit">Enviar</button>
-        <button type="button" onClick={onRequestClose}>Fechar</button>
+
+        <div className="button-container">
+          <button type="submit">Enviar</button>
+          {/* <button type="button" onClick={onRequestClose}>
+            Fechar
+          </button> */}
+          <BotaoFechar type="button" onClick={onRequestClose}/>
+        </div>
       </form>
     </Modal>
   );
