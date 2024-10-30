@@ -1,3 +1,37 @@
+.css-10d30g3-MuiPaper-root-MuiDialog-paper { /* Fundo */
+  width: 30%;
+  background-color: #1b1b1b !important;
+  padding-bottom: 10px;
+  border-radius: 5px;
+}
+
+
+.css-rvoa5x-MuiTypography-root-MuiDialogTitle-root { /* Título */
+  text-align: center;
+  color: white;
+}
+
+.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input {
+  outline: none !important;
+  border-radius: 10px !important;
+  background-color: #d9d9d9 !important;
+  height: 10px !important; 
+}
+
+.css-dialog-content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important; 
+  padding: 20px !important;
+}
+
+.css-text-field {
+  width: 70% !important;
+  background-color: #d9d9d9 !important;
+  border-radius: 10px !important;
+}
+
 .estoque-container {
     margin-left: 15%;
     padding: 20px; /* Espaçamento interno */
