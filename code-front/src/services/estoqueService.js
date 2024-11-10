@@ -26,6 +26,8 @@ const estoqueService = {
     this.setCredentials();
     try {
       const response = await axios.get(`${url}/produtos`, { headers: this.headers });
+      console.log(response.data, "get de produtos");
+      
       return response.data;
     } catch (error) {
       console.error('Erro ao buscar produtos:', error);

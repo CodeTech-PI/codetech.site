@@ -18,8 +18,11 @@ import Realista from './pages/Realista/Realista';
 import Guerreiras from './pages/guerreiras/guerreiras';
 import Cliente from './pages/cliente/cliente';
 import Home from './pages/Home/Home';
+import Filiais from './pages/Filiais/filiais';
 
 import Estoque from './pages/estoque/estoque';
+
+import Chatbot from './pages/ChatBot/chatbot';
 
 function App() {
   return (
@@ -35,6 +38,10 @@ function App() {
         <Route path="/realista" element={<Realista />} />
         <Route path="/guerreiras" element={<Guerreiras />} />
         <Route path="/clientes" element={<Cliente />} />
+        <Route path="/filiais" element={<Filiais />} />
+
+        <Route path="/chatbot" element={<Chatbot />} />
+
       </Routes>
 
     
