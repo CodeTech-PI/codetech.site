@@ -1,0 +1,91 @@
+form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.filter-input {
+  background-color: #1b1b1b;
+  width: 100%;
+  max-width: 500px;
+  padding: 12px;
+  margin: 10px 10px 10px 0;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+}
+
+.filter-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.filiais-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.filial-item {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #1b1b1b;
+  color: #fff;
+}
+
+.container-filial-info {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  align-items: center;
+}
+
+.filiais-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filial-card {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+  max-width: 800px;
+}
+
+.filial-info {
+  flex-grow: 1;
+}
+
+.filial-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.container-total {
+  width: 80%;
+  height: 100vh;
+  margin-left: 15%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sidebar {
+  flex: 0 0 250px;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  width: 80%;
+}
