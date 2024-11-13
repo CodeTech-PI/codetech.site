@@ -1,11 +1,13 @@
 import './IconesContato.css'
 
-const IconesContato = (props) => {
+const IconesContato = ({ img, desc, onClick, link }) => {
     return(
     
-        <a href={props.link} target="_blank" rel="noopener noreferrer">
-        <img className='icones-contato' src={props.img} alt={props.desc}></img>
+        <div className="icones-contato" onClick={onClick}>
+        <a href={link} target="_blank" rel="noopener noreferrer">
+        <img className='icones-contato' src={img} alt={desc}></img>
         </a>
+        </div>
        
     )
 }
