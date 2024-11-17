@@ -21,6 +21,7 @@ const Sidebar = () => {
         <li><a href="/clientes">Área do Cliente</a></li>
         <li><a href="/dashboard">Dashboard</a></li>
         <li><a href="/filiais">Filiais</a></li>
+        <li><a href="/listaProdutosService">Lista de produtos</a></li>
         <li className="logout"><a href="/" onClick={handleLogout}>Sair</a></li>
       </ul>
       <div className="linhaVertical"></div>

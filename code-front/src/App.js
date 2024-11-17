@@ -21,6 +21,7 @@ import Home from './pages/Home/Home';
 import Filiais from './pages/Filiais/filiais';
 
 import Estoque from './pages/estoque/estoque';
+import ListaProdutos from './pages/ListaProdutos/ListaProdutos';
 
 import Chatbot from './pages/ChatBot/chatbot';
 
@@ -37,10 +38,13 @@ function App() {
         <Route path="/minimalista" element={<Minimalista />} />
         <Route path="/realista" element={<Realista />} />
         <Route path="/guerreiras" element={<Guerreiras />} />
-        <Route path="/clientes" element={<Cliente />} />
+        <Route path="/clientes" element={<Cliente />} /
+        <Route path="/listaProdutosService" element={<ListaProdutos/>} />
+
         <Route path="/filiais" element={<Filiais />} />
 
         <Route path="/chatbot" element={<Chatbot />} />
+
 
       </Routes>
 

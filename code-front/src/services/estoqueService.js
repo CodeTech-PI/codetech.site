@@ -10,7 +10,7 @@ const estoqueService = {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
     };
-  },
+  }, 
   
   postProduto: async function(userData) {
     this.setCredentials();
