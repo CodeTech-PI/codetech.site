@@ -11,7 +11,7 @@ import EnderecoContato from './components/EnderecoContato/EnderecoContato';
 import Footer from './components/Footer/Footer';
 import Login from './pages/login/login';
 
-
+import Dashboard from './pages/Dashboard/Dashboard';
 import Aquarela from './pages/Aquarela/Aquarela';
 import Minimalista from './pages/Minimalista/Minimalista';
 import Realista from './pages/Realista/Realista';
@@ -32,7 +32,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/estoque" element={<Estoque />} />
-
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/aquarela" element={<Aquarela />} />
         <Route path="/minimalista" element={<Minimalista />} />
         <Route path="/realista" element={<Realista />} />
