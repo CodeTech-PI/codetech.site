@@ -51,6 +51,7 @@ const Estoque = () => {
 
   const fetchProdutos = async () => {
     try {
+      debugger
       const produtosData = await estoqueService.getProdutos();
       setRows(produtosData);
       setFilteredRows(produtosData); // Inicializa o estado de produtos filtrados

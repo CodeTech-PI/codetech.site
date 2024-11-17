@@ -20,6 +20,7 @@ import Cliente from './pages/cliente/cliente';
 import Home from './pages/Home/Home';
 
 import Estoque from './pages/estoque/estoque';
+import ListaProdutos from './pages/ListaProdutos/ListaProdutos';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/realista" element={<Realista />} />
         <Route path="/guerreiras" element={<Guerreiras />} />
         <Route path="/clientes" element={<Cliente />} />
+        <Route path="/listaProdutosService" element={<ListaProdutos/>} />
       </Routes>
 
     
