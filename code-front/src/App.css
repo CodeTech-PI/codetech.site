@@ -1,57 +1,54 @@
-body{
-  font-family: "Readex Pro", sans-serif;
+body {
+  background-color: #1a1a1a;
+  color: #fff;
+  font-family: Arial, sans-serif;
 }
 
-p{
-  margin-bottom: 0 !important;
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
-.img-home {
-  color: white;
-  background-image: url('../public/imagens/img-home.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 400px;
+.table-container {
+  background-color: #333;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.img-home p {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  font-size: 30px;
-  padding-left: 100px;
+.table-container h2 {
+  margin-top: 0;
+  color: #ffdd00; /* Cor amarela */
 }
 
-.titulo-orcamento {
-  color: white;
-  text-align: center;
-  font-size: 30px;
-  margin: 110px 0 80px 0;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
 }
 
-.endereco{
-  color: white;
-    font-size: 20px;
-    margin: 80px 0 20px 30px;
+thead {
+  background-color: #444;
 }
 
-@media screen and (max-width: 1020px) {
-  .img-home {
-    height: 190px;
-  }
+thead th {
+  padding: 10px;
+  font-weight: bold;
+  color: #fff;
+}
 
-  .img-home p {
-    padding: 0;
-    justify-content: center;
-    font-size: 20px;
-  }
+tbody tr:nth-child(even) {
+  background-color: #2a2a2a;
+}
 
-  .titulo-orcamento{
-    font-size: 20px;
-  }
+tbody tr:hover {
+  background-color: #3a3a3a;
+}
 
-  .endereco{
-    margin-left: 0 !important;
-    text-align: center;
-  }
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #444;
+  color: #ddd;
 }

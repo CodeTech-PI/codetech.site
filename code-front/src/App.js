@@ -11,7 +11,7 @@ import EnderecoContato from './components/EnderecoContato/EnderecoContato';
 import Footer from './components/Footer/Footer';
 import Login from './pages/login/login';
 
-
+import Dashboard from './pages/Dashboard/Dashboard';
 import Aquarela from './pages/Aquarela/Aquarela';
 import Minimalista from './pages/Minimalista/Minimalista';
 import Realista from './pages/Realista/Realista';
@@ -21,6 +21,7 @@ import Home from './pages/Home/Home';
 import Filiais from './pages/Filiais/filiais';
 
 import Estoque from './pages/estoque/estoque';
+import ListaProdutos from './pages/ListaProdutos/ListaProdutos';
 
 import Chatbot from './pages/ChatBot/chatbot';
 
@@ -32,15 +33,18 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/estoque" element={<Estoque />} />
-
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/aquarela" element={<Aquarela />} />
         <Route path="/minimalista" element={<Minimalista />} />
         <Route path="/realista" element={<Realista />} />
         <Route path="/guerreiras" element={<Guerreiras />} />
-        <Route path="/clientes" element={<Cliente />} />
+        <Route path="/clientes" element={<Cliente />} /
+        <Route path="/listaProdutosService" element={<ListaProdutos/>} />
+
         <Route path="/filiais" element={<Filiais />} />
 
         <Route path="/chatbot" element={<Chatbot />} />
+
 
       </Routes>
 
