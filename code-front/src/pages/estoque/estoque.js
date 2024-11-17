@@ -15,13 +15,13 @@ import {
   Select,
   FormControl,
   Snackbar,
-  Alert
+  Alert,
 } from "@mui/material";
 import estoqueService from "../../services/estoqueService";
 import "./estoque.css";
 import BotaoCliente from "../../components/BotaoCliente/BotaoCliente";
-import BotaoAlterar from '../../components/BotaoAlterar/BotaoAlterar';
-import BotaoExcluir from '../../components/BotaoExcluir/BotaoExcluir';
+import BotaoAlterar from "../../components/BotaoAlterar/BotaoAlterar";
+import BotaoExcluir from "../../components/BotaoExcluir/BotaoExcluir";
 import Sidebar from "../../components/SideBar/SideBar";
 
 const Estoque = () => {
@@ -32,6 +32,8 @@ const Estoque = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [currentId, setCurrentId] = useState(null);
   const [categorias, setCategorias] = useState([]);
+  const [openManageCategoria, setOpenManageCategoria] = useState(false);
+
   const [newItem, setNewItem] = useState({
     quantidade: 0,
     nome: "",
@@ -48,10 +50,31 @@ const Estoque = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [produtoFiltro, setProdutoFiltro] = useState(""); // Estado para filtro de produto
   const [categoriaFiltro, setCategoriaFiltro] = useState(""); // Estado para filtro de categoria
+  const [openEditCategoria, setOpenEditCategoria] = useState(false);
+const [editCategoria, setEditCategoria] = useState({
+  nome: '', // Add more fields if needed
+});
+
+
+  const handleOpenManageCategoria = () => {
+    setOpenManageCategoria(true);
+  };
+
+  const handleCloseManageCategoria = () => {
+    setOpenManageCategoria(false);
+  };
+
+const handleOpenEditCategoria = () => {
+  setOpenEditCategoria(true);
+};
+
+const handleCloseEditCategoria = () => {
+  setOpenEditCategoria(false);
+};
 
   const fetchProdutos = async () => {
     try {
-      debugger
+      debugger;
       const produtosData = await estoqueService.getProdutos();
       setRows(produtosData);
       setFilteredRows(produtosData); // Inicializa o estado de produtos filtrados
@@ -76,8 +99,12 @@ const Estoque = () => {
 
   const handleFilterChange = () => {
     const filtered = rows.filter((row) => {
-      const matchesProduto = row.nome.toLowerCase().includes(produtoFiltro.toLowerCase());
-      const matchesCategoria = categoriaFiltro === "" || (row.categoria && row.categoria.nome === categoriaFiltro);
+      const matchesProduto = row.nome
+        .toLowerCase()
+        .includes(produtoFiltro.toLowerCase());
+      const matchesCategoria =
+        categoriaFiltro === "" ||
+        (row.categoria && row.categoria.nome === categoriaFiltro);
       return matchesProduto && matchesCategoria;
     });
     setFilteredRows(filtered);
@@ -159,6 +186,28 @@ const Estoque = () => {
     }
   };
 
+  const handleAddItemCategoria = async () => {
+    try {
+      if (isEdit) {
+        const updatedData = await estoqueService.updateCategoria(
+          currentId,
+          newItem
+        );
+        setRows(rows.map((row) => (row.id === currentId ? updatedData : row)));
+        setSnackbarMessage("Produto atualizado com sucesso!");
+      } else {
+        const categoriaData = await estoqueService.postCategoria(newItem);
+        setRows([...rows, categoriaData]);
+        setSnackbarMessage("Categoria adicionado com sucesso!");
+      }
+      setSnackbarOpen(true);
+      setTimeout(() => setSnackbarOpen(false), 3000); // Mantém a mensagem por 3 segundos
+      handleClose();
+    } catch (error) {
+      console.error("Erro ao salvar Categoria:", error);
+    }
+  };
+
   const handleAddCategoria = async () => {
     try {
       const categoriaData = await estoqueService.postCategoria(newCategoria);
@@ -205,69 +254,14 @@ const Estoque = () => {
     <div className="estoque-container">
       <Sidebar />
       <h1>Estoque</h1>
-      <div className='botoes-incluir'>
-        <BotaoCliente
-          onClick={handleOpen}
-          nomeBotao='Incluir Produto'
-        />
+      <div className="botoes-incluir">
+        <BotaoCliente onClick={handleOpen} nomeBotao="Incluir Produto" />
         <BotaoCliente
           onClick={handleOpenCategoria}
-          nomeBotao='Incluir Categoria'
+          nomeBotao="Categoria"
         />
       </div>
-
-      {/* Filtros de produto e categoria */}
-      {/* <div className="filtros">
-        <TextField
-         label="Filtrar Produto"
-         variant="standard" // Minimiza bordas
-         value = {produtoFiltro}
-         onChange={(e) => setProdutoFiltro(e.target.value)}
-         placeholder="Digite o nome do produto"
-         InputLabelProps={{
-           shrink: true, // Mantém o rótulo visível sempre
-         }}
-         sx={{
-           "& .MuiInputBase-root": {
-             backgroundColor: "white", // Fundo branco para o campo de entrada
-             color: "white", // Texto em branco
-             borderBottom: "1px solid white", // Apenas a linha inferior em branco
-             "&:hover:not(.Mui-disabled):before": {
-               borderBottom: "1px solid white", // Linha branca ao passar o mouse
-             },
-             "&:after": {
-               borderBottom: "1px solid white", // Linha branca ao focar
-             },
-           },
-           "& .MuiInputLabel-root": {
-             color: "white", // Rótulo em branco
-           },
-           "& .MuiInputLabel-root.Mui-focused": {
-             color: "white", // Rótulo em branco ao focar
-           },
-         }}
-        />
-        <FormControl variant="outlined" style={{ minWidth: 120 }}>
-          <Select
-            value={categoriaFiltro}
-            onChange={(e) => setCategoriaFiltro(e.target.value)}
-            displayEmpty
-            inputProps={{ "aria-label": "Categoria" }}
-            
-          >
-            <MenuItem value="" disabled>
-                Categoria
-              </MenuItem>
-            {categorias.map((categoria) => (
-             <MenuItem key={categoria.id} value={categoria.id}>
-             {categoria.nome}
-           </MenuItem>
-           
-            ))}
-          </Select>
-        </FormControl>
-      </div> */}
-
+    
       <TableContainer>
         <Table className="estoque-table">
           <TableHead>
@@ -292,11 +286,11 @@ const Estoque = () => {
                   <TableCell>
                     <div className="action-buttons">
                       <BotaoAlterar
-                        nomeBotao='Editar'
+                        nomeBotao="Editar"
                         onClick={() => handleEdit(row)}
                       />
                       <BotaoExcluir
-                        nomeBotao='Excluir'
+                        nomeBotao="Excluir"
                         onClick={() => handleDelete(row.id)}
                       />
                     </div>
@@ -311,7 +305,6 @@ const Estoque = () => {
           </TableBody>
         </Table>
       </TableContainer>
-
       {/* Snackbar para mensagens de sucesso */}
       <Snackbar
         open={snackbarOpen}
@@ -322,10 +315,11 @@ const Estoque = () => {
           {snackbarMessage}
         </Alert>
       </Snackbar>
-
       {/* Dialog para adicionar/editar produto */}
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>{isEdit ? "Editar Produto" : "Adicionar Produto"}</DialogTitle>
+        <DialogTitle>
+          {isEdit ? "Editar Produto" : "Adicionar Produto"}
+        </DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
@@ -340,7 +334,6 @@ const Estoque = () => {
           <TextField
             margin="dense"
             name="descricao"
-           
             type="text"
             fullWidth
             value={newItem.descricao}
@@ -367,7 +360,6 @@ const Estoque = () => {
           <TextField
             margin="dense"
             name="unidadeMedida"
-            
             type="text"
             fullWidth
             value={newItem.unidadeMedida}
@@ -420,7 +412,6 @@ const Estoque = () => {
           <TextField
             margin="dense"
             name="preco"
-           
             type="number"
             fullWidth
             value={newItem.preco}
@@ -489,33 +480,398 @@ const Estoque = () => {
           </FormControl>
         </DialogContent>
         <DialogActions>
-          <button onClick={handleAddItem} className="botao-salvar">Salvar</button>
-          <button onClick={handleClose} className="botao-cancelar">Cancelar</button>
-
+          <button onClick={handleAddItem} className="botao-salvar">
+            Salvar
+          </button>
+          <button onClick={handleClose} className="botao-cancelar">
+            Cancelar
+          </button>
         </DialogActions>
       </Dialog>
 
       {/* Dialog para adicionar categoria */}
-      <Dialog open={openCategoria} onClose={handleCloseCategoria}>
-        <DialogTitle>Adicionar Categoria</DialogTitle>
-        <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            name="nome"
-            label="Nome da Categoria"
-            type="text"
-            fullWidth
-            value={newCategoria.nome}
-            onChange={handleCategoriaInputChange}
-          />
-        </DialogContent>
-        <DialogActions>
-          <button onClick={handleAddCategoria} className="botao-salvar">Salvar</button>
-          <button onClick={handleCloseCategoria} className="botao-cancelar">Cancelar</button>
+      <Dialog
+  open={openCategoria}
+  onClose={handleCloseCategoria}
+  sx={{
+    "& .MuiPaper-root": {
+      borderRadius: "20px",
+      border: "none",
+      padding: "24px",
+      maxWidth: "500px",
+      backgroundColor: "#1B1B1B",
+      color: "#ffffff",
+      boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.5)",
+    },
+  }}
+>
+  <DialogTitle
+    sx={{
+      textAlign: "center",
+      fontWeight: "bold",
+      fontSize: "1.75rem",
+      color: "white",
+      marginBottom: "16px",
+    }}
+  >
+    Adicionar Categoria
+  </DialogTitle>
+  <DialogContent>
+   
+    <input className="input-filter"
+      autoFocus
+      margin="dense"
+      name="nome"
+      label="Nome da Categoria"
+      type="text"
+      fullWidth
+      value={newCategoria.nome}
+      onChange={handleCategoriaInputChange}
 
-        </DialogActions>
-      </Dialog>
+    />
+
+
+    <div style={{ marginTop: "16px", textAlign: "center" }}>
+      <a
+        href="#"
+        onClick={handleOpenManageCategoria}
+        style={{
+          color: "white",
+          textDecoration: "none",
+          fontSize: "18px",
+          fontWeight: "500",
+        }}
+        onMouseEnter={(e) => (e.target.style.textDecoration = "underline")}
+        onMouseLeave={(e) => (e.target.style.textDecoration = "none")}
+      >
+        Deseja alterar ou excluir categoria?
+      </a>
+    </div>
+  </DialogContent>
+
+  
+  <DialogActions sx={{ justifyContent: "center", marginTop: "24px" }}>
+    <button
+      onClick={handleAddCategoria}
+      style={{
+        backgroundColor: "#4169E1",
+        color: "#ffffff",
+        padding: "10px 30px",
+        borderRadius: "5px",
+        fontWeight: "bold",
+        fontSize: "1rem",
+        border: "none",
+        cursor: "pointer",
+        marginRight: "10px",
+        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.3)",
+        transition: "all 0.3s",
+      }}
+    >
+      Salvar
+    </button>
+    <button
+      onClick={handleCloseCategoria}
+      style={{
+        backgroundColor: "#8d0c0c",
+        color: "#ffffff",
+        padding: "10px 30px",
+        borderRadius: "5px",
+        fontWeight: "bold",
+        fontSize: "1rem",
+        border: "none",
+        cursor: "pointer",
+        transition: "all 0.3s",
+      }}
+    >
+      Cancelar
+    </button>
+  </DialogActions>
+</Dialog>
+
+<Dialog
+  open={openManageCategoria}
+  onClose={handleCloseManageCategoria}
+  sx={{
+    "& .MuiPaper-root": {
+      borderRadius: "12px",
+      padding: "24px",
+      backgroundColor: "#1C1C1C",
+      color: "#FFFFFF",
+      boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.4)",
+      width: "70%",
+    },
+  }}
+>
+  <DialogTitle
+    sx={{
+      textAlign: "center",
+      fontWeight: "700",
+      fontSize: "1.6rem",
+      color: "white",
+      paddingBottom: "16px",
+      marginBottom: "20px",
+    }}
+  >
+    Gerenciar Categorias
+  </DialogTitle>
+  <DialogContent sx={{ paddingBottom: "16px" }}>
+    <TableContainer
+      sx={{
+        backgroundColor: "#2D2D2D",
+        borderRadius: "10px",
+        padding: "16px",
+        boxShadow: "0px 6px 12px rgba(0, 0, 0, 0.3)",
+        // Remover o maxHeight para evitar o scroll
+        "&::-webkit-scrollbar": {
+          width: "10px",
+        },
+        "&::-webkit-scrollbar-thumb": {
+          backgroundColor: "#DF0050",
+          borderRadius: "10px",
+        },
+        "&::-webkit-scrollbar-track": {
+          backgroundColor: "#444444",
+          borderRadius: "10px",
+        },
+      }}
+    >
+      <Table sx={{ minWidth: "100%" }}>
+        <TableHead>
+          <TableRow>
+            <TableCell
+              sx={{
+                color: "white",
+                fontWeight: "500",
+                fontSize: "1.1rem",
+                borderBottom: "2px solid white",
+                paddingBottom: "12px",
+              }}
+            >
+              Categoria
+            </TableCell>
+            <TableCell
+              sx={{
+                color: "white",
+                fontWeight: "500",
+                fontSize: "1.1rem",
+                borderBottom: "2px solid white",
+                paddingBottom: "12px",
+              }}
+            >
+              Ações
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {categorias.length > 0 ? (
+            categorias.map((categoria) => (
+              <TableRow
+                key={categoria.id}
+                sx={{
+                  "&:hover": { backgroundColor: "#333333" },
+                }}
+              >
+                <TableCell
+                  sx={{
+                    color: "#FFFFFF",
+                    fontSize: "1rem",
+                    padding: "16px",
+                    borderBottom: "1px solid #444444",
+                  }}
+                >
+                  {categoria.nome}
+                </TableCell>
+                <TableCell
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    padding: "16px",
+                  }}
+                >
+                  <button
+                    onClick={() => {
+                      setNewCategoria({ nome: categoria.nome });
+                      setCurrentId(categoria.id);
+                      handleOpenEditCategoria();
+                    }}
+                    style={{
+                      backgroundColor: "#4169E1",
+                      color: "#FFFFFF",
+                      padding: "8px 20px",
+                      borderRadius: "5px",
+                      border: "none",
+                      cursor: "pointer",
+                      fontWeight: "500",
+                      transition: "all 0.3s ease",
+                    }}
+                  >
+                    Editar
+                  </button>
+                  <button
+                    onClick={async () => {
+                      try {
+                        await estoqueService.deleteCategoria(categoria.id);
+                        setCategorias(
+                          categorias.filter((c) => c.id !== categoria.id)
+                        );
+                        setSnackbarMessage(
+                          "Categoria excluída com sucesso!"
+                        );
+                        setSnackbarOpen(true);
+                      } catch (error) {
+                        console.error("Erro ao excluir categoria:", error);
+                      }
+                    }}
+                    style={{
+                      backgroundColor: "#8d0c0c",
+                      color: "#FFFFFF",
+                      padding: "8px 20px",
+                      borderRadius: "5px",
+                      border: "none",
+                      cursor: "pointer",
+                      fontWeight: "500",
+                      transition: "all 0.3s ease",
+                    }}
+                  >
+                    Excluir
+                  </button>
+                </TableCell>
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell
+                colSpan={2}
+                sx={{
+                  textAlign: "center",
+                  color: "#BDBDBD",
+                  fontSize: "1.1rem",
+                  padding: "20px",
+                }}
+              >
+                Nenhuma categoria encontrada
+              </TableCell>
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  </DialogContent>
+  <DialogActions sx={{ justifyContent: "center", paddingTop: "20px" }}>
+    <button
+      onClick={handleCloseManageCategoria}
+      style={{
+        backgroundColor: "#8d0c0c",
+        color: "#FFFFFF",
+        padding: "12px 24px",
+        borderRadius: "5px",
+        fontWeight: "600",
+        fontSize: "1.1rem",
+        border: "none",
+        cursor: "pointer",
+        transition: "all 0.3s ease",
+      }}
+    >
+      Fechar
+    </button>
+  </DialogActions>
+</Dialog>
+
+
+<Dialog
+  open={openEditCategoria}
+  onClose={handleCloseEditCategoria}
+  sx={{
+    "& .MuiPaper-root": {
+      borderRadius: "20px",
+      padding: "24px",
+      maxWidth: "500px",
+      backgroundColor: "#1B1B1B",
+      color: "#ffffff",
+      boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.5)",
+    },
+  }}
+>
+  <DialogTitle
+    sx={{
+      textAlign: "center",
+      fontWeight: "bold",
+      fontSize: "1.75rem",
+      color: "white",
+      marginBottom: "16px",
+    }}
+  >
+    Editar Categoria
+  </DialogTitle>
+  <DialogContent>
+    <input className="input-filter"
+      autoFocus
+      margin="dense"
+      name="nome"
+      label="Nome da Categoria"
+      type="text"
+      fullWidth
+      value={newCategoria.nome}
+      onChange={(e) => setNewCategoria({ ...newCategoria, nome: e.target.value })}
+    />
+  </DialogContent>
+  <DialogActions sx={{ justifyContent: "center", marginTop: "24px" }}>
+    <button
+        onClick={async () => {
+          try {
+            await estoqueService.updateCategoria(currentId, newCategoria);
+            setCategorias((prevCategorias) => 
+              prevCategorias.map((categoria) => 
+                categoria.id === currentId ? { ...categoria, nome: newCategoria.nome } : categoria
+              )
+            );
+            
+            setSnackbarMessage("Categoria atualizada com sucesso!");
+            setSnackbarOpen(true);
+            handleCloseEditCategoria();
+            handleCloseManageCategoria(); 
+            handleCloseCategoria();
+
+          } catch (error) {
+            console.error("Erro ao atualizar categoria:", error);
+          }
+        }}
+      style={{
+        backgroundColor: "#4169E1",
+        color: "#ffffff",
+        padding: "10px 30px",
+        borderRadius: "5px",
+        fontWeight: "bold",
+        fontSize: "1rem",
+        border: "none",
+        cursor: "pointer",
+        marginRight: "10px",
+        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.3)",
+        transition: "all 0.3s",
+      }}
+    >
+      Salvar
+    </button>
+    <button
+      onClick={handleCloseEditCategoria}
+      style={{
+        backgroundColor: "#8d0c0c",
+        color: "#ffffff",
+        padding: "10px 30px",
+        borderRadius: "5px",
+        fontWeight: "bold",
+        fontSize: "1rem",
+        border: "none",
+        cursor: "pointer",
+        transition: "all 0.3s",
+      }}
+    >
+      Cancelar
+    </button>
+  </DialogActions>
+</Dialog>
+
     </div>
   );
 };

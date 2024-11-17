@@ -74,6 +74,27 @@ const estoqueService = {
       throw error;
     }
   },
+  deleteCategoria: async function(id) {
+    this.setCredentials();
+    try {
+      await axios.delete(`${url}/categorias/${id}`, { headers: this.headers });
+    } catch (error) {
+      console.error('Erro ao deletar categoria:', error);
+      throw error;
+    }
+  },
+
+  updateCategoria: async function(id, categoriaData) {
+    this.setCredentials();
+    try {
+      const response = await axios.put(`${url}/categorias/${id}`, categoriaData, { headers: this.headers });
+      return response.data;
+    } catch (error) {
+      console.error('Erro ao atualizar categorias:', error);
+      throw error;
+    }
+  }
+
 };
 
 export default estoqueService;

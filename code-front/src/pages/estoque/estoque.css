@@ -201,8 +201,46 @@ h1 {
     border: none;
     border-radius: 5px;
 }
-/* 
-.botao-cancelar:hover {
-  background-color: red;
-} */
 
+.MuiTextField-root{
+  border: none;
+  outline: none;
+}
+
+.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input:hover{
+  border: white;
+}
+
+.input-filter {
+  background-color: white;
+  width: 100%; 
+  max-width: 500px;
+  padding: 12px; 
+  margin: 10px 10px 10px 0; 
+  border: none; 
+  border-radius: 20px; 
+  font-size: 16px;
+  outline: none;
+}
+
+.MuiDialogTitle-root+.css-kw13he-MuiDialogContent-root{
+  overflow-x: hidden;
+}
+
+/* Estilo do scroll para o navegador WebKit */
+::-webkit-scrollbar {
+  width: 8px; /* Largura da barra de rolagem */
+  height: 8px; /* Altura da barra de rolagem horizontal (caso exista) */
+}
+
+/* Cor da parte do fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Cor de fundo da área do scroll */
+  border-radius: 10px; /* Bordas arredondadas */
+}
+
+/* Cor da barra de rolagem */
+::-webkit-scrollbar-thumb {
+  background: #363434; /* Cor da barra de rolagem */
+  border-radius: 10px; /* Bordas arredondadas */
+}
