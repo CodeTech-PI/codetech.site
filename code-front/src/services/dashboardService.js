@@ -13,7 +13,7 @@ const dashboardService = {
     };
   },
 
-fetchData1: async function() {
+getFaturamentos: async function() {
     debugger
     this.setCredentials();
   try {
@@ -25,7 +25,7 @@ fetchData1: async function() {
   }
 },
 
-fetchData2: async function() {
+getAgendamentos: async function() {
     debugger
     this.setCredentials();
   try {
@@ -36,7 +36,7 @@ fetchData2: async function() {
     throw error;
   }
 },
-fetchData3: async function() {
+getProdutos: async function() {
     debugger
     this.setCredentials();
   try {
@@ -46,6 +46,18 @@ fetchData3: async function() {
     console.error('Error fetching produtos', error);
     throw error;
   }
+},
+
+fetchData4: async function() {
+  debugger
+  this.setCredentials();
+try {
+  const response = await axios.get(`${url}/produtos`, {headers: this.headers});
+  return response.data;
+} catch (error) {
+  console.error('Error fetching kpi produtos', error);
+  throw error;
+}
 },
 
 };
