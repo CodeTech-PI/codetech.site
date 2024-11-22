@@ -322,14 +322,30 @@ const handleCloseEditCategoria = () => {
         </DialogTitle>
         <DialogContent>
           <TextField
-            autoFocus
             margin="dense"
             name="nome"
-            label="Nome"
             type="text"
             fullWidth
             value={newItem.nome}
             onChange={handleInputChange}
+            variant="outlined"
+            placeholder="Digite o nome do produto"
+            InputLabelProps={{
+              shrink: false,
+            }}
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  border: "none",
+                },
+                "&:hover fieldset": {
+                  border: "none",
+                },
+                "&.Mui-focused fieldset": {
+                  border: "none",
+                },
+              },
+            }}
           />
           <TextField
             margin="dense"
@@ -479,7 +495,7 @@ const handleCloseEditCategoria = () => {
             </Select>
           </FormControl>
         </DialogContent>
-        <DialogActions>
+        <DialogActions className="botoes-cadast-produto">
           <button onClick={handleAddItem} className="botao-salvar">
             Salvar
           </button>
@@ -509,7 +525,7 @@ const handleCloseEditCategoria = () => {
     sx={{
       textAlign: "center",
       fontWeight: "bold",
-      fontSize: "1.75rem",
+      fontSize: "25px",
       color: "white",
       marginBottom: "16px",
     }}
@@ -538,7 +554,7 @@ const handleCloseEditCategoria = () => {
         style={{
           color: "white",
           textDecoration: "none",
-          fontSize: "18px",
+          fontSize: "15px",
           fontWeight: "500",
         }}
         onMouseEnter={(e) => (e.target.style.textDecoration = "underline")}
@@ -556,10 +572,10 @@ const handleCloseEditCategoria = () => {
       style={{
         backgroundColor: "#4169E1",
         color: "#ffffff",
-        padding: "10px 30px",
+        height: "30px",
+        width: "70px",
         borderRadius: "5px",
-        fontWeight: "bold",
-        fontSize: "1rem",
+        fontSize: "14px",
         border: "none",
         cursor: "pointer",
         marginRight: "10px",
@@ -574,10 +590,10 @@ const handleCloseEditCategoria = () => {
       style={{
         backgroundColor: "#8d0c0c",
         color: "#ffffff",
-        padding: "10px 30px",
+        height: "30px",
+        width: "70px",
         borderRadius: "5px",
-        fontWeight: "bold",
-        fontSize: "1rem",
+        fontSize: "14px",
         border: "none",
         cursor: "pointer",
         transition: "all 0.3s",
@@ -698,11 +714,12 @@ const handleCloseEditCategoria = () => {
                     style={{
                       backgroundColor: "#4169E1",
                       color: "#FFFFFF",
-                      padding: "8px 20px",
+                      height: "30px",
+                      width: "70px",
                       borderRadius: "5px",
                       border: "none",
                       cursor: "pointer",
-                      fontWeight: "500",
+                      fontSize: "14px",
                       transition: "all 0.3s ease",
                     }}
                   >
@@ -726,11 +743,12 @@ const handleCloseEditCategoria = () => {
                     style={{
                       backgroundColor: "#8d0c0c",
                       color: "#FFFFFF",
-                      padding: "8px 20px",
+                      height: "30px",
+                      width: "70px",
                       borderRadius: "5px",
                       border: "none",
                       cursor: "pointer",
-                      fontWeight: "500",
+                      fontSize: "14px",
                       transition: "all 0.3s ease",
                     }}
                   >
@@ -764,10 +782,10 @@ const handleCloseEditCategoria = () => {
       style={{
         backgroundColor: "#8d0c0c",
         color: "#FFFFFF",
-        padding: "12px 24px",
+        height: "30px",
+        width: "70px",
         borderRadius: "5px",
-        fontWeight: "600",
-        fontSize: "1.1rem",
+        fontSize: "14px",
         border: "none",
         cursor: "pointer",
         transition: "all 0.3s ease",
