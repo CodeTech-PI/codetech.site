@@ -570,7 +570,7 @@ const handleCloseEditCategoria = () => {
     <button
       onClick={handleAddCategoria}
       style={{
-        backgroundColor: "#4169E1",
+        backgroundColor: "#2E8B57",
         color: "#ffffff",
         height: "30px",
         width: "70px",
@@ -856,12 +856,12 @@ const handleCloseEditCategoria = () => {
           }
         }}
       style={{
-        backgroundColor: "#4169E1",
+        backgroundColor: "#2E8B57",
         color: "#ffffff",
-        padding: "10px 30px",
+        height: "30px",
+        width: "70px",
         borderRadius: "5px",
-        fontWeight: "bold",
-        fontSize: "1rem",
+        fontSize: "14px",
         border: "none",
         cursor: "pointer",
         marginRight: "10px",
@@ -876,10 +876,10 @@ const handleCloseEditCategoria = () => {
       style={{
         backgroundColor: "#8d0c0c",
         color: "#ffffff",
-        padding: "10px 30px",
+        height: "30px",
+        width: "70px",
         borderRadius: "5px",
-        fontWeight: "bold",
-        fontSize: "1rem",
+        fontSize: "14px",
         border: "none",
         cursor: "pointer",
         transition: "all 0.3s",
