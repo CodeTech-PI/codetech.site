@@ -30,6 +30,7 @@ function App() {
     <Router>
 
       <Routes>
+
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/estoque" element={<Estoque />} />
@@ -38,8 +39,8 @@ function App() {
         <Route path="/minimalista" element={<Minimalista />} />
         <Route path="/realista" element={<Realista />} />
         <Route path="/guerreiras" element={<Guerreiras />} />
-        <Route path="/clientes" element={<Cliente />} /> 
-        <Route path="/listaProdutosService" element={<ListaProdutos />} /> 
+        <Route path="/clientes" element={<Cliente />} />
+        <Route path="/listaProdutosService" element={<ListaProdutos />} />
         <Route path="/filiais" element={<Filiais />} />
         <Route path="/chatbot" element={<Chatbot />} />
 
