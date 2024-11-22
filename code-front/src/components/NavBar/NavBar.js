@@ -39,7 +39,6 @@ const NavBar = () => {
         />
         <ul>
           <li  onClick={handleGuerreirasClick}>Guerreiras</li>
-          <li>Cuidados</li>
           <li onClick={download}>Anamnese</li>
           <li onClick={handleLoginClick}>Login</li>
         </ul>
