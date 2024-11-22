@@ -7,13 +7,16 @@
 .css-rvoa5x-MuiTypography-root-MuiDialogTitle-root { /* Título */
   text-align: center;
   color: white;
+  font-size: 25px !important;
 }
-.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input {
+.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input, .css-w76bbz-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
   outline: none !important;
   border-radius: 10px !important;
   background-color: #d9d9d9 !important;
   height: 10px !important; 
 }
+
+
 .css-dialog-content {
   display: flex !important;
   flex-direction: column !important;
@@ -53,65 +56,50 @@ h1 {
 
 .estoque-table {
   width: 100%;
-  /* Para garantir que a tabela ocupe toda a largura disponível */
-  /* border-collapse: collapse; */
-  /* Colapsa bordas */
-  /* background-color: #808080; */
-  /* Cor da tabela cinza */
+
 }
 
 .estoque-table th,
 .estoque-table td {
   padding: 10px;
-  /* Espaçamento interno das células */
   text-align: left;
   border: none;
-  /* Alinhamento do texto */
 }
 
 .estoque-table th {
   background-color: #1B1B1B;
-  /* Cor de fundo para o cabeçalho */
   color: #fff;
-  /* Cor do texto do cabeçalho */
   font-weight: bold;
-  /* Negrito para o texto do cabeçalho */
 }
 
 .estoque-table tr:nth-child(even) {
   background-color: #363434;
 
-  /* Cor cinza claro para linhas pares */
 }
 
 .estoque-table tr:nth-child(odd) td {
-  color: #fff; /* Define a cor do texto das linhas ímpares para branco */
+  color: #fff; 
 }
 
 .estoque-table tr:nth-child(even) td{
   color: #fff;
 }
 
-/* .estoque-table tr:hover { */
-  /* background-color: #c0c0c0; */
-  /* Cor ao passar o mouse sobre a linha */
-/* } */
 
 .estoque-table .action-buttons {
   display: flex;
-  /* Usar flexbox para os botões */
   gap: 10px;
-  /* Espaçamento entre os botões */
 }
 
 .dialog-title {
   color: red;
-  /* Cor do título do diálogo */
+  
 }
+
+
 
 .dialog-content {
   margin-top: 20px;
-  /* Margem superior para o conteúdo do diálogo */
 }
 .filtros {
   display: flex;
@@ -201,8 +189,50 @@ h1 {
     border: none;
     border-radius: 5px;
 }
-/* 
-.botao-cancelar:hover {
-  background-color: red;
-} */
 
+.css-15fu35s-MuiDialogActions-root{
+  justify-content: center !important;
+}
+
+.MuiTextField-root{
+  border: none;
+  outline: none;
+}
+
+.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input:hover{
+  border: white;
+}
+
+.input-filter {
+  background-color: white;
+  width: 100%; 
+  max-width: 500px;
+  padding: 12px; 
+  margin: 10px 10px 10px 0; 
+  border: none; 
+  border-radius: 10px; 
+  font-size: 16px;
+  outline: none;
+}
+
+.MuiDialogTitle-root+.css-kw13he-MuiDialogContent-root{
+  overflow-x: hidden;
+}
+
+/* Estilo do scroll para o navegador WebKit */
+::-webkit-scrollbar {
+  width: 8px; /* Largura da barra de rolagem */
+  height: 8px; /* Altura da barra de rolagem horizontal (caso exista) */
+}
+
+/* Cor da parte do fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Cor de fundo da área do scroll */
+  border-radius: 10px; /* Bordas arredondadas */
+}
+
+/* Cor da barra de rolagem */
+::-webkit-scrollbar-thumb {
+  background: #363434; /* Cor da barra de rolagem */
+  border-radius: 10px; /* Bordas arredondadas */
+}
