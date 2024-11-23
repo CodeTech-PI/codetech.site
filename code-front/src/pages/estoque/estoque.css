@@ -1,19 +1,26 @@
-.css-10d30g3-MuiPaper-root-MuiDialog-paper { /* Fundo */
+.css-10d30g3-MuiPaper-root-MuiDialog-paper {
+  /* Fundo */
   width: 30%;
   background-color: #1b1b1b !important;
   padding-bottom: 10px;
   border-radius: 5px;
 }
-.css-rvoa5x-MuiTypography-root-MuiDialogTitle-root { /* Título */
+
+.css-rvoa5x-MuiTypography-root-MuiDialogTitle-root {
+  /* Título */
   text-align: center;
   color: white;
   font-size: 25px !important;
+  padding-bottom: 7px !important;
 }
-.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input, .css-w76bbz-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+
+.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input,
+.css-w76bbz-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
   outline: none !important;
   border-radius: 10px !important;
   background-color: #d9d9d9 !important;
-  height: 10px !important; 
+  height: 10px !important;
+  margin-top: 9px !important;
 }
 
 
@@ -21,9 +28,10 @@
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  justify-content: center !important; 
+  justify-content: center !important;
   padding: 20px !important;
 }
+
 .css-text-field {
   width: 70% !important;
   background-color: #d9d9d9 !important;
@@ -78,10 +86,10 @@ h1 {
 }
 
 .estoque-table tr:nth-child(odd) td {
-  color: #fff; 
+  color: #fff;
 }
 
-.estoque-table tr:nth-child(even) td{
+.estoque-table tr:nth-child(even) td {
   color: #fff;
 }
 
@@ -93,7 +101,7 @@ h1 {
 
 .dialog-title {
   color: red;
-  
+
 }
 
 
@@ -101,138 +109,200 @@ h1 {
 .dialog-content {
   margin-top: 20px;
 }
+
 .filtros {
   display: flex;
-  justify-content: space-between; /* Espaçamento igual entre os filtros */
-  align-items: center; /* Alinha os itens verticalmente */
-  margin: 20px 0; 
-/* Margem acima e abaixo dos filtros */
+  justify-content: space-between;
+  /* Espaçamento igual entre os filtros */
+  align-items: center;
+  /* Alinha os itens verticalmente */
+  margin: 20px 0;
+  /* Margem acima e abaixo dos filtros */
 }
 
 .filtros .MuiTextField-root {
-  flex: 1; /* Faz com que o campo de texto ocupe o espaço disponível */
-  margin-right: 16px; /* Espaçamento à direita do campo de texto */
- 
+  flex: 1;
+  /* Faz com que o campo de texto ocupe o espaço disponível */
+  margin-right: 16px;
+  /* Espaçamento à direita do campo de texto */
+
 }
 
 .filtros .MuiSelect-root {
-  flex: 1; /* Faz com que o select ocupe o espaço disponível */
- 
+  flex: 1;
+  /* Faz com que o select ocupe o espaço disponível */
+
 }
 
 /* Estilização do Select */
 .MuiSelect-root {
-  background-color: #f9f9f9; /* Cor de fundo */
-  border-radius: 4px; /* Bordas arredondadas */
-  padding: 10px; /* Espaçamento interno */
-  border: 1px solid #ccc; /* Borda */
+  background-color: #f9f9f9;
+  /* Cor de fundo */
+  border-radius: 4px;
+  /* Bordas arredondadas */
+  padding: 10px;
+  /* Espaçamento interno */
+  border: 1px solid #ccc;
+  /* Borda */
 }
 
 .MuiSelect-root:hover {
-  border-color: #007bff; /* Cor da borda ao passar o mouse */
+  border-color: #007bff;
+  /* Cor da borda ao passar o mouse */
 }
 
 .MuiSelect-root:focus {
-  border-color: #007bff; /* Cor da borda ao focar */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra ao focar */
+  border-color: #007bff;
+  /* Cor da borda ao focar */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  /* Sombra ao focar */
 }
 
 /* Estilização do campo de texto */
 .MuiTextField-root {
   /* background-color: #df0050; */
-  border-radius: 4px; /* Bordas arredondadas */
-  border: 1px solid #ccc; /* Borda */
+  border-radius: 4px;
+  /* Bordas arredondadas */
+  border: 1px solid #ccc;
+  /* Borda */
 }
 
 .MuiTextField-root:hover {
-  border-color: #007bff; /* Cor da borda ao passar o mouse */
+  border-color: #007bff;
+  /* Cor da borda ao passar o mouse */
 }
 
 .MuiTextField-root:focus-within {
-  border-color: #000000; /* Cor da borda ao focar */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra ao focar */
+  border-color: #000000;
+  /* Cor da borda ao focar */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  /* Sombra ao focar */
 }
+
 /* styles.css */
 .textField {
-  background-color: #f0f0f0; /* Cor cinza claro */
-  margin-right: 16px; /* Margem à direita */
+  background-color: #f0f0f0;
+  /* Cor cinza claro */
+  margin-right: 16px;
+  /* Margem à direita */
 }
 
 
 /* Estilização do container de filtros */
 .filtros {
-  background-color: #575050; /* Cor de fundo do container */
-  padding: 16px; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra do container */
+  background-color: #575050;
+  /* Cor de fundo do container */
+  padding: 16px;
+  /* Espaçamento interno */
+  border-radius: 8px;
+  /* Bordas arredondadas */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  /* Sombra do container */
 }
+
 .botao-cancelar {
   cursor: pointer;
-    align-items: center;
-    color: white;
-    background-color: #8d0c0c;
-    height: 30px;
-    font-size: 14px;
-    width: 70px;
-    border: none;
-    border-radius: 5px;
+  align-items: center;
+  color: white;
+  background-color: #8d0c0c;
+  height: 30px;
+  font-size: 14px;
+  width: 70px;
+  border: none;
+  border-radius: 5px;
 }
 
-.botao-salvar{
+.botao-salvar {
   cursor: pointer;
-    align-items: center;
-    color: white;
-    background-color: #2E8B57;
-    height: 30px;
-    font-size: 14px;
-    width: 70px;
-    border: none;
-    border-radius: 5px;
+  align-items: center;
+  color: white;
+  background-color: #2E8B57;
+  height: 30px;
+  font-size: 14px;
+  width: 70px;
+  border: none;
+  border-radius: 5px;
 }
 
-.css-15fu35s-MuiDialogActions-root{
+.css-15fu35s-MuiDialogActions-root {
   justify-content: center !important;
 }
 
-.MuiTextField-root{
+.MuiTextField-root {
   border: none;
   outline: none;
 }
 
-.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input:hover{
+.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input:hover {
   border: white;
 }
 
 .input-filter {
   background-color: white;
-  width: 100%; 
+  width: 100%;
   max-width: 500px;
-  padding: 12px; 
-  margin: 10px 10px 10px 0; 
-  border: none; 
-  border-radius: 10px; 
+  padding: 12px;
+  margin: 10px 10px 10px 0;
+  border: none;
+  border-radius: 10px;
   font-size: 16px;
   outline: none;
 }
 
-.MuiDialogTitle-root+.css-kw13he-MuiDialogContent-root{
+.form-adc-pro{
+  gap: 10px;
+}
+
+.MuiDialogContent-root, .css-kw13he-MuiDialogContent-root{
+  display: flex ;
+  flex-direction: column ;
+  gap: 10px ;
+  padding: 20px 50px !important;
+}
+
+.input-container-adc-prod {
+  flex-direction: column;
+  justify-content: space-between;
+  display: flex;
+}
+
+.input-adc-prod {
+  height: 40px;
+  background: #d9d9d9;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+}
+
+.label-adc-prd{
+  margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.MuiDialogTitle-root+.css-kw13he-MuiDialogContent-root {
   overflow-x: hidden;
 }
 
 /* Estilo do scroll para o navegador WebKit */
 ::-webkit-scrollbar {
-  width: 8px; /* Largura da barra de rolagem */
-  height: 8px; /* Altura da barra de rolagem horizontal (caso exista) */
+  width: 8px;
+  /* Largura da barra de rolagem */
+  height: 8px;
+  /* Altura da barra de rolagem horizontal (caso exista) */
 }
 
 /* Cor da parte do fundo da barra de rolagem */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Cor de fundo da área do scroll */
-  border-radius: 10px; /* Bordas arredondadas */
+  background: #f1f1f1;
+  /* Cor de fundo da área do scroll */
+  border-radius: 10px;
+  /* Bordas arredondadas */
 }
 
 /* Cor da barra de rolagem */
 ::-webkit-scrollbar-thumb {
-  background: #363434; /* Cor da barra de rolagem */
-  border-radius: 10px; /* Bordas arredondadas */
+  background: #363434;
+  /* Cor da barra de rolagem */
+  border-radius: 10px;
+  /* Bordas arredondadas */
 }

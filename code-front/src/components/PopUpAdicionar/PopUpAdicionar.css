@@ -1,21 +1,3 @@
-/* src/components/PopUpAdicionar.css */
-
-
-
-  
-  /* .custom-modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    right: auto;
-    bottom: auto;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  } */
 
   .custom-modal {
   position: absolute;
@@ -28,7 +10,6 @@
   padding: 20px;
   background-color: #1b1b1b;
   border-radius: 8px;
-  box-shadow: 0 0 3px rgba(223, 0, 80, 0.5);
 }
   
   .custom-overlay {
@@ -96,21 +77,17 @@ button-container {
   margin: 0 10px;
 }
 
-
-
-/* .custom-modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  right: auto;
-  bottom: auto;
-  transform: translate(-50%, -50%);
-  width: 700px;
-  padding: 20px;
-  background-color: #1b1b1b;
-  border-radius: 8px;
-  box-shadow: 0 0 3px rgba(223, 0, 80, 0.5);
-} */
+.botao-alterar-adicionar{
+  width: 70px;
+  height: 30px;
+  background-color: #2E8B57;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  align-items: center;
+  cursor: pointer;
+}
 
 .form-container {
   gap: 2px;

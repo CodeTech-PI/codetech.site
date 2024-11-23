@@ -13,7 +13,7 @@ const Guerreiras = () => {
         <NavBar />
             <ImagemTexto 
                 title="Projeto de Tatuagem Reconstrutiva para Mulheres que passaram pela Mastectomia"
-                image="/imagens/imagem8projetoSocial.jpg"
+                image="/imagens/tatuagem-peito.png"
                 descricao="Descrição da imagem"
                 texto="Como tatuadora, acredito que a arte pode transformar não apenas o corpo, mas também a alma. É com esse espírito que criei um projeto especial voltado para mulheres que passaram pela retirada da mama devido ao câncer de mama. Este projeto é uma maneira de ajudar essas mulheres a se sentirem ainda mais belas, com a autoestima elevada e a confiança restaurada. Entendo o impacto emocional e físico que uma cirurgia de mastectomia pode causar, e por isso, ofereço tatuagens reconstrutivas totalmente gratuitas."
             />

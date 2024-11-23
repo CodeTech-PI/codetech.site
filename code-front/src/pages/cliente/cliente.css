@@ -2,11 +2,6 @@
 
   
 
-  /* Estilos para os campos do formulário */
-  /* form label {
-    display: block;
-    margin: 10px 0 5px;
-  } */
   
   form input {
     width: 100%;
@@ -108,10 +103,7 @@
   justify-content: space-around;
 }
 
-/* .cliente-actions button {
-  margin-left: 10px; /* Espaçamento entre os botões */
-/* }  */
-/* src/containers/Cliente/cliente.css */
+
 .container-total {
   /* background-color: red; */
   width: 80%;
