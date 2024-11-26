@@ -38,9 +38,8 @@ function App() {
         <Route path="/minimalista" element={<Minimalista />} />
         <Route path="/realista" element={<Realista />} />
         <Route path="/guerreiras" element={<Guerreiras />} />
-        {/* <Route path="/clientes" element={<Cliente />} />  */}
-        <Route path="/clientes" element={<Atendimento />} /> 
-
+        <Route path="/clientes" element={<Cliente />} /> 
+        <Route path="/atendimento" element={<Atendimento />} /> 
         <Route path="/listaProdutosService" element={<ListaProdutos />} /> 
         <Route path="/filiais" element={<Filiais />} />
         <Route path="/chatbot" element={<Chatbot />} />
