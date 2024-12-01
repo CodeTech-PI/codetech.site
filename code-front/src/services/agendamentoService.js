@@ -22,6 +22,28 @@ const agendamentoService = {
     }
   },
 
+  getAgendamento: async function(id) {
+    this.setCredentials();
+    try {
+      const response = await axios.get(`${url}/agendamentos/${id}`, { headers: this.headers });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  postOrdemServico: async function(userData) {
+    this.setCredentials();
+    try {
+      const response = await axios.post(`${url}/ordens-servicos`, userData, { headers: this.headers });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+
+
 //   getClientes: async function() {
 //     this.setCredentials();
 //     try {
