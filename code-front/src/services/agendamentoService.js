@@ -40,8 +40,17 @@ const agendamentoService = {
     } catch (error) {
       throw error;
     }
-  }
+  },
 
+  getFaturamentoPorId: async function(id) {
+    this.setCredentials();
+    try {
+      const response = await axios.get(`${url}/faturamentos/${id}`, { headers: this.headers });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
 
 
 //   getClientes: async function() {

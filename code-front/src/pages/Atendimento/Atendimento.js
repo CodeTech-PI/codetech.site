@@ -57,6 +57,8 @@ const Atendimento = () => {
   const [filteredProdutos, setFilteredProdutos] = useState([]); // Estado para armazenar os produtos filtrados
   const [selectedProdutos, setSelectedProdutos] = useState([]); // Estado para armazenar os produtos selecionados
   const [agendamentoId, setAgendamentoId] = useState(null); // Estado para armazenar o ID do agendamento
+  const [faturamento, setFaturamento] = useState(null);
+
 
   useEffect(() => {
     clienteService.getClientes()
@@ -238,7 +240,13 @@ const Atendimento = () => {
     };
 
     try {
+      debugger
       const response = await agendamentoService.postOrdemServico(ordemServicoData);
+      if (response) {
+        const ordemServicoId = response.id;
+        const faturamento = await agendamentoService.getFaturamentoPorId(ordemServicoId);
+        setFaturamento(faturamento);
+      }
       if (response) {
         setStep(4); // Avançar para o próximo passo
       } else {
@@ -249,7 +257,6 @@ const Atendimento = () => {
     }
   };
 
-
   {
     step === 3 && (
       <StepContainer>
@@ -259,6 +266,10 @@ const Atendimento = () => {
       </StepContainer>
     )
   }
+
+  const handleCloseFechar = () => {
+    setStep(1); // Voltar para o step 1
+  };
 
 
   return (
@@ -379,27 +390,36 @@ const Atendimento = () => {
                 <Form.Label>Buscar Produto</Form.Label>
                 <Form.Control type="text" value={busca} onChange={handleBusca} />
               </Form.Group>
-              <Form.Group>
+              <Form.Group className='input-label'>
+                <Form.Label>Buscar Produtos</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Digite para buscar produtos..."
+                  value={busca}
+                  onChange={handleBusca}
+                />
+              </Form.Group>
+              <div className='product-list'>
                 {filteredProdutos.map((produto) => (
-                  <div key={produto.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+                  <div key={produto.id} className='product-item'>
                     <Form.Check
                       type="checkbox"
                       label={produto.nome}
-                      checked={selectedProdutos.some((p) => p.id === produto.id)}
+                      checked={selectedProdutos.some((prod) => prod.id === produto.id)}
                       onChange={() => handleProductSelect(produto.id)}
-                      style={{ marginRight: '10px' }}
                     />
-                    {selectedProdutos.some((p) => p.id === produto.id) && (
+                    {selectedProdutos.some((prod) => prod.id === produto.id) && (
                       <Form.Control
                         type="number"
-                        value={selectedProdutos.find((p) => p.id === produto.id).quantidade}
+                        value={selectedProdutos.find((prod) => prod.id === produto.id).quantidade}
                         onChange={(e) => handleQuantidadeChange(produto.id, e.target.value)}
-                        style={{ width: '80px' }}
+                        min="1"
+                        className='quantity-input'
                       />
                     )}
                   </div>
                 ))}
-              </Form.Group>
+              </div>
             </StepContainer>
           )}
 
@@ -442,15 +462,24 @@ const Atendimento = () => {
             </StepContainer>
           )}
 
-          {step === 4 && (
-            <StepContainer>
-              <h5>Finalização</h5>
-              <p>Agendamento realizado com sucesso!</p>
-              <CustomButton variant="success" onClick={handleClose}>
-                Fechar
-              </CustomButton>
-            </StepContainer>
-          )}
+{step === 4 && faturamento && (
+  <StepContainer>
+    <h5>Finalização</h5>
+    <p>Agendamento realizado com sucesso!</p>
+    <h6>Detalhes do Faturamento</h6>
+    <p>
+      Lucro: {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(faturamento.lucro)}
+    </p> {/* Formatação de R$ */}
+    <CustomButton variant="success" onClick={handleCloseFechar}>
+      Fechar
+    </CustomButton>
+  </StepContainer>
+)}
+
+
+
+
+
 
           {/* Botões de navegação */}
           <StepContainer>
