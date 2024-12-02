@@ -1,11 +1,11 @@
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import dashboardService from '../../services/dashboardService';
 import Sidebar from '../../components/SideBar/SideBar';
 import './Dashboard.css';
+import { BiLeftArrow } from 'react-icons/bi';
 
-// Registra os componentes do Chart.js
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const Dashboard = () => {
@@ -117,10 +117,8 @@ const Dashboard = () => {
           datasets: [{
             label: 'Quantidade de Produtos por Categoria',
             data: values3,
-            backgroundColor: 'rgba(153, 102, 255, 0.6)', // Cor do fundo das barras
-            borderColor: 'transparent', // Remove as linhas
-            borderWidth: 0, // Remove as linhas
-            fill: true // Preenche a área abaixo da barra
+            backgroundColor: '#5B85DB',
+            fill: true
           }]
         });
 
@@ -140,11 +138,15 @@ const Dashboard = () => {
     <div className="dashboard">
       <Sidebar />
 
-      {/* KPI de Produto com Menor Quantidade */}
+      <div className='div-kpi'>
+        {/* KPI de Produto com Menor Quantidade */}
       <div className={`kpi-container ${baixoEstoque && baixoEstoque.quantidade < 5 ? 'alert' : ''}`}>
         <h2>Item com baixo estoque</h2>
         {baixoEstoque ? (
-          <p>{baixoEstoque.nome}: {baixoEstoque.quantidade}</p>
+          <span>
+          <p className='produto-baixo-estoque'>{baixoEstoque.nome} </p>
+          <p>{baixoEstoque.quantidade}</p>
+          </span>
         ) : (
           <p>Carregando...</p>
         )}
@@ -169,99 +171,11 @@ const Dashboard = () => {
           <p>Carregando...</p>
         )}
       </div>
-
-      {/* Dashboard de Produtos por Categoria */}
-      <div className="chart-container">
-        <h2>Produtos por Categoria</h2>
-        {data3 ? (
-          <Bar data={data3} options={{
-            responsive: true,
-            plugins: {
-              title: {
-                display: true,
-                text: '',
-                color: '#fff',
-                font: {
-                  size: 16
-                }
-              },
-              tooltip: {
-                backgroundColor: '#333',
-                titleColor: '#fff',
-                bodyColor: '#fff'
-              }
-            },
-            scales: {
-              x: {
-                grid: {
-                  color: '#333' // Cor das linhas do eixo X
-                },
-                ticks: {
-                  color: '#fff' // Cor dos números no eixo X
-                }
-              },
-              y: {
-                grid: {
-                  color: '#333' // Cor das linhas do eixo Y
-                },
-                ticks: {
-                  color: '#fff' // Cor dos números no eixo Y
-                }
-              }
-            }
-          }} />
-        ) : (
-          <p>Carregando...</p>
-        )}
       </div>
-
-      {/* Dashboard de Agendamentos por Mês */}
-      <div className="chart-container">
-        <h2>Agendamentos por Mês</h2>
-        {data2 ? (
-          <Bar data={data2} options={{
-            responsive: true,
-            plugins: {
-              title: {
-                display: true,
-                text: '',
-                color: '#fff',
-                font: {
-                  size: 16
-                }
-              },
-              tooltip: {
-                backgroundColor: '#333',
-                titleColor: '#fff',
-                bodyColor: '#fff'
-              }
-            },
-            scales: {
-              x: {
-                grid: {
-                  color: '#333' // Cor das linhas do eixo X
-                },
-                ticks: {
-                  color: '#fff' // Cor dos números no eixo X
-                }
-              },
-              y: {
-                grid: {
-                  color: '#333' // Cor das linhas do eixo Y
-                },
-                ticks: {
-                  color: '#fff' // Cor dos números no eixo Y
-                }
-              }
-            }
-          }} />
-        ) : (
-          <p>Carregando...</p>
-        )}
-      </div>
-
-      {/* Dashboard de Lucro Mensal */}
-      <div className="chart-container">
+      
+      <div className='div-grafico'>
+        {/* Dashboard de Lucro Mensal */}
+      <div className="chart-containerLucro">
         <h2>Lucro Mensal</h2>
         {data1 ? (
           <Bar data={data1} options={{
@@ -303,6 +217,119 @@ const Dashboard = () => {
         ) : (
           <p>Carregando...</p>
         )}
+      </div>
+      </div>
+
+      <div className='div-graficos-dupla'>
+      {/* Dashboard de Produtos por Categoria */}
+      <div className="chart-container">
+  {data3 ? (
+    <Bar 
+      data={data3} 
+      options={{
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Produtos por Categoria',
+            color:'#FB3F83',
+            font: {
+              size: 14
+            }
+          },
+          legend: { 
+            display: true, 
+            position: "bottom",
+            labels: { 
+              color: '#515151', 
+              font: { 
+                size: 10,
+                weight: 'bold',
+                boxWidth: 5, // Largura do quadrado de cor da legenda 
+          }}},
+          tooltip: {
+            backgroundColor: '#333',
+            titleColor: '#fff',
+            bodyColor: '#fff'
+          }
+        },
+        scales: {
+          x: {
+            grid: {
+              display: true, 
+              drawBorder: true,
+              borderColor: '#fff',
+              drawTicks: false,
+            },
+            ticks: {
+              color: '#fff',
+            }
+          },
+          y: {
+            grid: {
+              display: true, 
+              drawBorder: true,
+              drawOnChartArea: false,
+              drawTicks: false,
+            },
+            ticks: {
+              color: '#fff',
+              stepSize: 2,
+            }
+          }
+        }
+      }}
+    />
+  ) : (
+    <p>Carregando...</p>
+  )}
+</div>
+
+      
+       {/* Dashboard de Agendamentos por Mês */}
+       <div className="chart-container">
+        <h2>Agendamentos por Mês</h2>
+        {data2 ? (
+          <Bar data={data2} options={{
+            responsive: true,
+            plugins: {
+              title: {
+                display: true,
+                text: '',
+                color: '#fff',
+                font: {
+                  size: 16
+                }
+              },
+              tooltip: {
+                backgroundColor: '#333',
+                titleColor: '#fff',
+                bodyColor: '#fff'
+              }
+            },
+            scales: {
+              x: {
+                grid: {
+                  color: '#ffffff00' // Cor das linhas do eixo X
+                },
+                ticks: {
+                  color: '#fff' // Cor dos números no eixo X
+                }
+              },
+              y: {
+                grid: {
+                  color: '#ffffff00' // Cor das linhas do eixo Y
+                },
+                ticks: {
+                  color: '#fff' // Cor dos números no eixo Y
+                }
+              }
+            }
+          }} />
+        ) : (
+          <p>Carregando...</p>
+        )}
+      </div>
       </div>
     </div>
   );

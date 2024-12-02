@@ -12,12 +12,12 @@ const Minimalista =() =>{
     <NavBar/>
        <Carrossel
        tituloCarrosel="Minimalista"
-       image1="imagens/minimalista.png"  descricao1="Foto de tatuagem 1"
-       image2="imagens/minimalista.png"  descricao2="Foto de tatuagem 2"
-       image3="imagens/minimalista.png"  descricao3="Foto de tatuagem 3"
-       image4="imagens/aquarela.png"  descricao4="Foto de tatuagem 4"
-       image5="imagens/minimalista.png"  descricao5="Foto de tatuagem 5"
-       image6="imagens/aquarela.png"  descricao6="Foto de tatuagem 6"
+       image2="imagens/minimalista.jpeg"  descricao2="Foto de tatuagem 1"
+       image1="imagens/minimalista3.png"  descricao1="Foto de tatuagem 2"
+       image3="imagens/minimalista2.jpeg"  descricao3="Foto de tatuagem 3"
+       image4="imagens/minimalista7.jpeg"  descricao4="Foto de tatuagem 4"
+       image5="imagens/minimalista5.jpeg"  descricao5="Foto de tatuagem 5"
+       image6="imagens/minimalista6.jpeg"  descricao6="Foto de tatuagem 6"
        />
        <div className='container-icones-contato'>
                <IconesContato
@@ -28,13 +28,15 @@ const Minimalista =() =>{
                img="./imagens/chat-bot.png" desc="Icone com a imagem de um robozinho"
                />
            </div>
+           <br></br>
            <Botao
            link="https://wa.me/5511941834736"
             botao="Agendar"
             />
+            <br></br>
+            <br></br>
        <Footer/>
        </div>
-       
     )
 }
 

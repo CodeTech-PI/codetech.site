@@ -5,7 +5,7 @@ import Sidebar from '../../components/SideBar/SideBar';
 import './cliente.css'; // Ou qualquer outro arquivo de estilo que você esteja usando
 import BotaoAlterar from '../../components/BotaoAlterar/BotaoAlterar';
 import BotaoExcluir from '../../components/BotaoExcluir/BotaoExcluir';
-import BotaoCliente from '../../components/BotaoCliente/BotaoCliente';
+import BotaoRosa from '../../components/BotaoRosa/BotaoRosa';
 
 const Cliente = () => {
   const [clientes, setClientes] = useState([]);
@@ -110,9 +110,9 @@ const Cliente = () => {
           className="filter-input"
         />
 
-        <BotaoCliente
+        <BotaoRosa
           onClick={openModal}
-          nomeBotao='Adicionar Usuário'
+          nomeBotao='Incluir Cliente'
         />
         <PopUpAdicionar
           isOpen={modalIsOpen}
@@ -136,13 +136,13 @@ const Cliente = () => {
               <div key={cliente.id} className="cliente-item">
                 <div className="container-cliente-info">
                   <div className='cliente-info1'>
-                    <p><strong>Nome:</strong> {cliente.nome}</p>
-                    <p><strong>CPF:</strong> {cliente.cpf}</p>
-                    <p><strong>E-mail:</strong> {cliente.email}</p>
+                    <p><strong>Nome:</strong><span className='span-space'> {cliente.nome}</span></p>
+                    <p><strong>CPF:</strong><span className='span-space'> {cliente.cpf}</span></p>
+                    <p><strong>E-mail:</strong><span className='span-space'> {cliente.email}</span></p>
                   </div>
                   <div className='cliente-info2'>
-                    <p><strong>Telefone:</strong> {cliente.telefone}</p>
-                    <p><strong>Data de Nascimento.:</strong> {cliente.dataNascimento}</p>
+                    <p><strong>Telefone:</strong><span className='span-space'> {cliente.telefone}</span></p>
+                    <p><strong>Data de Nascimento.:</strong><span className='span-space'> {cliente.dataNascimento}</span></p>
                   </div>
                 </div>
                 <div className="cliente-actions">

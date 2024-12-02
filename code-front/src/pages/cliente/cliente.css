@@ -18,7 +18,6 @@
 
 .filter-input {
   background-color: #1B1B1B;
-  
   width: 100%; /* O campo ocupa toda a largura disponível */
   max-width: 500px; /* Largura máxima para o campo */
   padding: 12px; /* Aumentar o espaçamento interno */
@@ -31,7 +30,7 @@
 
 /* Efeito ao passar o mouse no campo de entrada */
 .filter-input:focus {
-  border-color: #007BFF; /* Muda a cor da borda ao focar */
+  border-color: #DF0050; /* Muda a cor da borda ao focar */
   outline: none; /* Remove o contorno padrão do navegador */
 }
 
@@ -39,6 +38,7 @@
 .clientes-list {
   display: flex;
   flex-direction: column;
+  width: 1050px;
 }
 
 /* Item da lista de clientes */
@@ -56,8 +56,12 @@
 .container-cliente-info {
   display: flex;
   justify-content: space-between; 
-  width: 70%;
+  width: 80%;
   align-items: center;
+}
+
+.span-space {
+  letter-spacing: 2px;
 }
 
 /* Contêiner para as ações (botões) do cliente */

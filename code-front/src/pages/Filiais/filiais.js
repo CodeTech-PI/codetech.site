@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../../components/SideBar/SideBar";
-import BotaoAlterar from "../../components/BotaoAlterar/BotaoAlterar";
-import BotaoExcluir from "../../components/BotaoExcluir/BotaoExcluir";
-import BotaoCliente from "../../components/BotaoCliente/BotaoCliente";
+import BotaoAlterarIcon from "../../components/BotaoAlterarIcon/BotaoAlterarIcon";
+import BotaoExcluirIcon from "../../components/BotaoExcluirIcon/BotaoExcluirIcon";
+import BotaoRosa from "../../components/BotaoRosa/BotaoRosa";
 import PopUp from "../../components/PopUp/PopUp";
 import filiaisService from "../../services/filiaisService";
 import './filiais.css';
@@ -100,9 +100,12 @@ const Filial = () => {
 
   return (
     <div className="container-total">
-      <Sidebar />
+      <Sidebar 
+      
+      />
       <div className="content">
         <h1>Filiais</h1>
+        <div className="div-org">
         <input
           type="text"
           placeholder="Filtrar por cidade, estado ou bairro"
@@ -111,15 +114,15 @@ const Filial = () => {
           className="filter-input"
         />
 
-        <BotaoCliente
+        <BotaoRosa
           onClick={openModal}
-          nomeBotao="Adicionar Filial"
+          nomeBotao="Incluir Filial"
         />
+        </div>
 
         {/* PopUp para criar nova filial */}
         <PopUp
           isOpen={modalIsOpen}
-          onRequestClose={closeModal}
           onSubmit={handleCreateFilial}
           initialData={{}}
           fields={[
@@ -131,8 +134,9 @@ const Filial = () => {
             { name: "num", label: "Número", type: "number" },
             { name: "bairro", label: "Bairro" },
           ]}
-          title="Adicionar Filial"
-          submitButtonLabel="Adicionar"
+          title="Incluir Filial"
+          submitButtonLabel="Salvar"
+          onRequestClose={closeModal}
         />
 
         {/* PopUp para editar filial existente */}
@@ -161,22 +165,32 @@ const Filial = () => {
             filteredFiliais.map(filial => (
               <div key={filial.id} className="filial-item">
                 <div className="container-filial-info">
-                  <p><strong>Logradouro:</strong> {filial.logradouro}</p>
-                  <p><strong>Cidade:</strong> {filial.cidade}</p>
-                  <p><strong>Estado:</strong> {filial.estado}</p>
-                  <p><strong>Complemento:</strong> {filial.complemento}</p>
-                  <p><strong>CEP:</strong> {filial.cep}</p>
-                  <p><strong>Número:</strong> {filial.num}</p>
-                  <p><strong>Bairro:</strong> {filial.bairro}</p>
+                  <p><strong>Logradouro:</strong><span className='span-space'> {filial.logradouro}</span></p>
+                  <p><strong>Cidade:</strong><span className='span-space'> {filial.cidade}</span></p>
+                  <p><strong>Estado:</strong><span className='span-space'> {filial.estado}</span></p>
                 </div>
-                <div className="filial-actions">
-                  <BotaoAlterar
-                    nomeBotao="Alterar"
-                    onClick={() => handleEdit(filial)}
+                <div className="container-filial-info2">
+                      <p><strong>Bairro:</strong><span className='span-space'> {filial.bairro}</span></p>
+                      <p><strong>Complemento:</strong><span className='span-space'> {filial.complemento}</span></p>
+                      <p><strong>CEP:</strong><span className='span-space'> {filial.cep}</span></p>
+                </div>
+                <div className="container-filial-info3">
+                  <p><strong>Número:</strong> {filial.num}</p>
+                </div>
+
+                <div className="filial-actions">   
+
+                  <BotaoAlterarIcon 
+                  nomeBotao="Alterar"
+                  onClick={() => handleEdit(filial)}
+                  altText='Ícone de alteração' 
                   />
-                  <BotaoExcluir
+
+                  <BotaoExcluirIcon
                     onClick={() => handleDeleteFilial(filial.id)}
+                    altText='Ícone de excluir' 
                   />
+
                 </div>
               </div>
             ))

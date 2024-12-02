@@ -1,0 +1,22 @@
+.botao-excluir-icon {
+    display: flex;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.botao-excluir-icon .icon-2 {
+    display: flex;
+    width: 35px; 
+    height: 35px; 
+    transition: all 0.3s;
+    content: url('./../../../public/imagens/Delete.png');
+}
+
+.botao-excluir-icon:hover .icon-2 {
+    display: flex;
+    width: 35px; 
+    height: 35px;
+    content: url('./../../../public/imagens/Delete-rosa.png');
+}

@@ -12,12 +12,12 @@ import "./PopUp.css";
 
 const PopUp = ({
   isOpen,
-  onRequestClose,
   onSubmit, 
   initialData = {}, 
   fields = [], 
-  title = "Adicionar Item",
+  title = "",
   submitButtonLabel = "Adicionar", 
+  onRequestClose,
 }) => {
   const [formData, setFormData] = useState(initialData);
 
@@ -42,7 +42,7 @@ const PopUp = ({
   return (
     <Dialog open={isOpen} onClose={onRequestClose} className="custom-dialog">
       <DialogTitle className="dialog-title">{title}</DialogTitle>
-      <form onSubmit={handleSubmit} className="form-container">
+      <form onSubmit={handleSubmit} className="form-containerPopUp">
         <DialogContent>
           {fields.map((field) => (
             <TextField
@@ -59,11 +59,11 @@ const PopUp = ({
           ))}
         </DialogContent>
         <DialogActions className="button-container">
-          <Button onClick={onRequestClose} className="cancel-button">
-            Cancelar
-          </Button>
           <Button type="submit" className="submit-button">
             {submitButtonLabel}
+          </Button>
+          <Button onClick={onRequestClose} className="cancel-button">
+            Cancelar
           </Button>
         </DialogActions>
       </form>

@@ -21,25 +21,25 @@ const EstiloTatto = () => {
 
     return (
         <section className='estilo-tatto'>
-            <h2>Explore nossos estilos e encontre o que fala com você</h2>
+            <h2>Explore nossos estilos e encontre o que fala com você!</h2>
            <div>
-            <CardTatto
-                image="/imagens/realista.png"
-                 descricao="Imagem de uma tatuagem de tigre na cor preta"
+            <CardTatto id='cardRealista'
+                image="/imagens/realista5.png"
+                 descricao="Imagem de uma tatuagem do personagem coragem o cão covarde em preto e cinza"
                 nome='Realista'
                 onClick={handleRealistaClick}
             />
 
             <CardTatto
-                image="/imagens/aquarela.png"
-                descricao="Imagem de uma tatuagem de um gato colorido sorrindo com um chapéu flutuante"
+                image="/imagens/aquarela1.png"
+                descricao="Imagem de uma tatuagem de dois cachorros com cores esfumadas nos olhos"
                 nome='Aquarela'
                 onClick={handleAquarelaClick}
             />
 
             <CardTatto
-                image="/imagens/minimalista.png"
-                descricao='Imagem de um braço com tatuagens pequenas'
+                image="/imagens/minimalista3.png"
+                descricao='Imagem de uma tatuagem de uma mãe leoa e seus dois filhotes.'
                 nome='Minimalista'
                 onClick={handleMinimalistaClick}
             />

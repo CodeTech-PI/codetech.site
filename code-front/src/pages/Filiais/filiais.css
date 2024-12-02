@@ -1,8 +1,43 @@
-form input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
+.filiais-list {
+  display: flex;
+  flex-direction: column;
+  width: 1050px;
+}
+
+.filial-item {
+  display: flex;
+  /* justify-items: flex-end; */
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #1b1b1b;
+  color: #fff;
+}
+
+.container-filial-info,
+.container-filial-info2,
+.container-filial-info3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 75%;
+}
+
+.container-filial-info3 {
+  width: 40%;
+}
+
+.filial-actions {
+  display: flex;
+  align-items: center;
+  width: 15%;
+  justify-content: space-around;
+}
+
+.div-org {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .filter-input {
@@ -14,42 +49,41 @@ form input {
   border: none;
   border-radius: 20px;
   font-size: 16px;
+  color: white;
+  flex: 1;
 }
 
-.filter-input:focus {
-  border-color: #007bff;
+.span-space {
+  letter-spacing: 2px;
+}
+
+/* .container-total {
+  width: 80%;
+  height: 100vh;
+  margin-left: 15%;
+  padding: 20px;
+  box-sizing: border-box;
+} */
+
+/* form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+/* .filter-input:focus {
+  border-color: #DF0050;
   outline: none;
-}
+} */
 
-.filiais-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.filial-item {
-  display: flex;
-  justify-content: space-between;
-  border-radius: 5px;
-  margin: 10px 0;
-  padding: 10px;
-  background-color: #1b1b1b;
-  color: #fff;
-}
-
-.container-filial-info {
-  display: flex;
-  justify-content: space-between;
-  width: 70%;
-  align-items: center;
-}
-
-.filiais-container {
+/* .filiais-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
-.filial-card {
+/* .filial-card {
   display: flex;
   justify-content: space-between;
   border: 1px solid #ccc;
@@ -59,33 +93,18 @@ form input {
   color: #fff;
   width: 100%;
   max-width: 800px;
-}
+} */
 
-.filial-info {
+/* .filial-info {
   flex-grow: 1;
-}
+} */
 
-.filial-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-around;
-}
-
-.container-total {
-  width: 80%;
-  height: 100vh;
-  margin-left: 15%;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.sidebar {
+/* .sidebar {
   flex: 0 0 250px;
-}
+} */
 
-.content {
+/* .content {
   flex: 1;
   padding: 20px;
   width: 80%;
-}
+} */

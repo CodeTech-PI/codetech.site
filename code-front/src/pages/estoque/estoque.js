@@ -19,7 +19,7 @@ import {
 } from "@mui/material";
 import estoqueService from "../../services/estoqueService";
 import "./estoque.css";
-import BotaoCliente from "../../components/BotaoCliente/BotaoCliente";
+import BotaoRosa from "../../components/BotaoRosa/BotaoRosa";
 import BotaoAlterar from "../../components/BotaoAlterar/BotaoAlterar";
 import BotaoExcluir from "../../components/BotaoExcluir/BotaoExcluir";
 import Sidebar from "../../components/SideBar/SideBar";
@@ -255,10 +255,10 @@ const handleCloseEditCategoria = () => {
       <Sidebar />
       <h1>Estoque</h1>
       <div className="botoes-incluir">
-        <BotaoCliente onClick={handleOpen} nomeBotao="Incluir Produto" />
-        <BotaoCliente
+        <BotaoRosa onClick={handleOpen} nomeBotao="Incluir Produto" />
+        <BotaoRosa
           onClick={handleOpenCategoria}
-          nomeBotao="Categoria"
+          nomeBotao="Categorias"
         />
       </div>
     

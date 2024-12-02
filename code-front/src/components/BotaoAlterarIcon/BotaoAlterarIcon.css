@@ -1,0 +1,22 @@
+.botao-alterar-icon {
+    display: flex;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.botao-alterar-icon .icon {
+    display: flex;
+    width: 35px; 
+    height: 35px; 
+    transition: all 0.3s;
+    content: url('./../../../public/imagens/icon-alterar.png');
+}
+
+.botao-alterar-icon:hover .icon {
+    display: flex;
+    width: 35px; 
+    height: 35px;
+    content: url('./../../../public/imagens/icon-alterar-rosa.png');
+}

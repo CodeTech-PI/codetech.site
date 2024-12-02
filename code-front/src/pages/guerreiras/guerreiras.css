@@ -36,12 +36,8 @@
     color: #DF0050; 
 }
 
-
-
 @media screen and (max-width: 1020px){
     .projeto-funcionamento ul {
         padding-left: 15px; 
     }
 }
-
-

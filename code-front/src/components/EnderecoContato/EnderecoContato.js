@@ -16,7 +16,7 @@ const EnderecoContato = () => {
         <IconesLocal
           image="./imagens/mapa.png"
           descricao="Icone com a imagem de um mapa"
-          conteudo="R:Expedicionário João Pereira da Silva Júnior - Jardim Nova América, Bragança Paulista"
+          conteudo="R: Expedicionário João Pereira da Silva Júnior - Jardim Nova América, Bragança Paulista"
         />
         <IconesLocal
           image="./imagens/relogio.png"
@@ -26,12 +26,12 @@ const EnderecoContato = () => {
       </div>
 
       <div className="container-icones-contato">
-        <IconesContato
+        <IconesContato className="zap"
           img="./imagens/whats-app.png"
           desc="Icone com a imagem do WhatsApp, um telefone"
           link="https://wa.me/5511941834736"
         />
-        <IconesContato
+        <IconesContato className="bot"
           onClick={handleChatBotClick}
           img="./imagens/chat-bot.png"
           desc="Icone com a imagem de um robozinho"
