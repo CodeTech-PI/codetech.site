@@ -1,22 +1,66 @@
 .step-container {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .custom-button {
-    margin: 0 5px;
-  }
-  .product-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.custom-button {
+  margin: 0 5px;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .product-box {
-    border: 1px solid #ccc;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  width: 100px;
+  /* Ajuste conforme necessário */
+}
+
+
+.parte-1{
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+}
+
+.atendimento{
+  align-items: center;
+}
+
+.progresso{
+  background-color: #d9d9d9 ;
+}
+
+.input-label{
+  display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 60%;
+}
+
+.input-form{
+  height: 40px!important;
+  background: #d9d9d9!important;
+  border: none!important;
+  border-radius: 10px!important;
+  outline: none!important;
+   width: 100%!important; 
     padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    width: 100px; /* Ajuste conforme necessário */
+  /* display: flex;
+  flex-direction: column;
+    align-items: flex-start; */
+}
+
+.checkbox-cancelado{
+  display: flex;
+    justify-content: center;
+    height: 27px;
+    justify-content: space-around
 }
 

@@ -5,11 +5,13 @@ import agendamentoService from '../../services/agendamentoService';
 import clienteService from '../../services/clienteService';
 import listaProdutosService from '../../services/listaProdutosService';
 import estoqueService from '../../services/estoqueService';
+import Sidebar from '../../components/SideBar/SideBar';
+import './Atendimento.css';
 
 // Estilizando o Modal usando styled-components
 const StyledModal = styled(Modal)`
   .modal-content {
-    background-color: #333;
+    background-color: #1B1B1B;
     color: #fff;
   }
 `;
@@ -21,6 +23,14 @@ const StepContainer = styled.div`
 
 const CustomButton = styled(Button)`
   margin: 0 5px;
+  color: white;
+    background-color: #4169E1;
+    height: 30px;
+    font-size: 14px;
+    width: 70px;
+    border: none;
+    border-radius: 5px;
+    padding: 0;
 `;
 
 const Atendimento = () => {
@@ -201,21 +211,21 @@ const Atendimento = () => {
 
   const handlePostOrdemServico = async () => {
     const { valorTatuagem, dt, horario, cancelado } = formData;
-  
+
     // Verificando se o campo 'horario' tem um valor válido
     if (!horario || !dt) {
       setError("Horário ou data inválidos.");
       return;
     }
-  
+
     // Separando a data e o horário
     const [date, time] = dt.split('T');
     const [hour, minute] = time.split(':');
-  
+
     // Verificando se 'hour' e 'minute' são válidos
     const parsedHour = hour ? parseInt(hour, 10) : 0;
     const parsedMinute = minute ? parseInt(minute, 10) : 0;
-  
+
     const ordemServicoData = {
       valorTatuagem: valorTatuagem || 0,
       agendamento: {
@@ -226,7 +236,7 @@ const Atendimento = () => {
         usuario: selectedUsuario ? { ...selectedUsuario } : null,
       },
     };
-  
+
     try {
       const response = await agendamentoService.postOrdemServico(ordemServicoData);
       if (response) {
@@ -238,211 +248,233 @@ const Atendimento = () => {
       setError("Ocorreu um erro ao tentar salvar a ordem de serviço. Tente novamente.");
     }
   };
-  
-  
-  {step === 3 && (
-    <StepContainer>
-      <CustomButton variant="primary" onClick={handlePostOrdemServico}>
-        Salvar Ordem de Serviço
-      </CustomButton>
-    </StepContainer>
-  )}
-    
+
+
+  {
+    step === 3 && (
+      <StepContainer>
+        <CustomButton variant="primary" onClick={handlePostOrdemServico}>
+          Salvar Ordem de Serviço
+        </CustomButton>
+      </StepContainer>
+    )
+  }
+
 
   return (
-    <StyledModal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Atendimento</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <ProgressBar now={(step / 4) * 100} label={`Step ${step} of 4`} />
-        {error && <Alert variant="danger">{error}</Alert>} {/* Exibir erro, se houver */}
+    <section>
+      <Sidebar />
+      <StyledModal show={show} onHide={handleClose}>
+        <Modal.Header closeButton className='atendimento'>
+          <Modal.Title>Atendimento</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ProgressBar className='progresso' now={(step / 4) * 100} label={`Parte ${step} de 4`} />
+          {error && <Alert variant="danger">{error}</Alert>} {/* Exibir erro, se houver */}
 
-        {step === 1 && (
-          <StepContainer>
-            <h5>Data e Horário</h5>
-            <Form.Group>
-              <Form.Label>Data e Hora</Form.Label>
+          {step === 1 && (
+            <StepContainer>
+              {/* <h5>Data e Horário</h5> */}
+              <div className='parte-1'>
+                <Form.Group className='input-label'>
+                  {/* <Form.Label>Data e Hora</Form.Label>
               <Form.Control
+              className='input-form'
                 type="datetime-local"
                 name="dt"
                 value={formData.dt}
                 onChange={handleInputChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="horario">
-              <Form.Label>Horário</Form.Label>
-              <Form.Control
-                type="time"
-                name="horario"
-                value={formData.horario}
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="cancelado">
-              <Form.Check
-                type="checkbox"
-                label="Cancelado"
-                name="cancelado"
-                checked={formData.cancelado}
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-            <h5>Cliente</h5>
-            <Form.Group>
-              <Form.Label>Selecione o Cliente</Form.Label>
-              <Form.Control as="select" onChange={handleUserSelect}>
-                <option value="">Selecione</option>
-                {usuarios.map((usuario) => (
-                  <option key={usuario.id} value={usuario.id}>
-                    {usuario.nome}
-                  </option>
+              /> */}
+
+                  <Form.Label>Data e Hora</Form.Label>
+                  <input
+                    className='input-form'
+                    type="datetime-local"
+                    name="dt"
+                    value={formData.dt}
+                    onChange={handleInputChange} />
+                </Form.Group>
+
+                <Form.Group controlId="horario" className='input-label'>
+                  <Form.Label>Horário</Form.Label>
+                  <input
+                    className='input-form'
+                    type="time"
+                    name="horario"
+                    value={formData.horario}
+                    onChange={handleInputChange}
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="cancelado" className='checkbox-cancelado'>
+                  <Form.Label >Cancelado</Form.Label>
+                  <input
+                    type="checkbox"
+                    label="Cancelado"
+                    name="cancelado"
+                    checked={formData.cancelado}
+                    onChange={handleInputChange}
+                  />
+                </Form.Group>
+
+                {/* <h5>Cliente</h5> */}
+                <Form.Group className='input-label'>
+                  <Form.Label>Selecione o Cliente</Form.Label>
+                  <Form.Control className='input-form' as="select" onChange={handleUserSelect}>
+                    <option value="">Selecione</option>
+                    {usuarios.map((usuario) => (
+                      <option key={usuario.id} value={usuario.id}>
+                        {usuario.nome}
+                      </option>
+                    ))}
+                  </Form.Control>
+                </Form.Group>
+              </div>
+
+              {selectedUsuario && (
+                <>
+                  <Form.Group>
+                    <Form.Label>Nome</Form.Label>
+                    <Form.Control type="text" value={selectedUsuario.nome} readOnly />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Telefone</Form.Label>
+                    <Form.Control type="text" value={selectedUsuario.telefone} readOnly />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control type="email" value={selectedUsuario.email} readOnly />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Data de Nascimento</Form.Label>
+                    <Form.Control
+                      type="date"
+                      value={selectedUsuario.dataNascimento}
+                      readOnly
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>CPF</Form.Label>
+                    <Form.Control
+                      type="text"
+                      value={formData.usuario.cpf}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          usuario: { ...formData.usuario, cpf: e.target.value },
+                        })
+                      }
+                      name="usuario.cpf"
+                    />
+                  </Form.Group>
+                </>
+              )}
+            </StepContainer>
+          )}
+
+          {step === 2 && (
+            <StepContainer>
+              <h5>Produtos</h5>
+              <Form.Group>
+                <Form.Label>Buscar Produto</Form.Label>
+                <Form.Control type="text" value={busca} onChange={handleBusca} />
+              </Form.Group>
+              <Form.Group>
+                {filteredProdutos.map((produto) => (
+                  <div key={produto.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+                    <Form.Check
+                      type="checkbox"
+                      label={produto.nome}
+                      checked={selectedProdutos.some((p) => p.id === produto.id)}
+                      onChange={() => handleProductSelect(produto.id)}
+                      style={{ marginRight: '10px' }}
+                    />
+                    {selectedProdutos.some((p) => p.id === produto.id) && (
+                      <Form.Control
+                        type="number"
+                        value={selectedProdutos.find((p) => p.id === produto.id).quantidade}
+                        onChange={(e) => handleQuantidadeChange(produto.id, e.target.value)}
+                        style={{ width: '80px' }}
+                      />
+                    )}
+                  </div>
                 ))}
-              </Form.Control>
-            </Form.Group>
-            {selectedUsuario && (
-              <>
-                <Form.Group>
-                  <Form.Label>Nome</Form.Label>
-                  <Form.Control type="text" value={selectedUsuario.nome} readOnly />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>Telefone</Form.Label>
-                  <Form.Control type="text" value={selectedUsuario.telefone} readOnly />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control type="email" value={selectedUsuario.email} readOnly />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>Data de Nascimento</Form.Label>
-                  <Form.Control
-                    type="date"
-                    value={selectedUsuario.dataNascimento}
-                    readOnly
-                  />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>CPF</Form.Label>
-                  <Form.Control
-                    type="text"
-                    value={formData.usuario.cpf}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        usuario: { ...formData.usuario, cpf: e.target.value },
-                      })
-                    }
-                    name="usuario.cpf"
-                  />
-                </Form.Group>
-              </>
+              </Form.Group>
+            </StepContainer>
+          )}
+
+          {step === 3 && (
+            <StepContainer>
+              <h5>Confirmar Agendamento</h5>
+              <Form.Group>
+                <Form.Label>Valor da Tatuagem</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="valorTatuagem"
+                  value={formData.valorTatuagem || ''}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Data do Agendamento</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={formData.dt}
+                  readOnly
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Hora do Agendamento</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={formData.horario}
+                  readOnly
+                />
+              </Form.Group>
+              <StepContainer>
+                <CustomButton variant="primary" onClick={handlePostOrdemServico}>
+                  Salvar Ordem de Serviço
+                </CustomButton>
+                <CustomButton variant="secondary" onClick={prevStep}>
+                  Voltar
+                </CustomButton>
+              </StepContainer>
+            </StepContainer>
+          )}
+
+          {step === 4 && (
+            <StepContainer>
+              <h5>Finalização</h5>
+              <p>Agendamento realizado com sucesso!</p>
+              <CustomButton variant="success" onClick={handleClose}>
+                Fechar
+              </CustomButton>
+            </StepContainer>
+          )}
+
+          {/* Botões de navegação */}
+          <StepContainer>
+            {step < 4 && (
+              <CustomButton variant="primary" onClick={nextStep}>
+                Próximo
+              </CustomButton>
             )}
           </StepContainer>
-        )}
-
-        {step === 2 && (
-          <StepContainer>
-            <h5>Produtos</h5>
-            <Form.Group>
-              <Form.Label>Buscar Produto</Form.Label>
-              <Form.Control type="text" value={busca} onChange={handleBusca} />
-            </Form.Group>
-            <Form.Group>
-              {filteredProdutos.map((produto) => (
-                <div key={produto.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-                  <Form.Check
-                    type="checkbox"
-                    label={produto.nome}
-                    checked={selectedProdutos.some((p) => p.id === produto.id)}
-                    onChange={() => handleProductSelect(produto.id)}
-                    style={{ marginRight: '10px' }}
-                  />
-                  {selectedProdutos.some((p) => p.id === produto.id) && (
-                    <Form.Control
-                      type="number"
-                      value={selectedProdutos.find((p) => p.id === produto.id).quantidade}
-                      onChange={(e) => handleQuantidadeChange(produto.id, e.target.value)}
-                      style={{ width: '80px' }}
-                    />
-                  )}
-                </div>
-              ))}
-            </Form.Group>
-          </StepContainer>
-        )}
-
-{step === 3 && (
-  <StepContainer>
-    <h5>Confirmar Agendamento</h5>
-    <Form.Group>
-      <Form.Label>Valor da Tatuagem</Form.Label>
-      <Form.Control
-        type="number"
-        name="valorTatuagem"
-        value={formData.valorTatuagem || ''}
-        onChange={handleInputChange}
-      />
-    </Form.Group>
-    <Form.Group>
-      <Form.Label>Data do Agendamento</Form.Label>
-      <Form.Control
-        type="text"
-        value={formData.dt}
-        readOnly
-      />
-    </Form.Group>
-    <Form.Group>
-      <Form.Label>Hora do Agendamento</Form.Label>
-      <Form.Control
-        type="text"
-        value={formData.horario}
-        readOnly
-      />
-    </Form.Group>
-    <StepContainer>
-      <CustomButton variant="primary" onClick={handlePostOrdemServico}>
-        Salvar Ordem de Serviço
-      </CustomButton>
-      <CustomButton variant="secondary" onClick={prevStep}>
-        Voltar
-      </CustomButton>
-    </StepContainer>
-  </StepContainer>
-)}
-
-{step === 4 && (
-  <StepContainer>
-    <h5>Finalização</h5>
-    <p>Agendamento realizado com sucesso!</p>
-    <CustomButton variant="success" onClick={handleClose}>
-      Fechar
-    </CustomButton>
-  </StepContainer>
-)}
-
-{/* Botões de navegação */}
-<StepContainer>
-  {step < 4 && (
-    <CustomButton variant="primary" onClick={nextStep}>
-      Próximo
-    </CustomButton>
-  )}
-</StepContainer>
 
 
 
-        {/* Adicione mais etapas conforme necessário */}
-      </Modal.Body>
-      <Modal.Footer>
-        <CustomButton variant="secondary" onClick={prevStep} disabled={step === 1}>
-          Voltar
-        </CustomButton>
-        <CustomButton variant="primary" onClick={nextStep}>
-          {step === 2 ? 'Salvar Produtos' : 'Próximo'}
-        </CustomButton>
-      </Modal.Footer>
-    </StyledModal>
+          {/* Adicione mais etapas conforme necessário */}
+        </Modal.Body>
+        <Modal.Footer>
+          <CustomButton variant="secondary" onClick={prevStep} disabled={step === 1}>
+            Voltar
+          </CustomButton>
+          <CustomButton variant="primary" onClick={nextStep}>
+            {step === 2 ? 'Salvar Produtos' : 'Próximo'}
+          </CustomButton>
+        </Modal.Footer>
+      </StyledModal>
+    </section>
   );
 };
 
