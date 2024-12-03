@@ -66,3 +66,9 @@
     right: 0; /* Alinha à direita da sidebar */
   }
   
+  .sidebar li.selected a {
+    background-color: #f3dce52f;
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px #f3e8ec57;
+}

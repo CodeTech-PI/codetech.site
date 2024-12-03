@@ -52,6 +52,16 @@ const clienteService = {
       console.error('Erro ao atualizar cliente:', error);
       throw error;
     }
+  },
+
+  desfazerCadastro: async function () {
+    this.setCredentials();
+    try {
+      await axios.delete(`${url}/usuarios/desfazer-cadastro`, { headers: this.headers });
+    } catch (error) {
+      console.error('Erro ao desfazer cadastro:', error);
+      throw error;
+    }
   }
 };
 
