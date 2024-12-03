@@ -39,7 +39,7 @@
 /* Item da lista de clientes */
 .cliente-item {
   display: flex;
-  justify-content: space-between; /* Espalha os campos e ações */
+  justify-content: space-between;
   border-radius: 5px;
   margin: 10px 0;
   padding: 10px;
@@ -51,8 +51,15 @@
 .container-cliente-info {
   display: flex;
   justify-content: space-between; 
-  width: 80%;
+  width: 75%;
   align-items: center;
+}
+
+.cliente-actions {
+  display: flex;
+  align-items: center;
+  width: 15%;
+  justify-content: space-around;
 }
 
 .span-space {
@@ -99,15 +106,6 @@
   flex-grow: 1; /* Para permitir que os campos ocupem o espaço disponível */
 }
 
-/* Estilos para os botões de ação do cliente */
-.cliente-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end; /* Para alinhar os botões à direita */
-  justify-content: space-around;
-}
-
-
 .container-total {
   /* background-color: red; */
   width: 80%;
@@ -117,14 +115,6 @@
     box-sizing: border-box; /* Inclui o padding na altura total */
 }
 
-
 .sidebar {
   flex: 0 0 250px; /* Fix the width of the sidebar */
 }
-
-.content {
-  flex: 1;
-  padding: 20px;
-  width: 80%;
-}
-

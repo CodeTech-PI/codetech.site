@@ -41,7 +41,7 @@ const PopUp = ({
 
   return (
     <Dialog open={isOpen} onClose={onRequestClose} className="custom-dialog">
-      <DialogTitle className="dialog-title">{title}</DialogTitle>
+      <DialogTitle className="dialog-titlePopUp">{title}</DialogTitle>
       <form onSubmit={handleSubmit} className="form-containerPopUp">
         <DialogContent>
           {fields.map((field) => (
@@ -65,13 +65,6 @@ const PopUp = ({
           <Button onClick={onRequestClose} className="cancel-button">
             Cancelar
           </Button>
-          {/* <Button onClick={onRequestClose} className="cancel-button">
-            Cancelar
-          </Button> */}
-          {/* <Button type="submit" className="submit-button">
-            {submitButtonLabel}
-          </Button> */}
-          {/* <button  type="submit" className="submit-button" >{submitButtonLabel} Adicionar</button> */}
         </DialogActions>
       </form>
     </Dialog>

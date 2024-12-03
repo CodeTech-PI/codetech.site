@@ -6,6 +6,8 @@ import './cliente.css'; // Ou qualquer outro arquivo de estilo que você esteja 
 import BotaoAlterar from '../../components/BotaoAlterar/BotaoAlterar';
 import BotaoExcluir from '../../components/BotaoExcluir/BotaoExcluir';
 import BotaoRosa from '../../components/BotaoRosa/BotaoRosa';
+import BotaoExcluirIcon from '../../components/BotaoExcluirIcon/BotaoExcluirIcon';
+import BotaoAlterarIcon from '../../components/BotaoAlterarIcon/BotaoAlterarIcon';
 
 const Cliente = () => {
   const [clientes, setClientes] = useState([]);
@@ -146,12 +148,14 @@ const Cliente = () => {
                   </div>
                 </div>
                 <div className="cliente-actions">
-                  <BotaoAlterar
+                  <BotaoAlterarIcon
                     nomeBotao='Alterar'
                     onClick={() => handleEdit(cliente)}
+                  altText='Ícone de alteração' 
                   />
-                  <BotaoExcluir
+                  <BotaoExcluirIcon
                     onClick={() => handleDelete(cliente.id)}
+                    altText='Ícone de excluir' 
                   />
                 </div>
               </div>
