@@ -1,15 +1,11 @@
-.botao-fechar {
-    cursor: pointer;
-    align-items: center;
-    color: white;
-    background-color: black;
-    border: solid 1px #DF0050;
+.botao-fechar{
+    width: 70px;
     height: 30px;
+    background-color: #d90050;
+    color: white;
     font-size: 14px;
-    width: 135px;
+    border: none;
     border-radius: 5px;
-}
-
-.botao-fechar:hover {
-    background-color: #45050C;
+    align-items: center;
+    cursor: pointer;
 }

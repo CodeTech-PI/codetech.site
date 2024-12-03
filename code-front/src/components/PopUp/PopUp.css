@@ -9,12 +9,16 @@
   padding: 20px;
   background-color: #1b1b1b;
   border-radius: 8px;
+}
+/* <<<<<<< HEAD
   box-shadow: 0 0 4px rgba(223, 0, 80, 0.5);
 }
 
 .MuiDialog-paper {
   background-color: transparent;
-}
+=======
+>>>>>>> 50586c1ae94dcf8428d8984e560163e38f1fda68
+} */
 
 .custom-overlay {
   position: fixed;

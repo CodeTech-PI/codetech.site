@@ -10,7 +10,7 @@ import AnyReactComponent from './components/AnyReactComponent/AnyReactComponent'
 import EnderecoContato from './components/EnderecoContato/EnderecoContato';
 import Footer from './components/Footer/Footer';
 import Login from './pages/login/login';
-
+import Atendimento from './pages/Atendimento/Atendimento';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Aquarela from './pages/Aquarela/Aquarela';
 import Minimalista from './pages/Minimalista/Minimalista';
@@ -41,6 +41,7 @@ function App() {
         <Route path="/guerreiras" element={<Guerreiras />} />
         <Route path="/clientes" element={<Cliente />} />
         <Route path="/listaProdutosService" element={<ListaProdutos />} />
+        <Route path="/atendimento" element={<Atendimento />} /> 
         <Route path="/filiais" element={<Filiais />} />
         <Route path="/chatbot" element={<Chatbot />} />
 

@@ -121,10 +121,7 @@ const PopUpAdicionar = ({ isOpen, onRequestClose, onCreate, cliente }) => {
         </div>
 
         <div className="button-container">
-          <BotaoRosa
-            type="submit"
-            nomeBotao={cliente ? 'Alterar' : 'Adicionar'}
-          />
+          <button className="botao-alterar-adicionar" type="submit">{cliente ? 'Alterar' : 'Adicionar'}</button>
           <BotaoFechar type="button" onClick={onRequestClose} />
         </div>
       </form>
