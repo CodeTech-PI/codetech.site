@@ -34,6 +34,8 @@ const CustomButton = styled(Button)`
 `;
 
 const Atendimento = () => {
+
+  const [isConfirming, setIsConfirming] = useState(false);
   const [show, setShow] = useState(true); // Modal aparecerá ao carregar a página
   const [formData, setFormData] = useState({
     dt: "2024-11-18T00:00", // Formato inicial para datetime-local
@@ -288,14 +290,7 @@ const Atendimento = () => {
               {/* <h5>Data e Horário</h5> */}
               <div className='parte-1'>
                 <Form.Group className='input-label'>
-                  {/* <Form.Label>Data e Hora</Form.Label>
-              <Form.Control
-              className='input-form'
-                type="datetime-local"
-                name="dt"
-                value={formData.dt}
-                onChange={handleInputChange}
-              /> */}
+
 
                   <Form.Label>Data e Hora</Form.Label>
                   <input
@@ -340,168 +335,213 @@ const Atendimento = () => {
                     ))}
                   </Form.Control>
                 </Form.Group>
-              </div>
 
-              {selectedUsuario && (
-                <>
-                  <Form.Group>
-                    <Form.Label>Nome</Form.Label>
-                    <Form.Control type="text" value={selectedUsuario.nome} readOnly />
-                  </Form.Group>
-                  <Form.Group>
-                    <Form.Label>Telefone</Form.Label>
-                    <Form.Control type="text" value={selectedUsuario.telefone} readOnly />
-                  </Form.Group>
-                  <Form.Group>
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" value={selectedUsuario.email} readOnly />
-                  </Form.Group>
-                  <Form.Group>
-                    <Form.Label>Data de Nascimento</Form.Label>
-                    <Form.Control
-                      type="date"
-                      value={selectedUsuario.dataNascimento}
-                      readOnly
-                    />
-                  </Form.Group>
-                  <Form.Group>
-                    <Form.Label>CPF</Form.Label>
-                    <Form.Control
-                      type="text"
-                      value={formData.usuario.cpf}
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          usuario: { ...formData.usuario, cpf: e.target.value },
-                        })
-                      }
-                      name="usuario.cpf"
-                    />
-                  </Form.Group>
-                </>
-              )}
+
+                {selectedUsuario && (
+                  <>
+
+                    <Form.Group className='input-label'>
+                      <Form.Label>Nome</Form.Label>
+                      <Form.Control className='input-form' type="text" value={selectedUsuario.nome} readOnly />
+                    </Form.Group>
+                    <Form.Group className='input-label'>
+                      <Form.Label>Telefone</Form.Label>
+                      <Form.Control className='input-form' type="text" value={selectedUsuario.telefone} readOnly />
+                    </Form.Group>
+                    <Form.Group className='input-label'>
+                      <Form.Label>Email</Form.Label>
+                      <Form.Control className='input-form' type="email" value={selectedUsuario.email} readOnly />
+                    </Form.Group>
+                    <Form.Group className='input-label'>
+                      <Form.Label>Data de Nascimento</Form.Label>
+                      <Form.Control
+                        className='input-form'
+                        type="date"
+                        value={selectedUsuario.dataNascimento}
+                        readOnly
+                      />
+                    </Form.Group>
+                    <Form.Group className='input-label'>
+                      <Form.Label>CPF</Form.Label>
+                      <Form.Control
+                        className='input-form'
+                        type="text"
+                        value={formData.usuario.cpf}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            usuario: { ...formData.usuario, cpf: e.target.value },
+                          })
+                        }
+                        name="usuario.cpf"
+                      />
+                    </Form.Group>
+
+                  </>
+                )}
+              </div>
             </StepContainer>
           )}
 
           {step === 2 && (
             <StepContainer>
-              <h5>Produtos</h5>
-              <Form.Group>
-                <Form.Label>Buscar Produto</Form.Label>
-                <Form.Control type="text" value={busca} onChange={handleBusca} />
-              </Form.Group>
-              <Form.Group className='input-label'>
-                <Form.Label>Buscar Produtos</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Digite para buscar produtos..."
-                  value={busca}
-                  onChange={handleBusca}
-                />
-              </Form.Group>
-              <div className='product-list'>
-                {filteredProdutos.map((produto) => (
-                  <div key={produto.id} className='product-item'>
-                    <Form.Check
-                      type="checkbox"
-                      label={produto.nome}
-                      checked={selectedProdutos.some((prod) => prod.id === produto.id)}
-                      onChange={() => handleProductSelect(produto.id)}
-                    />
-                    {selectedProdutos.some((prod) => prod.id === produto.id) && (
-                      <Form.Control
-                        type="number"
-                        value={selectedProdutos.find((prod) => prod.id === produto.id).quantidade}
-                        onChange={(e) => handleQuantidadeChange(produto.id, e.target.value)}
-                        min="1"
-                        className='quantity-input'
+              <div className='parte-1'>
+                <h5>Produtos utilizados</h5>
+
+                <Form.Group className='input-label'>
+
+                  <Form.Control
+                    className='input-form'
+                    type="text"
+                    placeholder="Digite para buscar produtos..."
+                    value={busca}
+                    onChange={handleBusca}
+                  />
+                </Form.Group>
+                <div className='product-list'>
+                  {filteredProdutos.map((produto) => (
+                    <div key={produto.id} className='product-item'>
+                      <Form.Check
+                        type="checkbox"
+                        label={produto.nome}
+                        checked={selectedProdutos.some((prod) => prod.id === produto.id)}
+                        onChange={() => handleProductSelect(produto.id)}
                       />
-                    )}
-                  </div>
-                ))}
+                      {selectedProdutos.some((prod) => prod.id === produto.id) && (
+                        <Form.Control
+
+                          type="number"
+                          value={selectedProdutos.find((prod) => prod.id === produto.id).quantidade}
+                          onChange={(e) => handleQuantidadeChange(produto.id, e.target.value)}
+                          min="1"
+                          className='quantity-input'
+                        />
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
             </StepContainer>
           )}
 
           {step === 3 && (
             <StepContainer>
-              <h5>Confirmar Agendamento</h5>
-              <Form.Group>
-                <Form.Label>Valor da Tatuagem</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="valorTatuagem"
-                  value={formData.valorTatuagem || ''}
-                  onChange={handleInputChange}
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Data do Agendamento</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={formData.dt}
-                  readOnly
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Hora do Agendamento</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={formData.horario}
-                  readOnly
-                />
-              </Form.Group>
-              <StepContainer>
-                <CustomButton variant="primary" onClick={handlePostOrdemServico}>
-                  Salvar Ordem de Serviço
-                </CustomButton>
-                <CustomButton variant="secondary" onClick={prevStep}>
-                  Voltar
-                </CustomButton>
-              </StepContainer>
+              <div className='parte-1'>
+                <h5>Confirmar Atendimento</h5>
+                <Form.Group className='input-label'>
+                  <Form.Label>Valor da Tatuagem</Form.Label>
+                  <Form.Control
+                    className='input-form'
+                    type="number"
+                    name="valorTatuagem"
+                    value={formData.valorTatuagem || ''}
+                    onChange={handleInputChange}
+                  />
+                </Form.Group>
+                <Form.Group className='input-label'>
+                  <Form.Label>Data do Atendimento</Form.Label>
+                  <Form.Control
+                    className='input-form'
+                    type="text"
+                    value={formData.dt}
+                    readOnly
+                  />
+                </Form.Group>
+                <Form.Group className='input-label'>
+                  <Form.Label>Hora do Atendimento</Form.Label>
+                  <Form.Control
+                    className='input-form'
+                    type="text"
+                    value={formData.horario}
+                    readOnly
+                  />
+                </Form.Group>
+                <StepContainer>
+                  {/* Exibe o botão "Gerar ordem" somente quando o modal não está sendo exibido */}
+                  {!isConfirming && (
+                    <CustomButton
+                      className='botao-gerar-ordem'
+                      variant="primary"
+                      onClick={() => setIsConfirming(true)} // Abre o modal de confirmação
+                    >
+                      Gerar ordem
+                    </CustomButton>
+                  )}
+
+                  {/* Exibe o botão "Voltar" somente quando o modal não está sendo exibido */}
+                  {!isConfirming && (
+                    <CustomButton
+                      className='botao-voltar'
+                      variant="secondary"
+                      onClick={prevStep}
+                    >
+                      Voltar
+                    </CustomButton>
+                  )}
+
+                  {/* Modal de Confirmação */}
+                  {isConfirming && (
+                    <div className="modal-overlay">
+                      <div className="modal-content">
+                        <h3>Tem certeza que deseja Gerar Ordem de Serviço?</h3>
+                        <div className="modal-buttons">
+                          <CustomButton
+                          className='botao-salvar-proximo'
+                            variant="success"
+                            onClick={() => {
+                              handlePostOrdemServico();
+                              setIsConfirming(false);
+                            }}
+                          >
+                            Confirmar
+                          </CustomButton>
+                          <CustomButton
+                            className='botao-voltar'
+                            variant="danger"
+                            onClick={() => setIsConfirming(false)}
+                          >
+                            Cancelar
+                          </CustomButton>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </StepContainer>
+
+
+              </div>
             </StepContainer>
           )}
 
-{step === 4 && faturamento && (
-  <StepContainer>
-    <h5>Finalização</h5>
-    <p>Agendamento realizado com sucesso!</p>
-    <h6>Detalhes do Faturamento</h6>
-    <p>
-      Lucro: {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(faturamento.lucro)}
-    </p> {/* Formatação de R$ */}
-    <CustomButton variant="success" onClick={handleCloseFechar}>
-      Fechar
-    </CustomButton>
-  </StepContainer>
-)}
-
-
-
-
-
-
-          {/* Botões de navegação */}
-          <StepContainer>
-            {step < 4 && (
-              <CustomButton variant="primary" onClick={nextStep}>
-                Próximo
-              </CustomButton>
-            )}
-          </StepContainer>
-
+          {step === 4 && faturamento && (
+            <StepContainer>
+              <div className='faturamento'>
+              <h5>Ordem de serviço</h5>
+              <p>Atendimento realizado com sucesso!</p>
+              <h6>Detalhes do Faturamento</h6>
+              <p className='lucro'>
+                Lucro: {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(faturamento.lucro)}
+              </p> {/* Formatação de R$ */}
+              {/* <CustomButton variant="success" onClick={handleCloseFechar}>
+                Fechar
+              </CustomButton> */}
+              </div>
+            </StepContainer>
+          )}
 
 
           {/* Adicione mais etapas conforme necessário */}
         </Modal.Body>
-        <Modal.Footer>
-          <CustomButton variant="secondary" onClick={prevStep} disabled={step === 1}>
-            Voltar
-          </CustomButton>
-          <CustomButton variant="primary" onClick={nextStep}>
-            {step === 2 ? 'Salvar Produtos' : 'Próximo'}
-          </CustomButton>
-        </Modal.Footer>
+        {step < 3 && (
+          <Modal.Footer>
+            <CustomButton className='botao-voltar' variant="secondary" onClick={prevStep} disabled={step === 1}>
+              Voltar
+            </CustomButton>
+            <CustomButton className='botao-salvar-proximo' variant="primary" onClick={nextStep}>
+              {step === 2 ? 'Salvar' : 'Próximo'}
+            </CustomButton>
+          </Modal.Footer>
+        )}
       </StyledModal>
     </section>
   );
