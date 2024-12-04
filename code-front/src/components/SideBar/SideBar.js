@@ -36,9 +36,9 @@ const Sidebar = () => {
         <li className={currentPath === '/filiais' ? 'selected' : ''}>
           <a href="/filiais">Filiais</a>
         </li>
-        <li className={currentPath === '/listaProdutosService' ? 'selected' : ''}>
+        {/* <li className={currentPath === '/listaProdutosService' ? 'selected' : ''}>
           <a href="/listaProdutosService">Lista de produtos</a>
-        </li>
+        </li> */}
         <li className="logout">
           <a href="/" onClick={handleLogout}>Sair</a>
         </li>
