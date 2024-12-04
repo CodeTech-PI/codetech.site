@@ -181,14 +181,24 @@ const Dashboard = () => {
           <Bar data={data1} options={{
             responsive: true,
             plugins: {
-              title: {
-                display: true,
-                text: '',
-                color: '#fff',
-                font: {
-                  size: 16
-                }
-              },
+              // title: {
+              //   display: true,
+              //   text: '',
+              //   color: '#fff',
+              //   font: {
+              //     size: 16
+              //   }
+              // },
+              legend: { 
+                display: true, 
+                position: "bottom",
+                labels: { 
+                  color: '#ff40e2', 
+                  font: { 
+                    size: 10,
+                    weight: 'bold',
+                    boxWidth: 5, // Largura do quadrado de cor da legenda 
+              }}},
               tooltip: {
                 backgroundColor: '#333',
                 titleColor: '#fff',
@@ -198,18 +208,25 @@ const Dashboard = () => {
             scales: {
               x: {
                 grid: {
-                  color: '#333' // Cor das linhas do eixo X
+                  display: true, 
+                  drawBorder: true,
+                  borderColor: '#fff',
+                  drawTicks: false,
                 },
                 ticks: {
-                  color: '#fff' // Cor dos números no eixo X
+                  color: '#fff',
                 }
               },
               y: {
                 grid: {
-                  color: '#333' // Cor das linhas do eixo Y
+                  display: true, 
+                  drawBorder: true,
+                  drawOnChartArea: false,
+                  drawTicks: false,
                 },
                 ticks: {
-                  color: '#fff' // Cor dos números no eixo Y
+                  color: '#fff',
+                  stepSize: 2,
                 }
               }
             }
@@ -302,6 +319,16 @@ const Dashboard = () => {
                   size: 16
                 }
               },
+              legend: { 
+                display: true, 
+                position: "bottom",
+                labels: { 
+                  color: '#515151', 
+                  font: { 
+                    size: 10,
+                    weight: 'bold',
+                    boxWidth: 5, // Largura do quadrado de cor da legenda 
+              }}},
               tooltip: {
                 backgroundColor: '#333',
                 titleColor: '#fff',
@@ -311,18 +338,25 @@ const Dashboard = () => {
             scales: {
               x: {
                 grid: {
-                  color: '#ffffff00' // Cor das linhas do eixo X
+                  display: true, 
+                  drawBorder: true,
+                  borderColor: '#fff',
+                  drawTicks: false,
                 },
                 ticks: {
-                  color: '#fff' // Cor dos números no eixo X
+                  color: '#fff',
                 }
               },
               y: {
                 grid: {
-                  color: '#ffffff00' // Cor das linhas do eixo Y
+                  display: true, 
+                  drawBorder: true,
+                  drawOnChartArea: false,
+                  drawTicks: false,
                 },
                 ticks: {
-                  color: '#fff' // Cor dos números no eixo Y
+                  color: '#fff',
+                  stepSize: 2,
                 }
               }
             }

@@ -94,6 +94,10 @@ body {
 .kpi-container p,
 .kpi-containerAnual p {
   font-size: 1.0em;
+  font-weight: 500;
+  align-items: center;
+  text-align: center;
+  /* justify-content: center; */
 }
 
 /* Adiciona um estilo para a KPI de alerta */
