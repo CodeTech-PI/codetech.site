@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const url = process.env.REACT_APP_API_URL;
 
-const agendamentoService = {
+const googleApiService = {
   headers: {},
   setCredentials: function() {
     const token = window.sessionStorage.getItem("token");
@@ -15,42 +15,13 @@ const agendamentoService = {
   postAgendamento: async function(userData) {
     this.setCredentials();
     try {
-      const response = await axios.post(`${url}/agendamentos`, userData, { headers: this.headers });
+      const response = await axios.post(`${url}/api/events/v1`, userData, { headers: this.headers });
       return response.data;
     } catch (error) {
       throw error;
     }
   },
 
-  getAgendamento: async function(id) {
-    this.setCredentials();
-    try {
-      const response = await axios.get(`${url}/agendamentos/${id}`, { headers: this.headers });
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  },
-
-  postOrdemServico: async function(userData) {
-    this.setCredentials();
-    try {
-      const response = await axios.post(`${url}/ordens-servicos`, userData, { headers: this.headers });
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  },
-
-  getFaturamentoPorId: async function(id) {
-    this.setCredentials();
-    try {
-      const response = await axios.get(`${url}/faturamentos/${id}`, { headers: this.headers });
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  },
   getAgendamentoApi: async function() {
     this.setCredentials();
     try {
@@ -61,26 +32,6 @@ const agendamentoService = {
       throw error;
     }
   },
-  postAgendamentoApi: async function(userData) {
-    this.setCredentials();
-    try {
-      const response = await axios.post(`${url}/api/events/v1`, userData, { headers: this.headers });
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  },
-  
-    updateAgendamentoApi: async function(id, clienteData) {
-    this.setCredentials();
-    try {
-      const response = await axios.put(`${url}/api/events/${id}`, clienteData, { headers: this.headers });
-      return response.data;
-    } catch (error) {
-      console.error('Erro ao atualizar agendamento:', error);
-      throw error;
-    }
-  }
 
 //   getClientes: async function() {
 //     this.setCredentials();
@@ -115,4 +66,4 @@ const agendamentoService = {
 //   }
 };
 
-export default agendamentoService;
+export default googleApiService;
