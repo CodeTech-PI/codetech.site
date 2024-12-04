@@ -19,6 +19,7 @@ const Sidebar = () => {
       <ul>
         <li><a href="/estoque">Estoque</a></li>
         <li><a href="/clientes">Área do Cliente</a></li>
+        <li><a href="/agendamento">Agendamento</a></li>
         <li><a href="/atendimento">Área de Atendimento</a></li>
         <li><a href="/dashboard">Dashboard</a></li>
         <li><a href="/filiais">Filiais</a></li>
