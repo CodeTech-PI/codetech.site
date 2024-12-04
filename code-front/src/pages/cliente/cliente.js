@@ -6,6 +6,7 @@ import './cliente.css'; // Ou qualquer outro arquivo de estilo que você esteja 
 import BotaoAlterar from '../../components/BotaoAlterar/BotaoAlterar';
 import BotaoExcluir from '../../components/BotaoExcluir/BotaoExcluir';
 import BotaoRosa from '../../components/BotaoRosa/BotaoRosa';
+import BotaoRosaMaior from '../../components/BotaoRosaMaior/BotaoRosaMaior';
 import BotaoExcluirIcon from '../../components/BotaoExcluirIcon/BotaoExcluirIcon';
 import BotaoAlterarIcon from '../../components/BotaoAlterarIcon/BotaoAlterarIcon';
 
@@ -122,7 +123,7 @@ const Cliente = () => {
           className="filter-input"
         />
 
-        <BotaoRosa
+        <BotaoRosaMaior
           onClick={openModal}
           nomeBotao='Cadastrar Cliente'
         />

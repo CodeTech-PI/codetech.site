@@ -77,12 +77,12 @@ const PopUpAdicionar = ({ isOpen, onRequestClose, onCreate, cliente }) => {
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      contentLabel="Formulário de Criação/Atualização de Usuário"
+      contentLabel="Formulário de Criação/Atualização de Cliente"
       className="custom-modal"
       overlayClassName="custom-overlay"
     >
       <h2 className="title-popup">
-        {cliente ? "Editar Usuário" : "Criar Usuário"}
+        {cliente ? "Editar Cliente" : "Adicionar Cliente"}
       </h2>
       <form onSubmit={handleSubmit} className="form-container">
         <div className="form-group">
@@ -137,7 +137,7 @@ const PopUpAdicionar = ({ isOpen, onRequestClose, onCreate, cliente }) => {
         </div>
 
         <div className="button-container">
-          <button className="botao-alterar-adicionar" type="submit">{cliente ? 'Alterar' : 'Adicionar'}</button>
+          <button className="botao-alterar-adicionar" type="submit">{cliente ? 'Alterar' : 'Salvar'}</button>
           <BotaoFechar type="button" onClick={onRequestClose} />
         </div>
       </form>

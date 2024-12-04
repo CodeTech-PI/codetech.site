@@ -30,6 +30,7 @@ body {
 /* Estilo para os gráficos */
 .chart-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #171515;
@@ -51,9 +52,10 @@ body {
 .chart-container h2 {
   display: flex;
   justify-content: center;
-  margin-top: 0;
+  margin-top: 10px;
   font-size: 16px;
-  color: #C93D6F;
+  margin-bottom: 10px;
+  color: #FB3F83;
 }
 
 .chart-container canvas {
@@ -86,15 +88,21 @@ body {
   margin-top: 0;
   font-size: 15px;
   color: #FB3F83;
+  margin-bottom: 8px;
 }
 
 .kpi-container p,
 .kpi-containerAnual p {
   font-size: 1.0em;
+  font-weight: 500;
+  align-items: center;
+  text-align: center;
+  /* justify-content: center; */
 }
 
 /* Adiciona um estilo para a KPI de alerta */
 .kpi-container.alert {
   height: 100%;
-  background-color: #DF0050;
+  box-shadow: 0px 0px 15px 5px #ff0000;
+  margin-bottom: 0px;
 }

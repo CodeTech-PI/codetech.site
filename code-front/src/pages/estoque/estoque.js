@@ -20,9 +20,10 @@ import {
 import estoqueService from "../../services/estoqueService";
 import "./estoque.css";
 import BotaoRosa from "../../components/BotaoRosa/BotaoRosa";
-import BotaoAlterar from "../../components/BotaoAlterar/BotaoAlterar";
-import BotaoExcluir from "../../components/BotaoExcluir/BotaoExcluir";
+import BotaoRosaMaior from "../../components/BotaoRosaMaior/BotaoRosaMaior";
 import Sidebar from "../../components/SideBar/SideBar";
+import BotaoAlterarIcon from "../../components/BotaoAlterarIcon/BotaoAlterarIcon";
+import BotaoExcluirIcon from "../../components/BotaoExcluirIcon/BotaoExcluirIcon";
 
 const Estoque = () => {
   const [rows, setRows] = useState([]);
@@ -292,7 +293,7 @@ const Estoque = () => {
       <Sidebar />
       <h1>Estoque</h1>
       <div className="botoes-incluir">
-        <BotaoRosa onClick={handleOpen} nomeBotao="Incluir Produto" />
+        <BotaoRosaMaior onClick={handleOpen} nomeBotao="Adicionar Produto"/>
         <BotaoRosa
           onClick={handleOpenCategoria}
           nomeBotao="Categorias"
@@ -321,15 +322,19 @@ const Estoque = () => {
                     {row.categoria ? row.categoria.nome : "Sem Categoria"}
                   </TableCell>
                   <TableCell>
+                    <div classname="icons-bonitos">
                     <div className="action-buttons">
-                      <BotaoAlterar
+                      <BotaoAlterarIcon
                         nomeBotao="Editar"
                         onClick={() => handleEdit(row)}
+                        altText='Ícone de alteração' 
                       />
-                      <BotaoExcluir
+                      <BotaoExcluirIcon
                         nomeBotao="Excluir"
                         onClick={() => handleDelete(row.id)}
+                        altText='Ícone de excluir'
                       />
+                    </div>
                     </div>
                   </TableCell>
                 </TableRow>
@@ -447,14 +452,14 @@ const Estoque = () => {
                   display: "flex",
                   alignItems: "center",
                   backgroundColor: "#d9d9d9",
-                  textAlign: "center", // Centraliza o texto selecionado
+                  textAlign: "center",
                 },
                 "& .MuiInputBase-input": {
                   padding: "10px 14px",
                   backgroundColor: "#d9d9d9",
                   textAlign: "left", // Alinha o texto à esquerda
                 },
-                width: "100%", // Use 100% para melhor centralização
+                width: "100%", 
               }}
             >
               <MenuItem value="">
@@ -646,6 +651,7 @@ const Estoque = () => {
                       fontSize: "1.1rem",
                       borderBottom: "2px solid white",
                       paddingBottom: "12px",
+                      textAlign: "center"
                     }}
                   >
                     Ações
@@ -666,7 +672,7 @@ const Estoque = () => {
                           color: "#FFFFFF",
                           fontSize: "1rem",
                           padding: "16px",
-                          borderBottom: "1px solid #444444",
+                          borderBottom: "1px solid #444444"
                         }}
                       >
                         {categoria.nome}
@@ -674,32 +680,19 @@ const Estoque = () => {
                       <TableCell
                         sx={{
                           display: "flex",
-                          justifyContent: "space-between",
+                          justifyContent: "flex-end",
                           alignItems: "center",
                           padding: "16px",
                         }}
                       >
-                        <button
-                          onClick={() => {
+                          <BotaoAlterarIcon
+                           onClick={() => {
                             setNewCategoria({ nome: categoria.nome });
                             setCurrentId(categoria.id);
                             handleOpenEditCategoria();
                           }}
-                          style={{
-                            backgroundColor: "#4169E1",
-                            color: "#FFFFFF",
-                            height: "30px",
-                            width: "70px",
-                            borderRadius: "5px",
-                            border: "none",
-                            cursor: "pointer",
-                            fontSize: "14px",
-                            transition: "all 0.3s ease",
-                          }}
-                        >
-                          Editar
-                        </button>
-                        <button
+                          />
+                        <BotaoExcluirIcon
                           onClick={async () => {
                             try {
                               await estoqueService.deleteCategoria(categoria.id);
@@ -714,20 +707,7 @@ const Estoque = () => {
                               console.error("Erro ao excluir categoria:", error);
                             }
                           }}
-                          style={{
-                            backgroundColor: "#8d0c0c",
-                            color: "#FFFFFF",
-                            height: "30px",
-                            width: "70px",
-                            borderRadius: "5px",
-                            border: "none",
-                            cursor: "pointer",
-                            fontSize: "14px",
-                            transition: "all 0.3s ease",
-                          }}
-                        >
-                          Excluir
-                        </button>
+                        />
                       </TableCell>
                     </TableRow>
                   ))

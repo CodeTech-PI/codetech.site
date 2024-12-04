@@ -141,7 +141,7 @@ const Dashboard = () => {
       <div className='div-kpi'>
         {/* KPI de Produto com Menor Quantidade */}
       <div className={`kpi-container ${baixoEstoque && baixoEstoque.quantidade < 5 ? 'alert' : ''}`}>
-        <h2>Item com baixo estoque</h2>
+        <h2>Item com Baixo Estoque</h2>
         {baixoEstoque ? (
           <span>
           <p className='produto-baixo-estoque'>{baixoEstoque.nome} </p>
@@ -181,14 +181,24 @@ const Dashboard = () => {
           <Bar data={data1} options={{
             responsive: true,
             plugins: {
-              title: {
-                display: true,
-                text: '',
-                color: '#fff',
-                font: {
-                  size: 16
-                }
-              },
+              // title: {
+              //   display: true,
+              //   text: '',
+              //   color: '#fff',
+              //   font: {
+              //     size: 16
+              //   }
+              // },
+              legend: { 
+                display: true, 
+                position: "bottom",
+                labels: { 
+                  color: '#ff40e2', 
+                  font: { 
+                    size: 10,
+                    weight: 'bold',
+                    boxWidth: 5, // Largura do quadrado de cor da legenda 
+              }}},
               tooltip: {
                 backgroundColor: '#333',
                 titleColor: '#fff',
@@ -198,18 +208,25 @@ const Dashboard = () => {
             scales: {
               x: {
                 grid: {
-                  color: '#333' // Cor das linhas do eixo X
+                  display: true, 
+                  drawBorder: true,
+                  borderColor: '#fff',
+                  drawTicks: false,
                 },
                 ticks: {
-                  color: '#fff' // Cor dos números no eixo X
+                  color: '#fff',
                 }
               },
               y: {
                 grid: {
-                  color: '#333' // Cor das linhas do eixo Y
+                  display: true, 
+                  drawBorder: true,
+                  drawOnChartArea: false,
+                  drawTicks: false,
                 },
                 ticks: {
-                  color: '#fff' // Cor dos números no eixo Y
+                  color: '#fff',
+                  stepSize: 2,
                 }
               }
             }
@@ -223,20 +240,21 @@ const Dashboard = () => {
       <div className='div-graficos-dupla'>
       {/* Dashboard de Produtos por Categoria */}
       <div className="chart-container">
+        <h2>Qtd de Produtos em Estoque por Categoria</h2>
   {data3 ? (
     <Bar 
       data={data3} 
       options={{
         responsive: true,
         plugins: {
-          title: {
-            display: true,
-            text: 'Produtos por Categoria',
-            color:'#FB3F83',
-            font: {
-              size: 14
-            }
-          },
+          // title: {
+          //   display: true,
+          //   text: 'Produtos por Categoria',
+          //   color:'#FB3F83',
+          //   font: {
+          //     size: 14
+          //   }
+          // },
           legend: { 
             display: true, 
             position: "bottom",
@@ -301,6 +319,16 @@ const Dashboard = () => {
                   size: 16
                 }
               },
+              legend: { 
+                display: true, 
+                position: "bottom",
+                labels: { 
+                  color: '#515151', 
+                  font: { 
+                    size: 10,
+                    weight: 'bold',
+                    boxWidth: 5, // Largura do quadrado de cor da legenda 
+              }}},
               tooltip: {
                 backgroundColor: '#333',
                 titleColor: '#fff',
@@ -310,18 +338,25 @@ const Dashboard = () => {
             scales: {
               x: {
                 grid: {
-                  color: '#ffffff00' // Cor das linhas do eixo X
+                  display: true, 
+                  drawBorder: true,
+                  borderColor: '#fff',
+                  drawTicks: false,
                 },
                 ticks: {
-                  color: '#fff' // Cor dos números no eixo X
+                  color: '#fff',
                 }
               },
               y: {
                 grid: {
-                  color: '#ffffff00' // Cor das linhas do eixo Y
+                  display: true, 
+                  drawBorder: true,
+                  drawOnChartArea: false,
+                  drawTicks: false,
                 },
                 ticks: {
-                  color: '#fff' // Cor dos números no eixo Y
+                  color: '#fff',
+                  stepSize: 2,
                 }
               }
             }

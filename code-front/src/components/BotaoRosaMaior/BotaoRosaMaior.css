@@ -1,0 +1,22 @@
+.botao-rosa-maior {
+    background-color: #DF0050;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 400;
+    height: 30px;
+    width: 150px;
+}
+  
+.botao-rosa-maior:hover {
+    background-color: #ff2374;
+    box-shadow: 0px 0px 7px 1px #f41d6c;
+}
+  
+
+  
