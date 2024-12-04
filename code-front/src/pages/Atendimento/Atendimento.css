@@ -1,3 +1,10 @@
+.modal-dialog{
+  display: flex;
+  height: 100%;
+    align-items: center;
+
+}
+
 .step-container {
   padding: 20px;
   text-align: center;
@@ -11,6 +18,20 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  flex-direction: column;
+  width: 50%;
+}
+
+.quantity-input {
+  width: 60px !important;
+  outline: none !important;
+  background-color: #d9d9d9!important;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .product-box {
@@ -23,44 +44,123 @@
 }
 
 
-.parte-1{
+.parte-1 {
   display: flex;
   flex-direction: column;
-    align-items: center;
+  align-items: center;
+  gap: 15px;
 }
 
-.atendimento{
+.atendimento {
   align-items: center;
 }
 
-.progresso{
-  background-color: #d9d9d9 ;
+.progresso {
+  background-color: #d9d9d9;
 }
 
-.input-label{
+.progress-bar{
+background-color: #DF0050!important;
+}
+
+.input-label {
   display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 60%;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 60%;
 }
 
-.input-form{
-  height: 40px!important;
-  background: #d9d9d9!important;
-  border: none!important;
-  border-radius: 10px!important;
-  outline: none!important;
-   width: 100%!important; 
-    padding: 10px;
+.input-form {
+  height: 40px !important;
+  background: #d9d9d9 !important;
+  border: none !important;
+  border-radius: 10px !important;
+  outline: none !important;
+  width: 100% !important;
+  padding: 10px;
   /* display: flex;
   flex-direction: column;
     align-items: flex-start; */
 }
 
-.checkbox-cancelado{
+.checkbox-cancelado {
   display: flex;
-    justify-content: center;
-    height: 27px;
-    justify-content: space-around
+  justify-content: center;
+  height: 27px;
+  justify-content: space-around;
+  width: 100%;
 }
 
+.botao-voltar{
+  background-color: rgba(0, 0, 0, 0.616)!important;
+    border: solid 1px #DF0050!important;
+}
+
+.botao-voltar:hover{
+  background-color: #45050C!important;
+}
+
+.botao-salvar-proximo{
+  background-color: #0d6efd;
+}
+
+.botao-salvar-proximo:hover{
+  background-color: #0d6efd!important;
+}
+
+
+.botao-gerar-ordem{
+  width: 100px!important;
+}
+
+
+
+/* Estilos do Modal */
+.modal-overlay {
+  
+ border-radius: 5px;
+ border: none!important;
+  display: flex;
+  box-shadow: 1px 0px 7px -2px;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  width: 45%;
+}
+
+h3 {
+  margin-bottom: 20px;
+  font-size: 20px!important;
+
+}
+
+.lucro{
+  border: solid 1px #DF0050;
+  width: 200px;
+    height: 29px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.faturamento{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding-top: 35px;
+}
