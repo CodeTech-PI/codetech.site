@@ -141,7 +141,7 @@ const Dashboard = () => {
       <div className='div-kpi'>
         {/* KPI de Produto com Menor Quantidade */}
       <div className={`kpi-container ${baixoEstoque && baixoEstoque.quantidade < 5 ? 'alert' : ''}`}>
-        <h2>Item com baixo estoque</h2>
+        <h2>Item com Baixo Estoque</h2>
         {baixoEstoque ? (
           <span>
           <p className='produto-baixo-estoque'>{baixoEstoque.nome} </p>
@@ -223,20 +223,21 @@ const Dashboard = () => {
       <div className='div-graficos-dupla'>
       {/* Dashboard de Produtos por Categoria */}
       <div className="chart-container">
+        <h2>Qtd de Produtos em Estoque por Categoria</h2>
   {data3 ? (
     <Bar 
       data={data3} 
       options={{
         responsive: true,
         plugins: {
-          title: {
-            display: true,
-            text: 'Produtos por Categoria',
-            color:'#FB3F83',
-            font: {
-              size: 14
-            }
-          },
+          // title: {
+          //   display: true,
+          //   text: 'Produtos por Categoria',
+          //   color:'#FB3F83',
+          //   font: {
+          //     size: 14
+          //   }
+          // },
           legend: { 
             display: true, 
             position: "bottom",

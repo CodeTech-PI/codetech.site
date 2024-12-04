@@ -9,7 +9,7 @@ const BotaoFechar = ({ onClick }) => {
       console.log("Fechar botão clicado");
       onClick();
     }}>
-      Fechar
+      Cancelar
     </button>
   );
 };

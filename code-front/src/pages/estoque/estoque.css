@@ -93,11 +93,14 @@ h1 {
   color: #fff;
 }
 
-
-.estoque-table .action-buttons {
-  display: flex;
+.action-buttons {
+  margin-left: 44px;
   gap: 10px;
-  justify-content: center;
+  display: flex;
+}
+
+.action-buttons {
+  width: 0;
 }
 
 .dialog-title {
