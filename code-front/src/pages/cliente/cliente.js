@@ -99,6 +99,16 @@ const Cliente = () => {
     await fetchClientes();
   };
 
+  const desfazerCadastro = async () => {
+    try {
+      await clienteService.desfazerCadastro();
+      await fetchClientes(); // Atualiza a lista após desfazer o cadastro
+      console.log('Cadastro desfeito com sucesso.');
+    } catch (error) {
+      console.error('Erro ao desfazer cadastro:', error);
+    }
+  };
+
   return (
     <div className="container-total">
       <Sidebar />
@@ -114,7 +124,11 @@ const Cliente = () => {
 
         <BotaoRosa
           onClick={openModal}
-          nomeBotao='Incluir Cliente'
+          nomeBotao='Cadastrar Cliente'
+        />
+        <BotaoRosa
+          onClick={desfazerCadastro}
+          nomeBotao='Desfazer Cadastro'
         />
         <PopUpAdicionar
           isOpen={modalIsOpen}

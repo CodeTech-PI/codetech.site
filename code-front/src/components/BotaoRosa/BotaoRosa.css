@@ -10,7 +10,8 @@
     text-align: center;
     font-weight: 400;
     height: 30px;
-    width: 130px;
+    width: 150px;
+    margin: 4px;
 }
   
 .botao-rosa:hover {
