@@ -56,54 +56,26 @@
   letter-spacing: 2px;
 }
 
-/* .container-total {
-  width: 80%;
-  height: 100vh;
-  margin-left: 15%;
-  padding: 20px;
-  box-sizing: border-box;
-} */
-
-/* form input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
+.status-filter{
+  display: flex;
 }
 
-/* .filter-input:focus {
-  border-color: #DF0050;
-  outline: none;
-} */
+#botao-status{
+  color: white;
+    background-color: black;
+    border: solid 1px #DF0050;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+     font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    height: 30px;
+    width: 130px;
+    margin-right: 5px;
+}
 
-/* .filiais-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
-
-/* .filial-card {
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid #ccc;
-  margin: 10px 0;
-  padding: 10px;
-  background-color: #333;
-  color: #fff;
-  width: 100%;
-  max-width: 800px;
-} */
-
-/* .filial-info {
-  flex-grow: 1;
-} */
-
-/* .sidebar {
-  flex: 0 0 250px;
-} */
-
-/* .content {
-  flex: 1;
-  padding: 20px;
-  width: 80%;
-} */
+#botao-status:hover {
+  background-color: #45050C;
+}
