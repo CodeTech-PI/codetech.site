@@ -32,7 +32,6 @@ const clienteService = {
       throw error;
     }
   },
-
   deleteCliente: async function(id) {
     this.setCredentials();
     try {
