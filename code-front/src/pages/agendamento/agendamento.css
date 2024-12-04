@@ -1,0 +1,126 @@
+
+
+  
+
+  
+  form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+
+.filter-input {
+  background-color: #1B1B1B;
+  
+  width: 100%; /* O campo ocupa toda a largura disponível */
+  max-width: 500px; /* Largura máxima para o campo */
+  padding: 12px; /* Aumentar o espaçamento interno */
+  margin: 10px 10px 10px 0; /* Margem acima e abaixo do campo */
+  border: none; /* Borda cinza clara */
+  border-radius: 20px; /* Bordas arredondadas */
+  font-size: 16px; /* Tamanho da fonte */
+   /* Transição suave para a cor da borda */
+}
+
+/* Efeito ao passar o mouse no campo de entrada */
+.filter-input:focus {
+  border-color: #007BFF; /* Muda a cor da borda ao focar */
+  outline: none; /* Remove o contorno padrão do navegador */
+}
+
+  /* Container para a lista de clientes */
+.clientes-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Item da lista de clientes */
+.cliente-item {
+  display: flex;
+  justify-content: space-between; /* Espalha os campos e ações */
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #1B1B1B;
+  color: #fff;
+}
+
+/* Contêiner para as informações do cliente */
+.container-cliente-info {
+  display: flex;
+  justify-content: space-between; 
+  width: 70%;
+  align-items: center;
+}
+
+/* Contêiner para as ações (botões) do cliente */
+/* .cliente-actions {
+  display: flex;
+  flex-direction: column; /* Coloca os botões em coluna */
+  /* justify-content: center; Centraliza os botões verticalmente */
+  /* align-items: flex-end; Alinha os botões à direita */
+ 
+/* } */ 
+
+/* Estilos para os botões dentro do item do cliente */
+/* .cliente-actions button { */
+  /* margin-left: 10px; Adiciona espaçamento entre os botões */
+/* } */
+/* styles.css */
+
+/* Estilos gerais para o contêiner de clientes */
+.clientes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilos para cada cartão de cliente */
+.cliente-card {
+  display: flex;
+  justify-content: space-between; /* Para posicionar os campos e os botões */
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  width: 100%; /* Faz o cartão ocupar toda a largura */
+  max-width: 800px; /* Largura máxima do cartão */
+}
+
+/* Estilos para os campos de informações do cliente */
+.cliente-info {
+  flex-grow: 1; /* Para permitir que os campos ocupem o espaço disponível */
+}
+
+/* Estilos para os botões de ação do cliente */
+.cliente-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Para alinhar os botões à direita */
+  justify-content: space-around;
+}
+
+
+.container-total {
+  /* background-color: red; */
+  width: 80%;
+    height: 100vh; /* Ocupa 100% da altura da viewport */
+    margin-left: 15%; /* Se você tiver uma sidebar fixa, ajuste a margem esquerda */
+    padding: 20px; /* Adicione algum preenchimento, se necessário */
+    box-sizing: border-box; /* Inclui o padding na altura total */
+}
+
+
+.sidebar {
+  flex: 0 0 250px; /* Fix the width of the sidebar */
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  width: 80%;
+}
+

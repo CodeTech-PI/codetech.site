@@ -6,6 +6,8 @@ import clienteService from "../../services/clienteService";
 import "./PopUpAdicionar.css";
 import BotaoFechar from "../BotaoFechar/BotaoFechar";
 import BotaoRosa from "../BotaoRosa/BotaoRosa";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 
 Modal.setAppElement("#root");
 
@@ -17,6 +19,10 @@ const PopUpAdicionar = ({ isOpen, onRequestClose, onCreate, cliente }) => {
     email: "",
     telefone: "",
   });
+
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
 
   useEffect(() => {
     if (cliente) {
@@ -46,15 +52,25 @@ const PopUpAdicionar = ({ isOpen, onRequestClose, onCreate, cliente }) => {
       if (cliente) {
         // Se um cliente estiver definido, chamamos a função de atualização
         await clienteService.updateCliente(cliente.id, formData);
+        setSnackbarMessage("Cliente atualizado com sucesso!");
       } else {
         // Se não houver cliente, chamamos a função de criação
         await clienteService.createUser(formData);
+        setSnackbarMessage("Cliente adicionado com sucesso!");
       }
+      setSnackbarSeverity("success");
       onCreate(); // Chama a função onCreate após a criação ou atualização
       onRequestClose(); // Fecha o modal
     } catch (error) {
       console.error("Erro ao salvar usuário:", error);
+      setSnackbarMessage("Erro ao salvar usuário. Tente novamente.");
+      setSnackbarSeverity("error");
     }
+    setSnackbarOpen(true);
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbarOpen(false);
   };
 
   return (
@@ -125,6 +141,19 @@ const PopUpAdicionar = ({ isOpen, onRequestClose, onCreate, cliente }) => {
           <BotaoFechar type="button" onClick={onRequestClose} />
         </div>
       </form>
+      {/* Snackbar para mensagens de sucesso ou erro */}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={handleCloseSnackbar}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity={snackbarSeverity}
+        >
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </Modal>
   );
 };

@@ -22,6 +22,7 @@ import Filiais from './pages/Filiais/filiais';
 
 import Estoque from './pages/estoque/estoque';
 import ListaProdutos from './pages/ListaProdutos/ListaProdutos';
+import Agendamento from './pages/agendamento/agendamento';
 
 import Chatbot from './pages/ChatBot/chatbot';
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/estoque" element={<Estoque />} />
+        <Route path="/agendamento" element={<Agendamento />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/aquarela" element={<Aquarela />} />
         <Route path="/minimalista" element={<Minimalista />} />
