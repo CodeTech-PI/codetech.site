@@ -38,7 +38,7 @@ const Atendimento = () => {
   const [isConfirming, setIsConfirming] = useState(false);
   const [show, setShow] = useState(true); // Modal aparecerá ao carregar a página
   const [formData, setFormData] = useState({
-    dt: "2024-11-18T00:00", // Formato inicial para datetime-local
+    dt: "2024-12-04", // Formato inicial para datetime-local
     horario: "00:00",
     cancelado: false,
     usuario: {
