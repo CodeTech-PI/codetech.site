@@ -44,3 +44,6 @@ ul li:hover {
     }
 }
 
+.nav-bar li.selecionado {
+    color: #DF0050;
+}

@@ -1,9 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './NavBar.css';
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   const handleLogoClick = () => {
     navigate('/');
@@ -38,9 +40,24 @@ const NavBar = () => {
           onClick={handleLogoClick}
         />
         <ul>
-          <li  onClick={handleGuerreirasClick}>Guerreiras</li>
-          <li onClick={download}>Anamnese</li>
-          <li onClick={handleLoginClick}>Login</li>
+        <li 
+            className={currentPath === '/guerreiras' ? 'selecionado' : ''} // Verificando se a rota é '/guerreiras'
+            onClick={handleGuerreirasClick}
+          >
+            Guerreiras
+          </li>
+          <li 
+            className={currentPath === '/anamnese' ? 'selecionado' : ''} // Verificando se a rota é '/anamnese'
+            onClick={download}
+          >
+            Anamnese
+          </li>
+          <li 
+            className={currentPath === '/login' ? 'selecionado' : ''} // Verificando se a rota é '/login'
+            onClick={handleLoginClick}
+          >
+            Login
+          </li>
         </ul>
       </nav>
       <div className='linha'></div>
