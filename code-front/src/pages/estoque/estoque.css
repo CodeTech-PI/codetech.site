@@ -306,3 +306,7 @@ h1 {
   border-radius: 10px;
   /* Bordas arredondadas */
 }
+
+.botao-rosa{
+  margin: 0 0 0 5 !important;
+}
