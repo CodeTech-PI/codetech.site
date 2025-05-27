@@ -49,7 +49,8 @@ const Dashboard = () => {
             backgroundColor: 'rgba(75, 192, 192, 0.6)', // Cor do fundo das barras
             borderColor: 'transparent', // Remove as linhas
             borderWidth: 0, // Remove as linhas
-            fill: true // Preenche a área abaixo da barra
+            fill: true, // Preenche a área abaixo da barra
+            barThickness: 35 // Espessura das barras
           }]
         });
 
@@ -80,7 +81,8 @@ const Dashboard = () => {
             backgroundColor: 'rgba(255, 99, 132, 0.6)', // Cor do fundo das barras
             borderColor: 'transparent', // Remove as linhas
             borderWidth: 0, // Remove as linhas
-            fill: true // Preenche a área abaixo da barra
+            fill: true, // Preenche a área abaixo da barra
+             barThickness: 35 // Espessura das barras
           }]
         });
 
@@ -118,7 +120,8 @@ const Dashboard = () => {
             label: 'Quantidade de Produtos por Categoria',
             data: values3,
             backgroundColor: '#5B85DB',
-            fill: true
+            fill: true,
+             barThickness: 35 // Espessura das barras
           }]
         });
 
@@ -164,7 +167,7 @@ const Dashboard = () => {
 
       {/* KPI de Lucro Anual */}
       <div className="kpi-containerAnual">
-        <h2>Lucro Anual</h2>
+        <h2>Lucro Estimado Anual</h2>
         {lucroAnual !== null ? (
           <p>R$ {lucroAnual.toFixed(2)}</p>
         ) : (
@@ -176,9 +179,9 @@ const Dashboard = () => {
       <div className='div-grafico'>
         {/* Dashboard de Lucro Mensal */}
       <div className="chart-containerLucro">
-        <h2>Lucro Mensal</h2>
+        <h2>Lucro Estimado Mensal</h2>
         {data1 ? (
-          <Bar data={data1} options={{
+          <Bar className='graficoLucro' data={data1} options={{
             responsive: true,
             plugins: {
               // title: {
@@ -197,7 +200,7 @@ const Dashboard = () => {
                   font: { 
                     size: 10,
                     weight: 'bold',
-                    boxWidth: 5, // Largura do quadrado de cor da legenda 
+                    boxWidth: 3, // Largura do quadrado de cor da legenda 
               }}},
               tooltip: {
                 backgroundColor: '#333',
@@ -263,7 +266,7 @@ const Dashboard = () => {
               font: { 
                 size: 10,
                 weight: 'bold',
-                boxWidth: 5, // Largura do quadrado de cor da legenda 
+                boxWidth: 3, // Largura do quadrado de cor da legenda 
           }}},
           tooltip: {
             backgroundColor: '#333',
@@ -327,7 +330,7 @@ const Dashboard = () => {
                   font: { 
                     size: 10,
                     weight: 'bold',
-                    boxWidth: 5, // Largura do quadrado de cor da legenda 
+                    boxWidth: 3, // Largura do quadrado de cor da legenda 
               }}},
               tooltip: {
                 backgroundColor: '#333',
