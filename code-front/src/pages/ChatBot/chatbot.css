@@ -92,6 +92,7 @@ h2 {
   padding: 10px 0;
   gap: 10px;
   justify-content: space-between;
+  align-items: center;
 }
 
 .search-input {
@@ -104,6 +105,7 @@ h2 {
   font-size: 1rem;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
+  margin: 0px;
 }
 
 .search-input:focus {
@@ -112,7 +114,6 @@ h2 {
 }
 
 .search-button {
-  padding: 12px 25px;
   background-color: #df0050;
   color: white;
   border: none;
@@ -121,6 +122,8 @@ h2 {
   font-size: 1rem;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  justify-content: center;
+  align-items: center;
 }
 
 .search-button:hover {
