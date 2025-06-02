@@ -15,7 +15,7 @@ jobs:
 
       - name: Pull latest Docker image from Docker Hub
 
-        run: sudo docker pull ${{ secrets.DOCKERHUB_USER }}/codetech-front:latest
+        run: sudo docker pull ${{ secrets.DOCKERHUB_USER }}/codetech-front:v14
 
       - name: Stop existing container (if running)
         run: sudo docker stop $(docker ps -q --filter label=app=container-front) || true
