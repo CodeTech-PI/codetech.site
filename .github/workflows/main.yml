@@ -45,11 +45,11 @@ jobs:
             exit 1
           fi
 
-    docker:
-      - name: Build and Push Docker Image
-        runs-on: ubuntu-latest
-        needs: build 
-        steps:
+  docker:
+    name: Build and Push Docker Image
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -65,7 +65,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ./code-front 
+          context: ./code-front
           file: ./code-front/Dockerfile
           push: true
 
