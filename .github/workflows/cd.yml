@@ -23,4 +23,4 @@ jobs:
         run: sudo docker rm $(sudo docker ps -aq --filter label=app=container-front) || true
 
       - name: Run Docker container with the new image
-        run: sudo docker run --name container-fe -d -p 3000:80 --label app=container-fe ${{ secrets.DOCKERHUB_USER }}/codetech-front:v14
+        run: sudo docker run --name container -d -p 3000:80 --label app=container ${{ secrets.DOCKERHUB_USER }}/codetech-front:v14
