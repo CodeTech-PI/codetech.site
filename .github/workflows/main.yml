@@ -1,8 +1,6 @@
 name: CI Frontend React
 
 on:
-  # push:
-  #   branches: [ desenvolvimento ]
   pull_request:
     branches: [ desenvolvimento ]
     types: [ opened, reopened ]
@@ -37,7 +35,6 @@ jobs:
         env:
           CI: false
 
-      # Opcional: Adicionar um passo para verificar se a build foi bem-sucedida
       - name: Check build output
         run: |
           cd ./code-front
@@ -48,10 +45,10 @@ jobs:
             exit 1
           fi
 
-    docker:
+  docker:
     name: Build and Push Docker Image
     runs-on: ubuntu-latest
-    needs: build 
+    needs: build
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -68,16 +65,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ./code-front 
+          context: ./code-front
           file: ./code-front/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USER }}/codetech-front:${{ github.sha }} 
-          latest: true 
-
-      # Opcional: Adicionar passos para deploy (dependendo do seu ambiente)
-      # - name: Deploy to production
-      #   if: github.ref == 'refs/heads/desenvolvimento'
-      #   run: |
-      #     # Comandos de deploy aqui
-      #     echo "Deploying to production..."
-      #   working-directory: ./code-front
+          tags: ${{ secrets.DOCKERHUB_USER }}/codetech-front:${{ github.sha }}, ${{ secrets.DOCKERHUB_USER }}/codetech-front:latest
