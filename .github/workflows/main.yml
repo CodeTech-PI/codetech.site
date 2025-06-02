@@ -1,10 +1,10 @@
 name: CI Frontend React
 
 on:
-  push:
-    branches: [ desenvolvimento ]
   pull_request:
-    branches: [ desenvolvimento ]
+    branches:
+      - desenvolvimento # A branch para a qual a PR está sendo aberta
+    types: [ opened, reopened ] # Dispara quando a PR é aberta ou reaberta
 
 jobs:
   build:
@@ -21,10 +21,8 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: |
-          cd ./code-front
-          npm cache clean --force
-          npm install
+        run: npm install
+        working-directory: ./code-front
 
       - name: Run tests
         run: npm run test -- --watchAll=false
@@ -36,7 +34,6 @@ jobs:
         env:
           CI: false
 
-      # Opcional: Adicionar um passo para verificar se a build foi bem-sucedida
       - name: Check build output
         run: |
           cd ./code-front
