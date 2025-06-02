@@ -18,11 +18,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # ou a versão do Node.js que seu projeto utiliza
+          node-version: '18'
 
       - name: Install dependencies
-        run: npm install
-        working-directory: ./code-front
+        run: |
+          cd ./code-front
+          npm cache clean --force
+          npm install
 
       - name: Build React app
         run: npm run build
