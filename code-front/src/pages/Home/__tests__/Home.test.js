@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom'; // Importe MemoryRouter
+import '@testing-library/jest-dom/extend-expect'; // Adicione esta linha
+import { MemoryRouter } from 'react-router-dom';
 import Home from '../Home'; // Ajuste o caminho se o arquivo Home.js estiver em outro local relativo
 
 describe('Página Home', () => {
@@ -70,5 +71,5 @@ describe('Página Home', () => {
     const addressTitle = screen.getByRole('heading', { name: 'Onde nos encontrar:' });
     expect(addressTitle).toBeInTheDocument();
   });
-  
+
 });
