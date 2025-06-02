@@ -26,6 +26,10 @@ jobs:
           npm cache clean --force
           npm install
 
+      - name: Run tests
+        run: npm run test -- --watchAll=false
+        working-directory: ./code-front
+
       - name: Build React app
         run: npm run build
         working-directory: ./code-front
