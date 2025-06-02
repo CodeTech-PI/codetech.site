@@ -1,0 +1,26 @@
+name: Deploy Frontend CD
+
+on:
+  push:
+    branches:
+      - desenvolvimento
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Pull latest Docker image from Docker Hub
+        run: sudo docker pull ${{ secrets.DOCKERHUB_USER }}/codetech-front:v14
+
+      - name: Stop existing container (if running)
+        run: sudo docker stop $(sudo docker ps -q --filter label=app=container-front) || true
+
+      - name: Remove existing container (if exists)
+        run: sudo docker rm $(sudo docker ps -aq --filter label=app=container-front) || true
+
+      - name: Run Docker container with the new image
+        run: sudo docker run --name container-fe -d -p 3000:80 --label app=container-fe ${{ secrets.DOCKERHUB_USER }}/codetech-front:v14
