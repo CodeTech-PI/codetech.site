@@ -1,0 +1,33 @@
+name: Deploy Frontend CD
+
+on:
+  push:
+    branches:
+      - desenvolvimento
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Pull latest Docker image from Docker Hub
+        run: docker pull ${{ secrets.DOCKERHUB_USER }}/codetech-front:latest
+
+      - name: Stop existing container (if running)
+        run: docker stop $(docker ps -q --filter label=app=container-front) || true
+
+      - name: Remove existing container (if exists)
+        run: docker rm $(docker ps -aq --filter label=app=container-front) || true
+
+      - name: Run Docker container with the new image
+        run: docker run --name container-front -d -p 3000:80 --label app=container-front ${{ secrets.DOCKERHUB_USER }}/codetech-front:latest
+
+      - name: Optional: Verify deployment
+        run: |
+          echo "Verificando se o container está rodando..."
+          docker ps --filter label=app=container-front
+          # Tente acessar a porta 80 do seu IP público da EC2
+          # Por exemplo: curl http://<seu-ip-publico-ec2>
