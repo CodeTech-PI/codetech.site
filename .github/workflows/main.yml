@@ -27,6 +27,8 @@ jobs:
       - name: Build React app
         run: npm run build
         working-directory: ./code-front
+        env:
+          CI: false
 
       # Opcional: Adicionar um passo para verificar se a build foi bem-sucedida
       - name: Check build output
