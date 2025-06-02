@@ -35,13 +35,13 @@ jobs:
       # Opcional: Adicionar um passo para verificar se a build foi bem-sucedida
       - name: Check build output
         run: |
-          if [ -d "./code-front/build" ]; then
+          cd ./code-front
+          if [ -d "./build" ]; then
             echo "Build realizado com sucesso!"
           else
             echo "Erro: Diretório de build não encontrado."
             exit 1
           fi
-        working-directory: ./code-front
 
       # Opcional: Adicionar passos para testes (se você tiver configurado)
       # - name: Run tests
