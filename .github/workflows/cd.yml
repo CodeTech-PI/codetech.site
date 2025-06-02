@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Stop existing container (if running)
         run: sudo docker stop frontend
 
@@ -19,5 +20,4 @@ jobs:
         run: sudo docker rm frontend
 
       - name: Run Docker container with the new image
-        run: sudo docker run --name frontend -d -p 3000:80 --label app=container ${{ secrets.DOCKERHUB_USER }}/codetech-front:latest
-
+        run: sudo docker run --name frontend -p 3000:80 -d ${{ secrets.DOCKERHUB_USER }}/codetech-front:latest
