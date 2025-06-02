@@ -12,15 +12,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Pull latest Docker image from Docker Hub
-        run: sudo docker pull ${{ secrets.DOCKERHUB_USER }}/codetech-front:v14
-
       - name: Stop existing container (if running)
-        run: sudo docker stop $(sudo docker ps -q --filter label=app=container-front) || true
+        run: sudo docker stop frontend
 
       - name: Remove existing container (if exists)
-        run: sudo docker rm $(sudo docker ps -aq --filter label=app=container-front) || true
+        run: sudo docker rm frontend
 
       - name: Run Docker container with the new image
-        run: sudo docker run --name container -d -p 3000:80 --label app=container ${{ secrets.DOCKERHUB_USER }}/codetech-front:v14
+        run: sudo docker run --name frontend -d -p 3000:80 --label app=container ${{ secrets.DOCKERHUB_USER }}/codetech-front:latest
+
