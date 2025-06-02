@@ -1,10 +1,11 @@
 name: CI Frontend CodeTech
 
 on:
+
   push:
     branches: [ desenvolvimento ]
-  #pull_request:
-    #branches: [ main ]
+  pull_request:
+    branches: [ desenvolvimento ]
 
 jobs:
   build:
