@@ -59,6 +59,7 @@ h1 {
   display: flex;
   gap: 20px;
   margin-bottom: 24px;
+  align-items: center;
 }
 
 .estoque-table {
