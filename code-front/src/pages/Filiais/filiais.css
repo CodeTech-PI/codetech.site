@@ -79,3 +79,19 @@
 #botao-status:hover {
   background-color: #45050C;
 }
+
+h2 {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.css-8mwzdy  {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 8px;
+    -webkit-box-pack: end;
+    justify-content: center;
+    flex: 0 0 auto;
+}

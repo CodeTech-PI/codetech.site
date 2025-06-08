@@ -54,6 +54,12 @@ h1 {
   /* Margem inferior */
 }
 
+h2 {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
 .botoes-incluir {
   display: flex;
   gap: 20px;
@@ -309,4 +315,11 @@ h1 {
 
 .botao-rosa{
   margin: 0 0 0 5 !important;
+}
+
+.botoes-cadast-produto {
+  display: flex;
+  justify-content: center !important; /* Adicione o !important para garantir que sobrescreva /
+  / Adicione outras propriedades se quiser controlar o espaçamento entre eles, etc. /
+  gap: 10px; / Exemplo: espaçamento entre os botões */
 }
