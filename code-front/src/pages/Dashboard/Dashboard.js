@@ -167,7 +167,7 @@ const Dashboard = () => {
 
       {/* KPI de Lucro Anual */}
       <div className="kpi-containerAnual">
-        <h2>Lucro Estimado Anual</h2>
+        <h2>Receita Anual</h2>
         {lucroAnual !== null ? (
           <p>R$ {lucroAnual.toFixed(2)}</p>
         ) : (
@@ -179,7 +179,7 @@ const Dashboard = () => {
       <div className='div-grafico'>
         {/* Dashboard de Lucro Mensal */}
       <div className="chart-containerLucro">
-        <h2>Lucro Estimado Mensal</h2>
+        <h2>Receita Mensal</h2>
         {data1 ? (
           <Bar className='graficoLucro' data={data1} options={{
             responsive: true,
@@ -196,7 +196,7 @@ const Dashboard = () => {
                 display: true, 
                 position: "bottom",
                 labels: { 
-                  color: '#ff40e2', 
+                  color: '#515151', 
                   font: { 
                     size: 10,
                     weight: 'bold',
@@ -243,7 +243,7 @@ const Dashboard = () => {
       <div className='div-graficos-dupla'>
       {/* Dashboard de Produtos por Categoria */}
       <div className="chart-container">
-        <h2>Qtd de Produtos em Estoque por Categoria</h2>
+        <h2>Quantidade de Produtos por Categoria</h2>
   {data3 ? (
     <Bar 
       data={data3} 
