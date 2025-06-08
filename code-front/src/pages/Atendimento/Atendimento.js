@@ -6,6 +6,12 @@ import clienteService from '../../services/clienteService';
 import listaProdutosService from '../../services/listaProdutosService';
 import estoqueService from '../../services/estoqueService';
 import Sidebar from '../../components/SideBar/SideBar';
+import BotaoRosa from '../../components/BotaoRosa/BotaoRosa';
+import BotaoRosaMaior from '../../components/BotaoRosaMaior/BotaoRosaMaior';
+import BotaoExcluirIcon from '../../components/BotaoExcluirIcon/BotaoExcluirIcon';
+import BotaoAlterarIcon from '../../components/BotaoAlterarIcon/BotaoAlterarIcon';
+import PopUpAdicionar from '../../components/PopUpAdicionar/PopUpAdicionar';
+
 import './Atendimento.css';
 
 // Estilizando o Modal usando styled-components
@@ -35,6 +41,35 @@ const CustomButton = styled(Button)`
 
 const Atendimento = () => {
 
+  const [agendamentos, setAgendamentos] = useState([]);
+  const [filteredClientes, setFilteredAgendamentos] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [editModalIsOpen, setEditModalIsOpen] = useState(false);
+  const [currentAgendamento, setCurrentAgendamento] = useState(null);
+  const [filter, setFilter] = useState('');
+
+  const handleFilterChange = (e) => {
+    debugger
+    const value = e.target.value;
+    setFilter(value);
+
+    if (value) {
+      const filtered = agendamentos.filter(cliente =>
+        cliente.usuario.nome.toLowerCase().includes(value.toLowerCase()) ||
+        cliente.usuario.cpf.includes(value) ||
+        cliente.usuario.telefone.includes(value)
+      );
+      setFilteredAgendamentos(filtered);
+    } else {
+      setFilteredAgendamentos(agendamentos);
+    }
+  };
+  useEffect(() => {
+    fetchAgendamentos();
+  }, []);
+
+  //
+
   const [isConfirming, setIsConfirming] = useState(false);
   const [show, setShow] = useState(true); // Modal aparecerá ao carregar a página
   const [formData, setFormData] = useState({
@@ -61,6 +96,16 @@ const Atendimento = () => {
   const [agendamentoId, setAgendamentoId] = useState(null); // Estado para armazenar o ID do agendamento
   const [faturamento, setFaturamento] = useState(null);
 
+  const fetchAgendamentos = async () => {
+    try {
+      debugger
+      const clientesData = await agendamentoService.getAgendamentos();
+      setAgendamentos(clientesData);
+      setFilteredAgendamentos(clientesData);
+    } catch (error) {
+      console.error('Erro ao buscar clientes:', error);
+    }
+  };
 
   useEffect(() => {
     clienteService.getClientes()
@@ -272,11 +317,108 @@ const Atendimento = () => {
   const handleCloseFechar = () => {
     setStep(1); // Voltar para o step 1
   };
+  const openModal = () => {
+    setCurrentAgendamento(null); // Limpa a informação do cliente atual ao abrir o modal
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  const closeEditModal = () => {
+    setEditModalIsOpen(false);
+  };
+
+  const handleCreate = async () => {
+    await fetchAgendamentos();
+  };
+  const handleEdit = (cliente) => {
+    setCurrentAgendamento(cliente);
+    setEditModalIsOpen(true);
+  };
+  // const handleDelete = async (id) => {
+  //     try {
+  //       await agendamentoService.deleteCliente(id);
+  //       setClientes(clientes.filter(cliente => cliente.id !== id));
+  //       setFilteredClientes(filteredClientes.filter(cliente => cliente.id !== id));
+  //     } catch (error) {
+  //       console.error('Erro ao deletar cliente:', error);
+  //     }
+  //   };
+
+
 
 
   return (
     <section>
+      <div className="container-atendimento">
       <Sidebar />
+        <h1>Atendimentos</h1>
+        <input
+          type="text"
+          placeholder="Filtrar por data, horário ou nome do cliente"
+          value={filter}
+          onChange={handleFilterChange}
+          className="filter-input"
+        />
+
+        {/* <BotaoRosaMaior
+          onClick={openModal}
+          nomeBotao='Cadastrar Cliente'
+        /> */}
+
+        <PopUpAdicionar
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          onCreate={handleCreate}
+          isEditing={false}
+        />
+        {editModalIsOpen && (
+          <PopUpAdicionar
+            isOpen={editModalIsOpen}
+            onRequestClose={closeEditModal}
+            onCreate={handleCreate}
+            cliente={currentAgendamento}
+            isEditing={true}
+          />
+        )}
+
+        <div className="clientes-list">
+          {Array.isArray(filteredClientes) && filteredClientes.length > 0 ? (
+            filteredClientes.map((agendamento) => (
+              <div key={agendamento.id} className="cliente-item">
+                <div className="container-cliente-info">
+                  <div className='cliente-info1'>
+                    <p><strong>Data:</strong><span className='span-space'> {agendamento.dt}</span></p>
+                    <p><strong>Horário:</strong><span className='span-space'> {agendamento.horario.substring(0, 5)}</span></p>
+                    <p><strong>Status:</strong><span className='span-space'>
+                      {agendamento.cancelado ? 'Cancelado' : 'Confirmado'}
+                    </span></p>
+                  </div>
+                  <div className='cliente-info2'>
+                    <p><strong>Cliente:</strong><span className='span-space'> {agendamento.usuario.nome}</span></p>
+                    <p><strong>CPF:</strong><span className='span-space'> {agendamento.usuario.cpf}</span></p>
+                    <p><strong>Contato:</strong><span className='span-space'> {agendamento.usuario.telefone}</span></p>
+                  </div>
+                </div>
+                {/* <div className="cliente-actions">
+                  <BotaoAlterarIcon
+                    nomeBotao='Alterar'
+                    onClick={() => handleEdit(agendamento)}
+                    altText='Ícone de alteração'
+                  />
+                </div> */}
+              </div>
+            ))
+          ) : (
+            <p>Nenhum agendamento encontrado.</p>
+          )}
+        </div>
+
+        {editModalIsOpen && currentAgendamento && (
+          <PopUpAdicionar isOpen={editModalIsOpen} onRequestClose={closeEditModal} onCreate={handleCreate} cliente={currentAgendamento} isEditing={true} />
+        )}
+      </div>
       <StyledModal show={show} onHide={handleClose}>
         <Modal.Header closeButton className='atendimento'>
           <Modal.Title>Atendimento</Modal.Title>
@@ -486,7 +628,7 @@ const Atendimento = () => {
                         <h3>Tem certeza que deseja Gerar Ordem de Serviço?</h3>
                         <div className="modal-buttons">
                           <CustomButton
-                          className='botao-salvar-proximo'
+                            className='botao-salvar-proximo'
                             variant="success"
                             onClick={() => {
                               handlePostOrdemServico();
@@ -516,13 +658,13 @@ const Atendimento = () => {
           {step === 4 && faturamento && (
             <StepContainer>
               <div className='faturamento'>
-              <h5>Ordem de serviço</h5>
-              <p>Atendimento realizado com sucesso!</p>
-              <h6>Detalhes do Faturamento</h6>
-              <p className='lucro'>
-                Lucro: {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(faturamento.lucro)}
-              </p> {/* Formatação de R$ */}
-              {/* <CustomButton variant="success" onClick={handleCloseFechar}>
+                <h5>Ordem de serviço</h5>
+                <p>Atendimento realizado com sucesso!</p>
+                <h6>Detalhes do Faturamento</h6>
+                <p className='lucro'>
+                  Lucro: {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(faturamento.lucro)}
+                </p> {/* Formatação de R$ */}
+                {/* <CustomButton variant="success" onClick={handleCloseFechar}>
                 Fechar
               </CustomButton> */}
               </div>

@@ -31,6 +31,15 @@ const agendamentoService = {
       throw error;
     }
   },
+  getAgendamentos: async function(id) {
+    this.setCredentials();
+    try {
+      const response = await axios.get(`${url}/agendamentos`, { headers: this.headers });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 
   postOrdemServico: async function(userData) {
     this.setCredentials();
