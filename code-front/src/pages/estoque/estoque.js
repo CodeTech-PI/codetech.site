@@ -358,7 +358,20 @@ const Estoque = () => {
         </Alert>
       </Snackbar>
       {/* Dialog para adicionar/editar produto */}
-      <Dialog open={open} onClose={handleClose}>
+        <Dialog open={open} onClose={handleClose}
+        // Adicione esta prop sx
+        sx={{
+          "& .MuiPaper-root": {
+            borderRadius: "20px", // Copiado do seu Dialog de categoria
+            border: "none",      // Copiado do seu Dialog de categoria
+            padding: "24px",     // Copiado do seu Dialog de categoria
+            maxWidth: "500px",   // Copiado do seu Dialog de categoria
+            backgroundColor: "#1B1B1B", // O background preto que você quer
+            color: "#ffffff",    // Garante que o texto dentro seja branco
+            boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.5)", // Sombra consistente
+          },
+        }}
+      >
         <DialogTitle>
           {isEdit ? "Editar Produto" : "Adicionar Produto"}
         </DialogTitle>
@@ -436,7 +449,6 @@ const Estoque = () => {
               onChange={handleInputChange}
               displayEmpty
               variant="outlined"
-              displayEmpty
               sx={{
                 "& .MuiOutlinedInput-notchedOutline": {
                   border: "none",
