@@ -6,7 +6,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* background-color: black; */
 
-  background-color: black;
+  background-color: red;
 }
 
 p {
@@ -43,7 +43,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-  background-color: white;
+  background-color: red;
 }
 ol, ul {
 	list-style: none;
